@@ -12,17 +12,24 @@ class Recipe {
   };
 
   calculateCost() {
-    let ingredientCost = 0;
     let total = 0;
-    this.ingredients.forEach((recipeIngredient, i) => {
+    this.ingredients.forEach((recipeIngredient) => {
       ingredientsData.find(ingredient => {
         if (ingredient.id === recipeIngredient.id) {
-          total += ingredient.estimatedCostInCents
+          total += (ingredient.estimatedCostInCents * recipeIngredient.quantity.amount)
         }
       });
     })
     return `$${total/100}`;
   };
+
+  getInstructions() {
+    let instructionList = [];
+    this.instructions.forEach(instruction => {
+      instructionList.push(`Step ${instruction.number}: ${instruction.instruction}`)
+    });
+    return instructionList;
+  }
 };
 
 
