@@ -1232,8 +1232,7 @@ let ingredientsData = [
     "name": "vegetable stock",
     "estimatedCostInCents": 613
   }
-];
-
+]
 
 module.exports = {
   ingredientsData
