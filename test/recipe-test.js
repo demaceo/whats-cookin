@@ -1,6 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
-const recipeTestData = require('../testData/recipe-data');
+const recipeTestData = require('../data/recipes');
 const ingredients = require('../data/ingredients');
 const ingredientsData = ingredients.ingredientsData;
 
@@ -59,7 +59,13 @@ describe('Recipe', function() {
   it('should be able to calculate the cost of the recipe', function() {
     const recipe = new Recipe(recipeTestData[0]);
     recipe.calculateCost();
-    expect(recipe.calculateCost()).to.equal(`$59.21`);
+    expect(recipe.calculateCost()).to.equal('$177.76');
+  });
+
+  it('should be able to get the instructions for the recipe', function() {
+    const recipe = new Recipe(recipeTestData[0]);
+
+    expect(recipe.getInstructions()[5]).to.equal('Step 6: Remove the pan from the oven and let sit for 10 minutes before removing onto a cooling rack.Top with ice cream and a drizzle of chocolate sauce.');
   });
 
 });
