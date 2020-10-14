@@ -3,6 +3,7 @@ const expect = chai.expect;
 const recipeData = require('../data/recipes');
 const users = require('../data/users');
 const userData = users.usersData;
+const easyRecipe = require('../data/easy-recipe');
 
 const Recipe = require('../src/Recipe');
 const Pantry = require('../src/Pantry');
@@ -36,12 +37,22 @@ describe('Pantry', function() {
     expect(pantry.contents).to.equal(userData[0].pantry);
   });
 
-  it.only('should tell if enough ingredients to make a recipe', function() {
+  it('should tell if enough ingredients to make a recipe', function() {
     const pantry = new Pantry(userData[0]);
-    const cookies = recipeData[1];
-    const easy = recipeData[0];
+    const cookies = recipeData[0];
+    const easy = easyRecipe[0];
 
     expect(pantry.enoughIngredients(cookies)).to.equal(false);
     expect(pantry.enoughIngredients(easy)).to.equal(true);
+  });
+
+  it('should tell what and how much ingredient is missing', function() {
+    const pantry = new Pantry(userData[0]);
+    const cookies = recipeData[0];
+
+    pantry.enoughIngredients(cookies)
+
+    expect(pantry.missingIngredients.length).to.equal(4);
+    expect(pantry.missingIngredients[0].quantity.amountMissing).to.equal(1);
   });
 });
