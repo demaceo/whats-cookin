@@ -12,7 +12,11 @@ class User {
   };
 
   favoriteRecipe(recipe) {
-    this.favoriteRecipes.unshift(recipe.id)
+    this.favoriteRecipes.unshift(recipe)
+  };
+
+  addToRecipesToCook(recipe) {
+    this.recipesToCook.unshift(recipe)
   };
 
   addItemToPantry(ingredient, quantity) {
@@ -30,14 +34,44 @@ class User {
     this.pantry.contents.unshift(item);
   };
 
-  searchFavorites(recipe) {
-    return this.favoriteRecipes.forEach(favorite => {
-      favorite.find(recipe)
-    })
-  }
+  searchFavoritesByIngredient(searchEntry) {
 
-  searchRecipesToCook(recipe) {
-    return this.recipesToCook
+    let searchResults = [];
+    const ingredientObject = ingredientsData.find(ingredient => ingredient.name === searchEntry)
+    this.favoriteRecipes.forEach(recipe => {
+      recipe.ingredients.forEach(ingredient => {
+        if (ingredient.id === ingredientObject.id) {
+          return searchResults.push(recipe)
+        }
+      })
+    })
+    return searchResults
+  };
+
+  searchFavorites(searchEntry) {
+    let searchResult = [];
+    let capitalizeRecipe = searchEntry[0].toUpperCase() + searchEntry.substring(1);
+    this.favoriteRecipes.filter(favoriteRecipe => {
+      if (favoriteRecipe.name.includes(capitalizeRecipe)) {
+        return searchResult.push(favoriteRecipe)
+      }
+    });
+    return searchResult;
+  };
+  // need to include `|| favorite.recipe.ingredient === recipe`
+  // but be able to take that id of ingredient and place it to a name.
+  //should we use .includes or a === for the IF statement
+  //change parameter name to "searchEntry"
+
+  searchRecipesToCook(searchEntry) {
+    let searchResult = [];
+    let capitalizeRecipe = searchEntry[0].toUpperCase() + searchEntry.substring(1);
+    this.recipesToCook.filter(recipeToCook => {
+      if (recipeToCook.name.includes(capitalizeRecipe)) {
+        return searchResult.push(recipeToCook)
+      }
+    });
+    return searchResult;
   }
 };
 

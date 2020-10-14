@@ -39,7 +39,7 @@ describe('User', function() {
     const user = new User(userData[0]);
     user.favoriteRecipe(recipeTestData[0]);
 
-    expect(user.favoriteRecipes[0]).to.equal(595736);
+    expect(user.favoriteRecipes[0]).to.equal(recipeTestData[0]);
   });
 
   it('should be able to add an item to a users pantry', function() {
@@ -49,4 +49,38 @@ describe('User', function() {
     expect(user.pantry.contents[0].name).to.equal("poop");
   });
 
+  it('should be able to search for a user/s favorite recipe', function() {
+    const user = new User(userData[0]);
+
+    user.favoriteRecipe(recipeTestData[0]);
+    user.favoriteRecipe(recipeTestData[1]);
+
+    const searchResult = user.searchFavorites("cookie");
+
+    expect(searchResult.length).to.equal(1);
+  });
+
+  it('should be able to search for a user/s list of recipes to cook', function() {
+    const user = new User(userData[0]);
+
+    user.addToRecipesToCook(recipeTestData[0]);
+    user.addToRecipesToCook(recipeTestData[1]);
+    user.addToRecipesToCook(recipeTestData[2]);
+
+    const result = user.searchRecipesToCook("cookie");
+
+    expect(result.length).to.equal(1);
+  });
+
+  it('should be able to search for a user/s favorite recipes by ingredient', function() {
+    const user = new User(userData[0]);
+
+    user.favoriteRecipe(recipeTestData[0]);
+    user.favoriteRecipe(recipeTestData[1]);
+
+    const searchResult = user.searchFavoritesByIngredient("wheat flour");
+    expect(searchResult.length).to.equal(1);
+    expect(searchResult[0].ingredients[0].id).to.equal(20081);
+
+  });
 });
