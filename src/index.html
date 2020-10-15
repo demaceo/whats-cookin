@@ -1,15 +1,141 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Whats Cookin</title>
-  </head>
-  <body>
-    <h1>Whats Cookin</h1>
 
-    <script type="text/javascript" src="../data/users.js"></script>
-    <script type="text/javascript" src="../data/recipes.js"></script>
-    <script type="text/javascript" src="../data/ingredients.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
-  </body>
+<head>
+  <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8">
+  <script src="https://kit.fontawesome.com/yourcode.js"></script>
+  <title>Whats Cookin</title>
+</head>
+
+<body>
+  <h1>What's Cookin'</h1>
+  <div id='hero-container'>
+    <img class='hero' src='../assets/pizza.jpg'>
+  </div>
+
+  <header class='navbar'>
+      <div>
+        <img id='header-hamburger-menu' class='header-icon icon' src='../assets/bars-solid.svg'>
+        <h1>What's Cookin'</h1>
+      </div>
+      <div>
+        <!--  loading animation spot?  -->
+        <img id='header-profile-icon' class='header-icon icon' src='../assets/user-circle-regular.svg'>
+      </div>
+  </header>
+  <main>
+    <section class="home-view">
+      <section class="home-main-content">
+        <div class="search-bar">
+          <input class="search-input" type="text" placeholder="Search Recipes">
+          <div>
+            <input type="checkbox" name="search-by-ingredient" value="search-by-ingredient"> Search Recipes by Ingredient
+          </div>
+        </div>
+        <section class="featured-recipe">
+          <img class="featured-recipe-img" src="../assets/salmon.jpg" alt="">
+          <div class="featured-recipe-info">
+            <div class="featured-recipe-title">
+              Salmon + Pineapple + Forks
+            </div>
+            <div class="featured-recipe-description">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, , when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            </div>
+          </div>
+        </section>
+        <h1>Popular Recipes</h1>
+        <section class="staff-picks">
+          <div class="staff-pick-one">
+            <img class="staff-pick-one-img" src="" alt="">
+            <h3 class="staff-pick-one-title">(Recipe Title)</h3>
+            <div class="staff-pick-one-icons">
+              <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
+              <img class="cart-icon icon" src='../assets/basket.svg'>
+              <img class="price-icon icon" src='../assets/dollar.svg'>
+              <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>60
+            </div>
+          </div>
+          <div class="staff-pick-two">
+            <img class="staff-pick-two-img" src="" alt="">
+            <h3 class="staff-pick-two-title">(Recipe Title)</h3>
+            <div class="staff-pick-two-icons">
+              <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
+              <img class="cart-icon icon" src='../assets/basket.svg'>
+              <img class="price-icon icon" src='../assets/dollar.svg'>
+              <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>60
+            </div>
+          </div>
+          <div class="staff-pick-three">
+            <img class="staff-pick-three-img" src="" alt="">
+            <h3 class="staff-pick-three-title">(Recipe Title)</h3>
+            <div class="staff-pick-three-icons">
+              <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
+              <img class="cart-icon icon" src='../assets/basket.svg'>
+              <img class="price-icon icon" src='../assets/dollar.svg'>
+              <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>60
+            </div>
+          </div>
+
+        </section>
+      </section>
+
+      <section class="home-others-cookin-sidebar">
+        <h2>What Others Are Cookin'</h2>
+        <div class="other-user-one">
+          <img class="users-icon icon" src='../assets/user-solid.svg'> Pam
+          <img class="bookmark--solid-icon icon" src='../assets/bookmark-solid.svg'>
+          <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>142
+        </div>
+        <div class="recipe-img-one">
+          <img src="" alt="">
+          (Recipe Title)
+        </div>
+        <div class="other-user-two">
+          <img class="users-icon icon" src='../assets/user-regular.svg'> Creed
+          <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
+          <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>90
+        </div>
+        <div class="recipe-img-two">
+          <img src="" alt="">
+          (Recipe Title)
+        </div>
+        <div class="other-user-three">
+          <img class="users-icon icon" src='../assets/user-circle-regular.svg'> Michael
+          <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
+          <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>87
+        </div>
+        <div class="recipe-img-three">
+          <img src="" alt="">
+          (Recipe Title)
+        </div>
+      </section>
+    </section>
+
+    </section>
+    <section class="user-view hidden">
+      <header>
+        <div>
+          <img id='header-hamburger-menu' class='header-icon icon' src='../assets/bars-solid.svg'>
+          <h1>What's Cookin'</h1>
+        </div>
+        <div>
+          <!--  loading animation spot?  -->
+          <img id='header-profile-icon' class='header-icon icon' src='../assets/user-circle-regular.svg'>
+        </div>
+      </header>
+      <section class="to-cook-view hidden">
+      </section>
+      <section class="favorites-view hidden">
+      </section>
+      <section class="pantry-view hidden">
+      </section>
+    </section>
+  </main>
+  <script type="text/javascript" src="../data/users.js"></script>
+  <script type="text/javascript" src="../data/recipes.js"></script>
+  <script type="text/javascript" src="../data/ingredients.js"></script>
+  <script type="text/javascript" src="./scripts.js"></script>
+</body>
+
 </html>

@@ -9,6 +9,7 @@ class Recipe {
     this.ingredients = recipe.ingredients;
     this.instructions = recipe.instructions;
     this.tags = recipe.tags;
+    this.timesCompleted = Math.round(Math.random() * 100)
   };
 
   calculateCost() {

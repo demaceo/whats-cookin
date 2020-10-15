@@ -1,0 +1,172 @@
+html {
+height: 100%;
+width: 100%;
+font-family: sans-serif;
+/* font-family: sans-serif;
+background: linear-gradient(#e66465, #9198e5) no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+min-width: 850px;
+min-height: 350px; */
+}
+
+body {
+  /* height: 100%; */
+  width: 100%;
+  margin: 0px;
+}
+
+body > h1 {
+  position: absolute;
+  margin-left: 2vh;
+  font-size: 2.3em;
+  color: white;
+}
+/*
+main {
+display: flex;
+justify-content: space-between;
+height: 80vh;
+width: 100%;
+align-items: center;
+padding-top: 11%;
+} */
+
+#hero-container {
+  height: 87vh;
+  overflow: hidden;
+}
+
+.hero {
+  background-size: cover;
+  /* position: relative; */
+  width: 100vw;
+  background-position: center bottom;
+  width: max-content;
+  height: max-content;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: #AAAAAA;
+  border-bottom-style: solid;
+  background: white;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.navbar > div {
+  display: flex;
+}
+
+.navbar > div > h1 {
+  font-size: 2.3em;
+  color: #C3025A;
+  margin: 1.75vh 0vh;
+}
+
+.icon {
+  height: 1.5em;
+}
+
+.header-icon {
+  align-self: center;
+}
+
+#header-hamburger-menu {
+  height: 2em;
+  padding-right: 2em;
+  padding-left: 4em;
+}
+
+#header-profile-icon {
+  height: 3em;
+  padding-right: 4em;
+  padding-left: 2em;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-input {
+  background-image: url(../assets/search-solid.svg);
+  background-repeat: no-repeat;
+  background-position-x: 96%;
+  stroke-width: 1em;
+  /* width: 14em; */
+  width: 240px;
+  border-radius: 4px;
+  padding: .5em .5em;
+  background-size: 1.6em;
+  background-position-y: center;
+  margin-top: 2vw;
+  /* background-color:#666666;
+  color: white; */
+  transition: width 3s;
+  font-size: 1em;
+}
+.search-input--clicked {
+  width: 44vw;
+}
+.search-bar > div {
+  margin-top: 0.5vw;
+  font-size: 1.1rem;
+}
+
+.home-view {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 2vw;
+}
+
+.home-main-content {
+  padding-right: 2vw;
+}
+
+.home-main-content > h1 {
+  font-size: 3em;
+  text-align: center;
+}
+
+.featured-recipe {
+  display: flex;
+  margin-top: 2vw;
+}
+
+.featured-recipe-img {
+  height: 55vh;
+}
+.featured-recipe-info {
+  padding-left: 2vw;
+}
+
+.featured-recipe-title {
+  font-size: 3em;
+  padding-bottom: 2vw;
+  font-weight: bolder;
+}
+
+.featured-recipe-description {
+  font-size: 1.1em;
+  font-style: italic;
+  font-weight: 100;
+  line-height: 2em;
+}
+
+.home-others-cookin-sidebar {
+  border-left: solid #AAAAAA;
+  margin-top: 8px;
+  max-width: 21vw;
+  min-width: fit-content; /*/ stoked about this code!!!! came up with it! */
+}
+
+
+.hidden {
+  display: none;
+}
