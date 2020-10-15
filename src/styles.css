@@ -67,7 +67,6 @@ header > div > h1 {
 .search-bar {
   display: flex;
   flex-direction: column;
-  margin-left: 2em;
 }
 
 .search-input {
@@ -75,33 +74,49 @@ header > div > h1 {
   background-repeat: no-repeat;
   background-position-x: 96%;
   /* width: 14em; */
-  width: 180px;
+  width: 205px;
   border-radius: 4px;
-  padding: 1em 2em;
-  background-size: 1.8em;
+  padding: .5em .5em;
+  background-size: 2.6em;
   background-position-y: center;
-  margin-top: 2em;
+  margin-top: 2vw;
   /* background-color:#666666;
   color: white; */
   transition: width .3s;
+  font-size: 1em;
 }
 .search-input--clicked {
   width: 44vw;
 }
 .search-bar > div {
-  margin-top: .3em;
-  font-size: 1em;
+  margin-top: 0.5vw;
+  font-size: 1.1rem;
 }
 
 .home-view {
   display: flex;
   justify-content: space-between;
+  padding-left: 2vw;
 }
 
 .home-main-content {
-  max-width: 21vw;
-  min-width: 61vw;
-  width: 62vw;
+  padding-right: 2vw;
+}
+
+.featured-recipe {
+  display: flex;
+  margin-top: 2vw;
+}
+
+.featured-recipe-img {
+  height: 55vh;
+}
+.featured-recipe-info {
+  padding-left: 2vw;
+}
+
+.featured-recipe-title {
+  font-size: 3vh
 }
 
 .home-others-cookin-sidebar {
