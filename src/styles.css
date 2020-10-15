@@ -1,0 +1,106 @@
+html {
+height: 100%;
+width: 100%;
+font-family: sans-serif;
+/* font-family: sans-serif;
+background: linear-gradient(#e66465, #9198e5) no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+min-width: 850px;
+min-height: 350px; */
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+}
+
+/*
+main {
+display: flex;
+justify-content: space-between;
+height: 80vh;
+width: 100%;
+align-items: center;
+padding-top: 11%;
+} */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: black;
+  border-bottom-style: solid;
+}
+
+header > div {
+  display: flex;
+}
+
+header > div > h1 {
+  font-size: 2em;
+  color: #C3025A;
+}
+
+.icon {
+  height: 1.5em;
+}
+
+.header-icon {
+  align-self: center;
+}
+
+#header-hamburger-menu {
+  height: 3em;
+  padding-right: 2em;
+  padding-left: 2em;
+}
+
+#header-profile-icon {
+  height: 3em;
+  padding-right: 2em;
+  padding-left: 2em;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2em;
+}
+
+.search-input {
+  background-image: url(../assets/search-solid.svg);
+  background-repeat: no-repeat;
+  background-position-x: 96%;
+  width: 14em;
+  border-radius: 4px;
+  padding: 1em 2em;
+  background-size: 1.8em;
+  background-position-y: center;
+  margin-top: 2em;
+  /* background-color:#666666;
+  color: white; */
+}
+
+.search-bar > div {
+  margin-top: .3em;
+}
+
+.home-view {
+
+}
+
+.home-main-content {
+
+}
+
+.home-others-cookin-sidebar {
+
+}
+
+
+.hidden {
+  display: none;
+}
