@@ -74,7 +74,8 @@ header > div > h1 {
   background-image: url(../assets/search-solid.svg);
   background-repeat: no-repeat;
   background-position-x: 96%;
-  width: 14em;
+  /* width: 14em; */
+  width: 180px;
   border-radius: 4px;
   padding: 1em 2em;
   background-size: 1.8em;
@@ -82,22 +83,32 @@ header > div > h1 {
   margin-top: 2em;
   /* background-color:#666666;
   color: white; */
+  transition: width .3s;
 }
-
+.search-input--clicked {
+  width: 44vw;
+}
 .search-bar > div {
   margin-top: .3em;
+  font-size: 1em;
 }
 
 .home-view {
-
+  display: flex;
+  justify-content: space-between;
 }
 
 .home-main-content {
-
+  max-width: 21vw;
+  min-width: 61vw;
+  width: 62vw;
 }
 
 .home-others-cookin-sidebar {
-
+  border-left: solid #AAAAAA;
+  margin-top: 8px;
+  max-width: 21vw;
+  min-width: fit-content; /*/ stoked about this code!!!! came up with it! */
 }
 
 
