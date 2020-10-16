@@ -15,18 +15,23 @@
   </div>
 
   <header class='navbar'>
-      <div>
-        <img id='header-hamburger-menu' class='header-icon icon' src='../assets/bars-solid.svg'>
-        <h1>What's Cookin'</h1>
-      </div>
-      <div>
-        <!--  loading animation spot?  -->
-        <img id='header-profile-icon' class='header-icon icon' src='../assets/user-circle-regular.svg'>
-      </div>
+    <div>
+      <img id='header-hamburger-menu' class='header-icon icon' src='../assets/bars-solid.svg'>
+      <h1>What's Cookin'</h1>
+      <!-- <h1><a href="" target="_blank" rel="external" hreflang="en" type="text/html">
+        What's Cookin
+      </a></h1> -->
+    </div>
+    <div>
+      <!--  loading animation spot?  -->
+      <img id='header-profile-icon' class='header-icon icon' src='../assets/user-circle-regular.svg'>
+    </div>
   </header>
+
+  <!-- HOME VIEW SECTION -->
   <main>
     <section class="home-view">
-      <section class="home-main-content">
+      <section class="home-main-content hidden">
         <div class="search-bar">
           <input class="search-input" type="text" placeholder="Search Recipes">
           <div>
@@ -39,98 +44,270 @@
             <div class="featured-recipe-title">
               Salmon + Pineapple + Forks
             </div>
-            <div class="featured-recipe-description">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, , when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-            </div>
+            <p class="featured-recipe-description">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, , when an unknown printer took a galley of type and scrambled it to make a type
+              specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+            </p>
           </div>
         </section>
         <h1>Popular Recipes</h1>
         <section class="staff-picks">
           <div class="staff-pick-one">
-            <img class="staff-pick-one-img" src="" alt="">
-            <h3 class="staff-pick-one-title">(Recipe Title)</h3>
-            <div class="staff-pick-one-icons">
+            <img class="staff-pick-img one-img" src='https://spoonacular.com/recipeImages/595736-556x370.jpg' alt="">
+            <h3 class="staff-pick-title one-title">(Recipe Title)</h3>
+            <div class="staff-pick-icons one-icons">
               <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
               <img class="cart-icon icon" src='../assets/basket.svg'>
               <img class="price-icon icon" src='../assets/dollar.svg'>
-              <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>60
+              <div class="popularity">
+                <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'> 60
+              </div>
             </div>
           </div>
           <div class="staff-pick-two">
-            <img class="staff-pick-two-img" src="" alt="">
-            <h3 class="staff-pick-two-title">(Recipe Title)</h3>
-            <div class="staff-pick-two-icons">
+            <img class="staff-pick-img two-img" src="https://spoonacular.com/recipeImages/412309-556x370.jpeg" alt="">
+            <h3 class="staff-pick-title two-title">(Recipe Title)</h3>
+            <div class="staff-pick-icons two-icons">
               <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
               <img class="cart-icon icon" src='../assets/basket.svg'>
               <img class="price-icon icon" src='../assets/dollar.svg'>
-              <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>60
+              <div class="popularity">
+                <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'> 60
+              </div>
             </div>
           </div>
           <div class="staff-pick-three">
-            <img class="staff-pick-three-img" src="" alt="">
-            <h3 class="staff-pick-three-title">(Recipe Title)</h3>
-            <div class="staff-pick-three-icons">
+            <img class="staff-pick-img three-img" src="https://spoonacular.com/recipeImages/741603-556x370.jpeg" alt="">
+            <h3 class="staff-pick-title three-title">(Recipe Title)</h3>
+            <div class="staff-pick-icons three-icons">
               <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
               <img class="cart-icon icon" src='../assets/basket.svg'>
               <img class="price-icon icon" src='../assets/dollar.svg'>
-              <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>60
+              <div class="popularity">
+                <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'> 60
+              </div>
             </div>
           </div>
-
         </section>
       </section>
 
-      <section class="home-others-cookin-sidebar">
-        <h2>What Others Are Cookin'</h2>
-        <div class="other-user-one">
-          <img class="users-icon icon" src='../assets/user-solid.svg'> Pam
-          <img class="bookmark--solid-icon icon" src='../assets/bookmark-solid.svg'>
-          <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>142
-        </div>
-        <div class="recipe-img-one">
-          <img src="" alt="">
-          (Recipe Title)
-        </div>
-        <div class="other-user-two">
-          <img class="users-icon icon" src='../assets/user-regular.svg'> Creed
-          <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
-          <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>90
-        </div>
-        <div class="recipe-img-two">
-          <img src="" alt="">
-          (Recipe Title)
-        </div>
-        <div class="other-user-three">
-          <img class="users-icon icon" src='../assets/user-circle-regular.svg'> Michael
-          <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
-          <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>87
-        </div>
-        <div class="recipe-img-three">
-          <img src="" alt="">
-          (Recipe Title)
-        </div>
+
+      <section class="others-sidebar hidden">
+        <h2 id='others-sidebar-title'>What Others Are Cookin'</h2>
+        <article class='others-sidebar-card'>
+          <div class="others-sidebar-card-info-block">
+            <img class="users-icon icon" src='../assets/user-solid.svg'>
+            <p>Anita Cox</p>
+            <div class="others-sidebar-card-info-icons">
+              <img class="bookmark--solid-icon icon" src='../assets/bookmark-solid.svg'>
+              <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>142
+            </div>
+          </div>
+          <div class="others-sidebar-card-image-block">
+            <img class='others-sidebar-card-image' src="https://spoonacular.com/recipeImages/507921-556x370.jpg" alt="">
+            <p>Schweaty Balls</p>
+          </div>
+        </article>
+        <article class='others-sidebar-card'>
+          <div class="others-sidebar-card-info-block">
+            <img class="users-icon icon" src='../assets/user-solid.svg'>
+            <p>Mike Oxlong</p>
+            <div class="others-sidebar-card-info-icons">
+              <img class="bookmark-solid-icon icon" src='../assets/bookmark-solid.svg'>
+              <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>142
+            </div>
+          </div>
+          <div class="others-sidebar-card-image-block">
+            <img class='others-sidebar-card-image' src="https://spoonacular.com/recipeImages/724018-556x370.jpg" alt="">
+            <p>Schweaty Balls</p>
+          </div>
+        </article>
+        <article class='others-sidebar-card'>
+          <div class="others-sidebar-card-info-block">
+            <img class="users-icon icon" src='../assets/user-solid.svg'>
+            <p>Anna Lee</p>
+            <div class="others-sidebar-card-info-icons">
+              <img class="bookmark--solid-icon icon" src='../assets/bookmark-solid.svg'>
+              <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>142
+            </div>
+          </div>
+          <div class="others-sidebar-card-image-block">
+            <img class='others-sidebar-card-image' src="https://spoonacular.com/recipeImages/618332-556x370.jpg" alt="">
+            <p>Schweaty Balls</p>
+          </div>
+        </article>
+        <!-- <article class='others-sidebar-card'>
+          <div class="other-user-two">
+            <img class="users-icon icon" src='../assets/user-regular.svg'> Creed
+            <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
+            <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>90
+          </div>
+          <div class="recipe-img-two">
+            <img src="" alt="">
+            (Recipe Title)
+          </div>
+        </article>
+        <article class='others-sidebar-card'>
+          <div class="other-user-three">
+            <img class="users-icon icon" src='../assets/user-circle-regular.svg'> Michael
+            <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
+            <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>87
+          </div>
+          <div class="recipe-img-three">
+            <img src="" alt="">
+            (Recipe Title)
+          </div>
+        </article> -->
+      </section>
+
+
+      <!-- VIEW RECIPE PAGE -->
+      <section class="recipe">
+        <section class="recipe-left-column">
+          <img class="recipe-img" src="https://spoonacular.com/recipeImages/445196-556x370.jpg" alt="">
+          <section class="recipe-icons">
+            <img class="bookmark-icon recipe-icon" src='../assets/bookmark-regular.svg'>
+            <img class="basket-icon recipe-icon" src='../assets/basket.svg'>
+            <div class="recipe-cost">
+              <img class="dollar-icon recipe-icon" src='../assets/dollar.svg'>
+              <img class="dollar-icon recipe-icon" src='../assets/dollar.svg'>
+              <img class="dollar-icon recipe-icon" src='../assets/dollar.svg'>
+            </div>
+            <div class="recipe-popularity">
+              <img class="solid-cookie-icon recipe-icon" src='../assets/cookie-solid.svg'>
+              <div class="popularity-score">56</div>
+            </div>
+          </section>
+          <div class="recipe-ingredients">
+            <title>Ingredients:</title>
+            <p>
+              <br>• Ingredient 1
+              <br>• Ingredient 2
+              <br>• Ingredient 3
+              <br>• Ingredient 4
+              <br>• Ingredient 5
+              <br>• Ingredient 6
+            </p>
+          </div>
+        </section>
+        <section class="recipe-right-column">
+          <h2 class="recipe-title">Recipe Title</h2>
+          <p>Short blurb of what it is. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <br>
+            Aenean commodo ligula eget dolor. Aenean massa. </p>
+          <p class="recipe-instructions">Instructions:<br>
+            1. take the things and cook them to their own liking.<br>
+            2. maybe let the thing rest.<br>
+            3. eat the thing on your favorite plate.
+          </p>
+        </section>
+
       </section>
     </section>
 
-    </section>
-    <section class="user-view hidden">
-      <header>
-        <div>
-          <img id='header-hamburger-menu' class='header-icon icon' src='../assets/bars-solid.svg'>
-          <h1>What's Cookin'</h1>
+    <!-- USER VIEW PAGE -->
+    <section class="user-view">
+      <!-- User Navigation Bar  -->
+      <section class="user-navigation">
+        <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
+          Recipes To Cook
+        </a>
+        <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
+          Favorite Recipes
+        </a>
+        <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
+          My Pantry
+        </a>
+        <div class="search-bar">
+          <input class="search-input" type="text" placeholder="Search Recipes">
+          <div>
+            <input type="checkbox" name="search-by-ingredient" value="search-by-ingredient"> Search Recipes by Ingredient
+          </div>
         </div>
-        <div>
-          <!--  loading animation spot?  -->
-          <img id='header-profile-icon' class='header-icon icon' src='../assets/user-circle-regular.svg'>
-        </div>
-      </header>
-      <section class="to-cook-view hidden">
       </section>
-      <section class="favorites-view hidden">
+      <!-- MAIN USER BODY SECTION  -->
+      <section class="main-user-section">
+        <!-- Suggestions Section -->
+        <section class="suggestions-container">
+          <div class="suggestions-main-title">
+            <h2>Suggestions</h2>
+            <p>Based On Your:</p>
+          </div>
+          <div class="suggested-recipes-to-cook-container">
+            <div class="sugessted-recipes-to-cook-title">
+              Recipes To Cook
+            </div>
+            <div class="suggested-recipes-to-cook">
+              <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
+                Random Recipe
+              </a>
+              <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
+                Random Recipe
+              </a>
+              <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
+                Random Recipe
+              </a>
+            </div>
+          </div>
+          <div class="suggested-favorites-container">
+            <div class="sugessted-favorites-title">
+              Favorite Recipes
+            </div>
+            <div class="suggested-favorites">
+              <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
+                Random Recipe
+              </a>
+              <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
+                Random Recipe
+              </a>
+              <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
+                Random Recipe
+              </a>
+            </div>
+          </div>
+        </section>
+        <!-- User 'View _____' Section -->
+        <section class="user-section to-cook-view">
+          <article class='recipe'>
+            <div class="recipe-image-block">
+              <img class='recipe-image' src="https://spoonacular.com/recipeImages/764184-556x370.jpg" alt="">
+              <title>Recipe Title</title>
+            </div>
+            <div class="recipe-info-block">
+              <div class="recipe-info-icons">
+                <img class="bookmark--solid-icon icon" src='../assets/bookmark-solid.svg'>
+                <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>142
+
+              </div>
+            </div>
+          </article>
+
+
+          <!-- <section class="recipe">
+            <img src="https://spoonacular.com/recipeImages/764184-556x370.jpg" alt="">
+            <title>Recipe Title</title>
+            <div class=""> -->
+
+          </div>
+        </section>
       </section>
-      <section class="pantry-view hidden">
+      <section class="user-section favorites-view hidden">
+      </section>
+      <section class="user-section pantry-view hidden">
       </section>
     </section>
+    <!-- User 'Filter By' Section -->
+    <section class="user-filter-content">
+      <label for="items">Filter By</label>
+      <select id="items">
+        <option value="item-1">Date Added</option>
+        <option value="item-2">Name</option>
+        <option value="item-3">Popularity</option>
+        <option value="item-4">Cost</option>
+        <option value="item-5">Dietary</option>
+      </select>
+    </section>
+    </section>
+    <!-- </section> -->
   </main>
   <script type="text/javascript" src="../data/users.js"></script>
   <script type="text/javascript" src="../data/recipes.js"></script>
