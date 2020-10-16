@@ -1,8 +1,22 @@
+* {
+  border: solid .1px;
+}
+
+#hero-container {
+  height: 87vh;
+  overflow: hidden;
+}
+
+.hero {
+  width: 1920px;
+  height: 1080px;
+}
+
 html {
-height: 100%;
-width: 100%;
-font-family: sans-serif;
-/* font-family: sans-serif;
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+  /* font-family: sans-serif;
 background: linear-gradient(#e66465, #9198e5) no-repeat center center fixed;
 -webkit-background-size: cover;
 -moz-background-size: cover;
@@ -13,60 +27,58 @@ min-height: 350px; */
 }
 
 body {
-  /* height: 100%; */
+  /* height: 30%; */
   width: 100%;
   margin: 0px;
 }
 
-body > h1 {
+body>h1 {
   position: absolute;
   margin-left: 2vh;
   font-size: 2.3em;
   color: white;
 }
-/*
-main {
+
+/* main {
 display: flex;
 justify-content: space-between;
-height: 80vh;
-width: 100%;
+height: 100vh;
+width: 100vw;
 align-items: center;
 padding-top: 11%;
 } */
-
 #hero-container {
+  /* height: 40vh; */
+  /* width: 100%; */
   height: 87vh;
   overflow: hidden;
 }
 
 .hero {
-  background-size: cover;
-  /* position: relative; */
-  width: 100vw;
-  background-position: center bottom;
-  width: max-content;
-  height: max-content;
+  width: 1920px;
+  height: 1080px;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
-  border-bottom: #AAAAAA;
-  border-bottom-style: solid;
+  /* border-bottom: #cfcfcf;
+  border-bottom-style: solid; */
   background: white;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
+  box-shadow: 0px 6px 12px 0px #0000003d;
 }
 
-.navbar > div {
+.navbar>div {
   display: flex;
 }
 
-.navbar > div > h1 {
+.navbar>div>h1 {
   font-size: 2.3em;
   color: #C3025A;
-  margin: 1.75vh 0vh;
+  margin: 2.75vh 0vh;
 }
 
 .icon {
@@ -111,25 +123,27 @@ padding-top: 11%;
   transition: width 3s;
   font-size: 1em;
 }
+
 .search-input--clicked {
   width: 44vw;
 }
-.search-bar > div {
+
+.search-bar>div {
   margin-top: 0.5vw;
   font-size: 1.1rem;
 }
 
 .home-view {
   display: flex;
-  justify-content: space-between;
-  padding-left: 2vw;
+  padding-left: 3.5vw;
 }
 
 .home-main-content {
   padding-right: 2vw;
+  width: 70vw;
 }
 
-.home-main-content > h1 {
+.home-main-content>h1 {
   font-size: 3em;
   text-align: center;
 }
@@ -137,11 +151,14 @@ padding-top: 11%;
 .featured-recipe {
   display: flex;
   margin-top: 2vw;
+  overflow: hidden;
 }
 
 .featured-recipe-img {
-  height: 55vh;
+  height: 60vh;
+  min-height: 380px;
 }
+
 .featured-recipe-info {
   padding-left: 2vw;
 }
@@ -159,13 +176,201 @@ padding-top: 11%;
   line-height: 2em;
 }
 
-.home-others-cookin-sidebar {
-  border-left: solid #AAAAAA;
-  margin-top: 8px;
-  max-width: 21vw;
-  min-width: fit-content; /*/ stoked about this code!!!! came up with it! */
+#others-sidebar-title {
+  font-size: 2em;
+  text-align: center;
+  margin-top: 2vw;
+  font-weight: normal;
+  padding: 2.75vh 0;
+  background-color: black;
+  color: white;
+  font-weight: lighter;
 }
 
+.others-sidebar {
+  border-left: solid #cfcfcf;
+  border-width: thin;
+  /* margin-top: 8px;
+  max-width: 21vw;
+  min-width: fit-content; */
+  display: flex;
+  flex-direction: column;
+  /* padding-right: 3.5vw; */
+  align-content: center;
+  /* width: -webkit-fill-available; */
+}
+
+.others-sidebar-card {
+  padding: 1vh;
+  /* padding-bottom: 50px; */
+  align-self: center;
+  display: flex;
+}
+
+.others-sidebar-card-info-block {
+  display: flex;
+  padding-right: 3vh;
+  flex-direction: column;
+  width: 7vw;
+  max-width: 120px;
+  min-width: 110px;
+}
+
+.others-sidebar-card-info-icons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.others-sidebar-card-image-block {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* width: 7vw;
+  max-width: 120px;
+  min-width: 110px; */
+}
+
+.others-sidebar-card-image {
+  max-width: 15vw;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- STAFF PICKS Section ----------- */
+.staff-picks {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.staff-pick-img {
+  max-width: 20vw;
+  overflow: hidden;
+}
+
+.staff-pick-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1.5em;
+}
+
+.staff-pick-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+}
+
+/* ---------- VIEW RECIPE Section ----------- */
+.recipe {
+  max-width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.recipe-left-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.recipe-img {
+  max-width: 600px;
+}
+
+.recipe-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-icon {
+  max-width: 20px;
+}
+
+.recipe-cost {
+  display: flex;
+  flex-direction: row;
+  max-width: 20px;
+}
+/* .recipe-popularity {} */
+.recipe-ingredients {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+.recipe-right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-title {
+  font-size: 5em;
+}
+
+.recipe-instructions {
+  font-size: 1.2em;
+}
+
+/* ---------- USER VIEW Section ----------- */
+.suggestions-container {
+  /* border: solid 1px; */
+  /* padding: 10px 10px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 15vw;
+}
+
+.suggested-recipes-to-cook-container {
+  border: solid 1px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+}
+
+.suggested-recipes-to-cook {
+  border: solid 1px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+}
+
+.suggested-favorites-container {
+  border: solid 1px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+}
+
+.suggested-favorites {
+  border: solid 1px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+}
+
+.user-section {
+  border: solid .5px;
+  display: flex;
+  flex-direction: column;
+  /* max-width: 50px; */
+}
+
+.user-navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left: 150px;
+  align-items: center;
+}
 
 .hidden {
   display: none;
