@@ -4,20 +4,20 @@
 <head>
   <link rel="stylesheet" href="./styles.css">
   <meta charset="UTF-8">
-  <script src="https://kit.fontawesome.com/yourcode.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/yourcode.js"></script> -->
   <title>Whats Cookin</title>
 </head>
 
 <body>
-  <h1 class='hidden'>What's Cookin'</h1>
-  <div id='hero-container hidden'>
-    <img class='hero hidden' src='../assets/pizza.jpg'>
+  <h1>What's Cookin'</h1>
+  <div class='hero-container fade-in'>
+    <img class='hero' src='../assets/pizza.jpg'>
   </div>
 
   <header class='navbar'>
     <div>
       <img id='header-hamburger-menu' class='header-icon icon' src='../assets/bars-solid.svg'>
-      <h1>What's Cookin'</h1>
+      <h1 class='navbar-whats-cookin'>What's Cookin'</h1>
       <!-- <h1><a href="" target="_blank" rel="external" hreflang="en" type="text/html">
         What's Cookin
       </a></h1> -->
@@ -36,8 +36,8 @@
 
   <!-- HOME VIEW SECTION -->
   <main>
-    <section class="home-view">
-      <section class="home-main-content hidden">
+    <section class="home-view fade-in">
+      <section class="home-main-content">
         <div class="search-bar">
           <input class="search-input" type="text" placeholder="Search Recipes">
           <div>
@@ -45,7 +45,7 @@
           </div>
         </div>
         <section class="featured-recipe">
-          <img class="featured-recipe-img" src="../assets/salmon.jpg" alt="">
+          <img class="featured-recipe-img recipe-image" src="../assets/salmon.jpg" alt="">
           <div class="featured-recipe-info">
             <div class="featured-recipe-title">
               Salmon + Pineapple + Forks
@@ -59,7 +59,7 @@
         <h1>Popular Recipes</h1>
         <section class="staff-picks">
           <div class="staff-pick-one">
-            <img class="staff-pick-img one-img" src='https://spoonacular.com/recipeImages/595736-556x370.jpg' alt="">
+            <img class="staff-pick-img one-img recipe-image" src='https://spoonacular.com/recipeImages/595736-556x370.jpg' alt="">
             <h3 class="staff-pick-title one-title">(Recipe Title)</h3>
             <div class="staff-pick-icons one-icons">
               <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
@@ -71,7 +71,7 @@
             </div>
           </div>
           <div class="staff-pick-two">
-            <img class="staff-pick-img two-img" src="https://spoonacular.com/recipeImages/412309-556x370.jpeg" alt="">
+            <img class="staff-pick-img two-img recipe-image" src="https://spoonacular.com/recipeImages/412309-556x370.jpeg" alt="">
             <h3 class="staff-pick-title two-title">(Recipe Title)</h3>
             <div class="staff-pick-icons two-icons">
               <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
@@ -83,7 +83,7 @@
             </div>
           </div>
           <div class="staff-pick-three">
-            <img class="staff-pick-img three-img" src="https://spoonacular.com/recipeImages/741603-556x370.jpeg" alt="">
+            <img class="staff-pick-img three-img recipe-image" src="https://spoonacular.com/recipeImages/741603-556x370.jpeg" alt="">
             <h3 class="staff-pick-title three-title">(Recipe Title)</h3>
             <div class="staff-pick-icons three-icons">
               <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
@@ -98,7 +98,7 @@
       </section>
 
 
-      <section class="others-sidebar hidden">
+      <section class="others-sidebar">
         <h2 id='others-sidebar-title'>What Others Are Cookin'</h2>
         <article class='others-sidebar-card'>
           <div class="others-sidebar-card-info-block">
@@ -110,7 +110,7 @@
             </div>
           </div>
           <div class="others-sidebar-card-image-block">
-            <img class='others-sidebar-card-image' src="https://spoonacular.com/recipeImages/507921-556x370.jpg" alt="">
+            <img class='others-sidebar-card-image recipe-image' src="https://spoonacular.com/recipeImages/507921-556x370.jpg" alt="">
             <p>Schweaty Balls</p>
           </div>
         </article>
@@ -124,7 +124,7 @@
             </div>
           </div>
           <div class="others-sidebar-card-image-block">
-            <img class='others-sidebar-card-image' src="https://spoonacular.com/recipeImages/724018-556x370.jpg" alt="">
+            <img class='others-sidebar-card-image recipe-image' src="https://spoonacular.com/recipeImages/724018-556x370.jpg" alt="">
             <p>Schweaty Balls</p>
           </div>
         </article>
@@ -138,7 +138,7 @@
             </div>
           </div>
           <div class="others-sidebar-card-image-block">
-            <img class='others-sidebar-card-image' src="https://spoonacular.com/recipeImages/618332-556x370.jpg" alt="">
+            <img class='others-sidebar-card-image recipe-image' src="https://spoonacular.com/recipeImages/618332-556x370.jpg" alt="">
             <p>Schweaty Balls</p>
           </div>
         </article>
@@ -146,9 +146,9 @@
     </section>
 
     <!-- VIEW RECIPE PAGE -->
-    <section class="recipe-view">
+    <section class="recipe-view hidden fade-in">
       <section class="recipe-left-column">
-        <img class="recipe-img" src="../assets/salmon.jpg" alt="">
+        <img class="recipe-img recipe-image" src="../assets/salmon.jpg" alt="">
         <section class="recipe-icons">
           <img class="recipe-bookmark-icon recipe-icon" src='../assets/bookmark-regular.svg'>
           <img class="recipe-basket-icon recipe-icon" src='../assets/basket.svg'>
@@ -209,7 +209,7 @@
     </section>
 
     <!-- USER VIEW PAGE -->
-    <section class="user-view">
+    <section class="user-view fade-in">
       <!-- User Navigation Bar  -->
       <section class="user-navigation">
         <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
@@ -316,7 +316,7 @@
   <script type="text/javascript" src="../data/users.js"></script>
   <script type="text/javascript" src="../data/recipes.js"></script>
   <script type="text/javascript" src="../data/ingredients.js"></script>
-  <script type="text/javascript" src="./scripts.js"></script>
+  <script type="text/javascript" src="scripts.js"></script>
 </body>
 
 </html>
