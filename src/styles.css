@@ -181,7 +181,12 @@ padding-top: 11%;
   background-color: #f1f1f1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  right: 0px;
   z-index: 1;
+}
+
+.dropdown-icons{
+  width: 15px;
 }
 
 .dropdown-content a {
