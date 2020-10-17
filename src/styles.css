@@ -377,8 +377,7 @@ padding-top: 11%;
   padding-top: 0;
   width: 40vw;
   overflow-y: scroll;
-  height: 100vh;
-}
+  height: 66em;}
 
 /* removes scroll bar */
 /* ::-webkit-scrollbar {
@@ -418,7 +417,25 @@ padding-top: 11%;
   padding: 0 1.5vw;
   font-weight: lighter;
   text-align: justify;
+  transition: background-color 0.2s ease-in, color ease-in .2s;
+  padding-bottom: 1.5em;
+  border-radius: 8px;
+  margin: 0;
+  margin-bottom: 1em;
 }
+
+.recipe-instructions-title {
+  margin-bottom: 0;
+  padding: 4vh 0;
+  text-decoration: underline;
+}
+
+.recipe-instructions-step:hover {
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+}
+
 
 /* ---------- USER VIEW Section ----------- */
 .suggestions-container {
