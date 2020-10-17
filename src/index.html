@@ -9,9 +9,9 @@
 </head>
 
 <body>
-  <h1>What's Cookin'</h1>
-  <div id='hero-container'>
-    <img class='hero' src='../assets/pizza.jpg'>
+  <h1 class='hidden'>What's Cookin'</h1>
+  <div id='hero-container hidden'>
+    <img class='hero hidden' src='../assets/pizza.jpg'>
   </div>
 
   <header class='navbar'>
@@ -23,6 +23,12 @@
       </a></h1> -->
     </div>
     <div>
+      <div class="nav-search-bar">
+        <input class="nav-search-input" type="text" placeholder="Search Recipes">
+        <!-- <div> -->
+        <!-- <input type="checkbox" name="search-by-ingredient" value="search-by-ingredient"> Search Recipes by Ingredient -->
+        <!-- </div> -->
+      </div>
       <!--  loading animation spot?  -->
       <img id='header-profile-icon' class='header-icon icon' src='../assets/user-circle-regular.svg'>
     </div>
@@ -136,71 +142,69 @@
             <p>Schweaty Balls</p>
           </div>
         </article>
-        <!-- <article class='others-sidebar-card'>
-          <div class="other-user-two">
-            <img class="users-icon icon" src='../assets/user-regular.svg'> Creed
-            <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
-            <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>90
-          </div>
-          <div class="recipe-img-two">
-            <img src="" alt="">
-            (Recipe Title)
-          </div>
-        </article>
-        <article class='others-sidebar-card'>
-          <div class="other-user-three">
-            <img class="users-icon icon" src='../assets/user-circle-regular.svg'> Michael
-            <img class="bookmark-icon icon" src='../assets/bookmark-regular.svg'>
-            <img class="solid-cookie-icon icon" src='../assets/cookie-solid.svg'>87
-          </div>
-          <div class="recipe-img-three">
-            <img src="" alt="">
-            (Recipe Title)
-          </div>
-        </article> -->
       </section>
+    </section>
 
-
-      <!-- VIEW RECIPE PAGE -->
-      <section class="recipe">
-        <section class="recipe-left-column">
-          <img class="recipe-img" src="https://spoonacular.com/recipeImages/445196-556x370.jpg" alt="">
-          <section class="recipe-icons">
-            <img class="bookmark-icon recipe-icon" src='../assets/bookmark-regular.svg'>
-            <img class="basket-icon recipe-icon" src='../assets/basket.svg'>
-            <div class="recipe-cost">
-              <img class="dollar-icon recipe-icon" src='../assets/dollar.svg'>
-              <img class="dollar-icon recipe-icon" src='../assets/dollar.svg'>
-              <img class="dollar-icon recipe-icon" src='../assets/dollar.svg'>
-            </div>
-            <div class="recipe-popularity">
-              <img class="solid-cookie-icon recipe-icon" src='../assets/cookie-solid.svg'>
-              <div class="popularity-score">56</div>
-            </div>
-          </section>
-          <div class="recipe-ingredients">
-            <title>Ingredients:</title>
-            <p>
-              <br>• Ingredient 1
-              <br>• Ingredient 2
-              <br>• Ingredient 3
-              <br>• Ingredient 4
-              <br>• Ingredient 5
-              <br>• Ingredient 6
-            </p>
+    <!-- VIEW RECIPE PAGE -->
+    <section class="recipe-view">
+      <section class="recipe-left-column">
+        <img class="recipe-img" src="../assets/salmon.jpg" alt="">
+        <section class="recipe-icons">
+          <img class="recipe-bookmark-icon recipe-icon" src='../assets/bookmark-regular.svg'>
+          <img class="recipe-basket-icon recipe-icon" src='../assets/basket.svg'>
+          <div class="recipe-cost">
+            <img class="recipe-dollar-icon recipe-icon" src='../assets/dollar.svg'>
+            <img class="recipe-dollar-icon recipe-icon" src='../assets/dollar.svg'>
+            <img class="recipe-dollar-icon recipe-icon" src='../assets/dollar.svg'>
+          </div>
+          <div class="recipe-popularity">
+            <img class="recipe-solid-cookie-icon recipe-icon" src='../assets/cookie-solid.svg'>
+            <div class="popularity-score">56</div>
           </div>
         </section>
-        <section class="recipe-right-column">
-          <h2 class="recipe-title">Recipe Title</h2>
-          <p>Short blurb of what it is. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. <br>
-            Aenean commodo ligula eget dolor. Aenean massa. </p>
-          <p class="recipe-instructions">Instructions:<br>
-            1. take the things and cook them to their own liking.<br>
-            2. maybe let the thing rest.<br>
-            3. eat the thing on your favorite plate.
-          </p>
+        <section class="recipe-ingredients">
+          <div class="ingredient ingredient-name">
+            <h2 class="ingredients-h2">Ingredients</h2>
+            <p>Ingredient 1</p>
+            <p>Ingredient 2</p>
+            <p>Ingredient 3</p>
+          </div>
+          <div class="ingredient ingredient-amount">
+            <h2>Amount</h2>
+            <p>2</p>
+            <p>4</p>
+            <p>6</p>
+          </div>
+          <div class="ingredient ingredient-cost">
+            <h2>Cost</h2>
+            <p>$3.50</p>
+            <p>$3.50</p>
+            <p>$3.50</p>
+          </div>
         </section>
-
+        <!-- <div class="recipe-ingredients">
+          <title>Ingredients:</title>
+          <p>
+            <br>• Ingredient 1
+            <br>• Ingredient 2
+            <br>• Ingredient 3
+            <br>• Ingredient 4
+            <br>• Ingredient 5
+            <br>• Ingredient 6
+          </p>
+        </div> -->
+      </section>
+      <section class="recipe-right-column">
+        <h2 class="recipe-title">Recipe Title</h2>
+        <p class="recipe-details">Short blurb of what it is. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
+        <p class="recipe-instructions">Instructions:<br>
+          <br>1. take the things and cook them to their own liking. más o menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido aquí". Estos textos hacen parecerlo un español que se puede leer. Muchos
+          paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqued<br>
+          <br>2. maybe let the thing rest. más o menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido aquí". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de autoedición y
+          editores de páginas web<br>
+          <br>3. eat the thing on your favorite plate.más o menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido aquí". Estos textos hacen parecerlo un español que se puede leer. Muchos paquetes de
+          autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqued
+        </p>
       </section>
     </section>
 
