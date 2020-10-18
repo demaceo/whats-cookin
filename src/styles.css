@@ -4,6 +4,7 @@
 .hero-container {
   height: 87vh;
   overflow: hidden;
+  /* transition: all .2 ease-in-out; */
 }
 
 .hero {
