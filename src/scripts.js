@@ -67,6 +67,7 @@ function determineUser() {
   let userObject = usersData.find(user => user.name === event.target.innerText.trim() ? user : null);
   userObject !== null ? displayUserIcon(userObject) : null;
   currentUser = new User(userObject)
+  console.log(userObject);
 };
 // *********      CHANGE USER NAME NAVBAR    **********
 function updateHomePageTitle(user) {
@@ -168,6 +169,8 @@ function displayUserPantry() {
 function clickHandler(event) {
   if (event.target.className.includes('recipe-image')) {
     displayRecipePage()
+  } else if (event.target !== searchInput) {
+    searchInput.classList.remove('search-input--clicked')
   }
 }
 function displayUserSectionHandler() {
