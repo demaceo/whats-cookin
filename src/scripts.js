@@ -43,14 +43,25 @@ function sortUserAccounts() {
   })
 };
 
+function determineUser() {
+  userAccountsIcon.classList.add("hidden");
+  userProfileIcon.classList.remove("hidden");
+}
 
-
+// *---*---*SEARCH BAR functions*---*----*:
 function extendSearchBar() {
   searchInput.classList.add('search-input--clicked');
 };
 
+function searchInputHandler(e) {
+  console.log(searchInput.innerText);
+  if (e.key === 'Enter' && searchInput.innerText.length !== 0) {
+    // displayRecipePage();
+    displaySearchResult()
+  }
+};
 
-// ---*---DISPLAY (x) PAGE functions---*----
+// *---*---*DISPLAY PAGE functions*---*----*:
 function displayHomePage() {
   heroContainer.classList.remove('hidden');
   homeView.classList.remove('hidden');
