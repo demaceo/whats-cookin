@@ -1,26 +1,37 @@
 // -----------------QUERY SELECTORS-----------------:
-let heroContainer = document.querySelector('.hero-container');
-let whatsCookinNavBar = document.querySelector('.navbar-whats-cookin')
-let userAccounts = document.querySelector('.user-accounts');
+const heroContainer = document.querySelector('.hero-container');
+const navbarTitle = document.querySelector('.navbar-whats-cookin')
+const navbarUserNameWrapper = document.querySelector('.navbar-user-name-wrapper');
+const navbarUserName = document.querySelector('.navbar-user-name');
+const navbar = document.querySelector('.navbar');
 
-let homeView = document.querySelector('.home-view');
-let recipeView = document.querySelector('.recipe-view');
-let userView = document.querySelector(".main-user-body");
-let pantryView = document.querySelector(".pantry-view");
+const userAccounts = document.querySelector('.user-accounts');
 
-let recipeImage = document.querySelector('.recipe-image');
+const homeView = document.querySelector('.home-view');
+const recipeView = document.querySelector('.recipe-view');
+const userView = document.querySelector(".main-user-body");
+const pantryView = document.querySelector(".pantry-view");
 
-let searchInput = document.querySelector('.search-input');
+const recipeImage = document.querySelector('.recipe-image');
+const searchInput = document.querySelector('.search-input');
 
-let userAccountsIcon = document.querySelector('.accounts-icon');
-let userProfileIcon = document.querySelector('.dropdown-header-icon');
-let headerIcon = document.querySelector('.dropdown-content');
-let cookieIcon = document.querySelector('.solid-cookie-icon');
-let bookmarkIcon = document.querySelector('.bookmark-icon');
+const userAccountsIcon = document.querySelector('.accounts-icon');
+const userProfileIcon = document.querySelector('.dropdown-header-icon');
+
+const profileRecipesToCook = document.querySelector('#profile-dropdown-recipes-to-cook')
+const profileFavoriteRecipes = document.querySelector('#profile-dropdown-favorite-recipes')
+const profilePantry = document.querySelector('#profile-dropdown-pantry')
+const profileLogOut = document.querySelector('#profile-dropdown-log-out')
+
+const headerIcon = document.querySelector('.dropdown-content');
+const cookieIcon = document.querySelector('.solid-cookie-icon');
+const bookmarkIcon = document.querySelector('.bookmark-icon');
 
 // -----------------EVENT LISTENERS-----------------:
 window.addEventListener("load", sortUserAccounts);
+navbarTitle.addEventListener('click', displayHomePage);
 userAccounts.addEventListener("click", determineUser);
+navbar.addEventListener("click", logUserOut);
 // window.addEventListener("click", iconClickHandler);
 whatsCookinNavBar.addEventListener('click', displayHomePage);
 // recipeImage.addEventListener('click', displayRecipePage);
@@ -29,7 +40,7 @@ searchInput.addEventListener('click', extendSearchBar);
 searchInput.addEventListener('keypress', searchInputHandler);
 userAccountsIcon.addEventListener("click", displayUserProfile);
 
-let currentUser;
+// let currentUser;
 // -----------------FUNCTIONS-----------------:
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
@@ -50,7 +61,12 @@ function sortUserAccounts() {
 };
 
 function updateHomePageTitle(user) {
-  whatsCookinNavBar.innerText += ` ${user.name}?!`;
+  if (user) {
+    navbarUserNameWrapper.classList.add('navbar-user-name-wrapper--active')
+    navbarUserName.innerText = `${user.name.split(' ')[0]}`;
+  } else {
+    navbarUserNameWrapper.classList.remove('navbar-user-name-wrapper--active')
+  }
 }
 
 function displayUserProfile(user) {
@@ -60,12 +76,8 @@ function displayUserProfile(user) {
 }
 
 function determineUser() {
-  currentUser = usersData.find(user => {
-    return user.name === event.target.innerText ?
-      console.log("why the frick doesn't this work. (this ternary is weird on purpose bc ive tried it all except the right way)") : user
-  });
-  console.log(currentUser);
-  displayUserProfile(currentUser);
+  let currentUser = usersData.find(user => user.name === event.target.innerText.trim() ? user : null);
+  currentUser !== null ? displayUserProfile(currentUser) : null;
 };
 
 function displayRecipesToCook() {
@@ -90,9 +102,12 @@ function displayUserPantry() {
   })
 };
 
-function logUserOut() {
-  userAccountsIcon.classList.remove("hidden");
-  userProfileIcon.classList.add("hidden");
+function logUserOut(event) {
+  if (event.target === profileLogOut) {
+    userAccountsIcon.classList.remove("hidden");
+    userProfileIcon.classList.add("hidden");
+    updateHomePageTitle();
+  }
 }
 
 
