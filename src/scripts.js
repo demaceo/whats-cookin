@@ -23,7 +23,7 @@ userAccounts.addEventListener("click", determineUser);
 // window.addEventListener("click", iconClickHandler);
 whatsCookinNavBar.addEventListener('click', displayHomePage);
 // recipeImage.addEventListener('click', displayRecipePage);
-homeView.addEventListener("click", imageClickHandler)
+homeView.addEventListener("click", clickHandler);
 searchInput.addEventListener('click', extendSearchBar);
 searchInput.addEventListener('keypress', searchInputHandler);
 userAccountsIcon.addEventListener("click", displayUserProfile);
@@ -47,31 +47,36 @@ function sortUserAccounts() {
     `)
   })
 };
+
+function updateHomePageTitle(userName) {
+
+}
+
 function determineUser() {
+  let clickedUserName;
+  // console.log(clickedUserName);
+  usersData.find(user => {
+    user.name === event.target.innerText ? clickedUserName = user : false;
+    console.log(clickedUserName);
+    return clickedUserName;
+  })
   userAccountsIcon.classList.add("hidden");
   userProfileIcon.classList.remove("hidden");
+  // console.log(event.target.innerText)
 }
+//{
+// console.log(user.name);
+//   if(user.name.includes(event.target.innerText)) {
+//     return theUser.push(user);
+//   }
+//   })
+//   console.log(theUser);
+// }
+// updateHomePageTitle(userName)
+
 function displayUserProfile() {
   let loggedInUser = event.target.innerText;
 }
-
-// function userDropdownClickHandler(event) {
-//   if (event.target.className.includes('recipe-image')) {
-//     displayRecipePage()
-//   }
-// }
-
-// function displayRecipesToCook() {
-//
-// };
-//
-// function displayFavoriteRecipes() {
-//
-// };
-//
-// function displayUserPantry() {
-//
-// };
 
 // function displayUserSectionHandler() {
 //   console.log(event.target.innerText);
@@ -88,6 +93,18 @@ function displayUserProfile() {
 //   } else if (event.target.innerText === "Change User") {
 //     displayUserAccounts();
 //   }
+// };
+
+// function displayRecipesToCook() {
+//
+// };
+//
+// function displayFavoriteRecipes() {
+//
+// };
+//
+// function displayUserPantry() {
+//
 // };
 
 
@@ -130,4 +147,9 @@ function displayUserPage() {
   heroContainer.classList.add('hidden');
   homeView.classList.add('hidden');
   userView.classList.remove('hidden');
+}
+function clickHandler(event) {
+  if (event.target.className.includes('recipe-image')) {
+    displayRecipePage()
+  }
 }
