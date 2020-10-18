@@ -7,16 +7,20 @@ const navbar = document.querySelector('.navbar');
 
 const userAccounts = document.querySelector('.user-accounts');
 
+const main = document.querySelector('main');
 const homeView = document.querySelector('.home-view');
 const recipeView = document.querySelector('.recipe-view');
-const userView = document.querySelector(".main-user-body");
-const pantryView = document.querySelector(".pantry-view");
+const userView = document.querySelector('.main-user-body');
+const toCookView = document.querySelector('.to-cook-view');
+const favoritesView = document.querySelector('.favorites-view');
+const pantryView = document.querySelector('.pantry-view');
 
 const recipeImage = document.querySelector('.recipe-image');
 const searchInput = document.querySelector('.search-input');
 
 const userAccountsIcon = document.querySelector('.accounts-icon');
 const userProfileIcon = document.querySelector('.dropdown-header-icon');
+const profileList = document.querySelector(".profile-list");
 
 const profileRecipesToCook = document.querySelector('#profile-dropdown-recipes-to-cook')
 const profileFavoriteRecipes = document.querySelector('#profile-dropdown-favorite-recipes')
@@ -27,27 +31,26 @@ const headerIcon = document.querySelector('.dropdown-content');
 const cookieIcon = document.querySelector('.solid-cookie-icon');
 const bookmarkIcon = document.querySelector('.bookmark-icon');
 
+let currentUser;
 // -----------------EVENT LISTENERS-----------------:
 window.addEventListener("load", sortUserAccounts);
 navbarTitle.addEventListener('click', displayHomePage);
 userAccounts.addEventListener("click", determineUser);
 navbar.addEventListener("click", logUserOut);
 // window.addEventListener("click", iconClickHandler);
-whatsCookinNavBar.addEventListener('click', displayHomePage);
-// recipeImage.addEventListener('click', displayRecipePage);
-homeView.addEventListener("click", clickHandler);
+profileList.addEventListener("click", displayUserSectionHandler);
+// whatsCookinNavBar.addEventListener('click', displayHomePage);
+recipeImage.addEventListener('click', displayRecipePage);
+main.addEventListener("click", clickHandler);
 searchInput.addEventListener('click', extendSearchBar);
 searchInput.addEventListener('keypress', searchInputHandler);
-userAccountsIcon.addEventListener("click", displayUserProfile);
-
-// let currentUser;
 // -----------------FUNCTIONS-----------------:
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
 
-
-// *---*---*USER ACCOUNT functions*---*----*:
+// *---*---*USER SECTION functions*---*----*:
+// *********      Sorting user drop down    **********
 function sortUserAccounts() {
   let sortedUsersData = usersData.sort((a, b) => {
     return a.name > b.name ? -1 : 1
@@ -59,7 +62,13 @@ function sortUserAccounts() {
     `)
   })
 };
-
+// *********      WHICH USER IS BEING CHOSEN    **********
+function determineUser() {
+  let userObject = usersData.find(user => user.name === event.target.innerText.trim() ? user : null);
+  userObject !== null ? displayUserIcon(userObject) : null;
+  currentUser = new User(userObject)
+};
+// *********      CHANGE USER NAME NAVBAR    **********
 function updateHomePageTitle(user) {
   if (user) {
     navbarUserNameWrapper.classList.add('navbar-user-name-wrapper--active')
@@ -68,39 +77,14 @@ function updateHomePageTitle(user) {
     navbarUserNameWrapper.classList.remove('navbar-user-name-wrapper--active')
   }
 }
-
-function displayUserProfile(user) {
+// *********     SWITCH CHOOSE USER TO USER ICON    **********
+function displayUserIcon(user) {
   userAccountsIcon.classList.add("hidden");
   userProfileIcon.classList.remove("hidden");
+  hideHero();
   updateHomePageTitle(user);
 }
 
-function determineUser() {
-  let currentUser = usersData.find(user => user.name === event.target.innerText.trim() ? user : null);
-  currentUser !== null ? displayUserProfile(currentUser) : null;
-};
-
-function displayRecipesToCook() {
-
-};
-
-function displayFavoriteRecipes() {
-
-};
-
-function displayUserPantry() {
-  currentUser.pantry.forEach(item => {
-    pantryView.insertAdjacentHTML('afterbegin', `
-    <section class='pantry-item-block'>
-    <div class="pantry-item">${item.ingredient}
-      <div class="item-quantity">
-        <img class="minus">
-        <input type="text" placeholder="${item.amount}">
-        <img class="plus">
-      </div>
-    `)
-  })
-};
 
 function logUserOut(event) {
   if (event.target === profileLogOut) {
@@ -134,6 +118,11 @@ function searchInputHandler(e) {
 };
 
 // *---*---*DISPLAY PAGE functions*---*----*:
+
+function hideHero() {
+  heroContainer.classList.add('hidden');
+}
+
 function displayHomePage() {
   heroContainer.classList.remove('hidden');
   homeView.classList.remove('hidden');
@@ -152,23 +141,48 @@ function displayUserPage() {
   userView.classList.remove('hidden');
 }
 
+function displayRecipesToCook() {
+
+};
+
+function displayFavoriteRecipes() {
+
+};
+
+function displayUserPantry() {
+  currentUser.pantry.forEach(item => {
+    pantryView.insertAdjacentHTML('afterbegin', `
+    <section class='pantry-item-block'>
+    <div class="pantry-item">${item.ingredient}
+      <div class="item-quantity">
+        <img class="minus">
+        <input type="text" placeholder="${item.amount}">
+        <img class="plus">
+      </div>
+    `)
+  })
+};
+
+// *---*---*EVENT HANDLER functions*---*----*:
+
 function clickHandler(event) {
   if (event.target.className.includes('recipe-image')) {
     displayRecipePage()
   }
 }
-
 function displayUserSectionHandler() {
   console.log(event.target.innerText);
-  displayUserPage();
   if (event.target.innerText === "Recipes To Cook") {
     // displayUserPage();
+    displayUserPage();
     displayRecipesToCook();
   } else if (event.target.innerText === "Favorited Recipes") {
     // displayUserPage();
+    displayUserPage();
     displayFavoriteRecipes();
   } else if (event.target.innerText === "My Pantry") {
     // displayUserPage();
+    displayUserPage();
     displayUserPantry();
   } else if (event.target.innerText === "Log Out") {
     logUserOut()
