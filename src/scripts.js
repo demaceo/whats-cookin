@@ -34,6 +34,7 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
 
+
 // *---*---*USER ACCOUNT functions*---*----*:
 function sortUserAccounts() {
   let sortedUsersData = usersData.sort((a, b) => {
@@ -46,10 +47,12 @@ function sortUserAccounts() {
     `)
   })
 };
-
 function determineUser() {
   userAccountsIcon.classList.add("hidden");
   userProfileIcon.classList.remove("hidden");
+}
+function displayUserProfile() {
+  let loggedInUser = event.target.innerText;
 }
 
 // *---*---*SEARCH BAR functions*---*----*:
