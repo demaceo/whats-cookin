@@ -53,6 +53,15 @@ function extendSearchBar() {
   searchInput.classList.add('search-input--clicked');
 };
 
+function displaySearchResult() {
+  recipes.forEach(recipe => {
+    recipe.filter(recipeName => {
+      return recipeName.includes(searchInput.innerText)
+    })
+  })
+  searchInput.innerText
+};
+
 function searchInputHandler(e) {
   console.log(searchInput.innerText);
   if (e.key === 'Enter' && searchInput.innerText.length !== 0) {
