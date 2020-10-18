@@ -30,7 +30,11 @@ userAccountsIcon.addEventListener("click", displayUserProfile);
 
 
 // -----------------FUNCTIONS-----------------:
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length)
+}
 
+// *---*---*USER ACCOUNT functions*---*----*:
 function sortUserAccounts() {
   let sortedUsersData = usersData.sort((a, b) => {
     return a.name > b.name ? -1 : 1
