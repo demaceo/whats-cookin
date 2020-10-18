@@ -55,6 +55,12 @@ function displayUserProfile() {
   let loggedInUser = event.target.innerText;
 }
 
+// function userDropdownClickHandler(event) {
+//   if (event.target.className.includes('recipe-image')) {
+//     displayRecipePage()
+//   }
+// }
+
 // function displayRecipesToCook() {
 //
 // };
