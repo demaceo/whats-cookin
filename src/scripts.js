@@ -41,3 +41,7 @@ function displayRecipePage() {
   homeView.classList.add('hidden');
   recipeView.classList.remove('hidden');
 };
+
+function extendSearchBar() {
+  searchInput.classList.add('search-input--clicked');
+};
