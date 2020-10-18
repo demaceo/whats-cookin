@@ -1,5 +1,5 @@
-const ingredients = require('../data/ingredients');
-const ingredientsData = ingredients.ingredientsData;
+// const ingredients = require('../data/ingredients');
+// const ingredientsData = ingredients.ingredientsData;
 
 class Recipe {
   constructor(recipe) {
@@ -34,4 +34,4 @@ class Recipe {
 };
 
 
-module.exports = Recipe;
+// module.exports = Recipe;
