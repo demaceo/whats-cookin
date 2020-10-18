@@ -55,6 +55,36 @@ function displayUserProfile() {
   let loggedInUser = event.target.innerText;
 }
 
+// function displayRecipesToCook() {
+//
+// };
+//
+// function displayFavoriteRecipes() {
+//
+// };
+//
+// function displayUserPantry() {
+//
+// };
+
+// function displayUserSectionHandler() {
+//   console.log(event.target.innerText);
+//   displayUserPage();
+//   if (event.target.innerText === "Recipes To Cook") {
+//     // displayUserPage();
+//     displayRecipesToCook();
+//   } else if (event.target.innerText === "Favorited Recipes") {
+//     // displayUserPage();
+//     displayFavoriteRecipes();
+//   } else if (event.target.innerText === "My Pantry") {
+//     // displayUserPage();
+//     displayUserPantry();
+//   } else if (event.target.innerText === "Change User") {
+//     displayUserAccounts();
+//   }
+// };
+
+
 // *---*---*SEARCH BAR functions*---*----*:
 function extendSearchBar() {
   searchInput.classList.add('search-input--clicked');
