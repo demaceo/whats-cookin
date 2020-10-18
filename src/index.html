@@ -4,57 +4,56 @@
 <head>
   <link rel="stylesheet" href="./styles.css">
   <meta charset="UTF-8">
-  <!-- <script src="https://kit.fontawesome.com/yourcode.js"></script> -->
   <title>Whats Cookin</title>
 </head>
 
 <body>
   <h1>What's Cookin'</h1>
   <div class='hero-container fade-in'>
+    <section id='hero-dish'>
+      <h6>IT'S-A-PIZZA</h6>
+      <h1>Margheritta Pizza</h1>
+    </section>
     <img class='hero' src='../assets/pizza.jpg'>
   </div>
 
   <header class='navbar'>
     <div>
       <img id='header-hamburger-menu' class='header-icon icon' src='../assets/bars-solid.svg'>
-      <h1 class='navbar-whats-cookin'>What's Cookin'</h1>
-      <!-- <h1><a href="" target="_blank" rel="external" hreflang="en" type="text/html">
-        What's Cookin
-      </a></h1> -->
+      <div class='navbar-title-container'>
+        <h1 class='navbar-whats-cookin'>What's Cookin'</h1>
+        <div class='navbar-user-name-wrapper'>
+          <h1 class='navbar-user-name'></h1>
+        </div>
+      </div>
     </div>
     <div>
       <div class="nav-search-bar">
         <div class="search-bar">
           <input class="nav-search-input" type="text" placeholder="Search Recipes">
-          </div>
-          <div class="dropdown accounts-icon">
-            <img id='header-profile-icon' class='accounts-icon icon' src='../assets/users-solid.svg'>
-            <div class="user-accounts dropdown-content">
-
-            </div>
-          </div>
-          <div class="dropdown dropdown-header-icon hidden">
-            <img id='header-profile-icon' class='dropdown header-icon icon' src='../assets/user-circle-regular.svg'>
-            <div class="dropdown-content">
-              <a href="#"><img class="dropdown-icons" src="../assets/utensils.svg" alt="">
-                Recipes To Cook</a>
-              <a href="#"><img class="dropdown-icons" src="../assets/star-solid.svg" alt="">
-                Favorited Recipes</a>
-              <a href="#">
-                <img class="dropdown-icons" src="../assets/bread.svg" alt="">
-                My Pantry</a>
-              <br>
-              <a href="#">
-                <img class="dropdown-icons" src="../assets/middle-finger.svg" alt="">
-                Log Out</a>
-            </div>
-          </div>
         </div>
-        <!--  loading animation spot?  -->
-        <!-- <img id='header-profile-icon' class='header-icon icon' src='../assets/user-circle-regular.svg'> -->
-        <!-- </div>  -->
+      </div>
+      <div class="dropdown accounts-icon">
+        <img id='header-profile-icon' class='accounts-icon icon' src='../assets/users-solid.svg'>
+        <div class="user-accounts dropdown-content">
+        </div>
+      </div>
+      <div class="dropdown dropdown-header-icon hidden">
+        <img id='header-profile-icon' class='dropdown header-icon icon' src='../assets/user-circle-regular.svg'>
+        <div class="profile-list dropdown-content">
+          <a href="#" id='profile-dropdown-recipes-to-cook'><img class="dropdown-icons" src="../assets/utensils.svg" alt="">
+            Recipes To Cook</a>
+          <a href="#" id='profile-dropdown-favorite-recipes'><img class="dropdown-icons" src="../assets/star-solid.svg" alt="">
+            Favorited Recipes</a>
+          <a href="#" id='profile-dropdown-pantry'><img class="dropdown-icons" src="../assets/bread.svg" alt="">
+            My Pantry</a>
+          <br>
+          <a href="#" id='profile-dropdown-log-out'><img class="dropdown-icons" src="../assets/middle-finger.svg" alt="">
+            Log Out</a>
+        </div>
+      </div>
+    </div>
   </header>
-
   <!-- HOME VIEW SECTION -->
   <main>
     <section class="home-view fade-in">
