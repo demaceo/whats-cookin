@@ -89,3 +89,9 @@ function displayRecipePage() {
   homeView.classList.add('hidden');
   recipeView.classList.remove('hidden');
 };
+
+function displayUserPage() {
+  heroContainer.classList.add('hidden');
+  homeView.classList.add('hidden');
+  userView.classList.remove('hidden');
+}
