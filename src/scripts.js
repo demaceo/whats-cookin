@@ -1,17 +1,32 @@
-// document.addEventListener('keydown', playerKeyEvent)
+// -----------------QUERY SELECTORS-----------------:
+let heroContainer = document.querySelector('.hero-container');
+let whatsCookinNavBar = document.querySelector('.navbar-whats-cookin')
+let userAccounts = document.querySelector('.user-accounts');
 
-document.querySelector('.navbar-whats-cookin').addEventListener('click', function goHome() {
-  document.querySelector('.hero-container').classList.remove('hidden');
-  document.querySelector('.home-view').classList.remove('hidden');
-  document.querySelector('.recipe-view').classList.add('hidden');
-})
+let homeView = document.querySelector('.home-view');
+let recipeView = document.querySelector('.recipe-view');
+let userView = document.querySelector(".main-user-body");
 
-document.querySelector('.search-input').addEventListener('click', function extendSearchBar() {
-  document.querySelector('.search-input').classList.add('search-input--clicked');
-})
+let recipeImage = document.querySelector('.recipe-image');
 
-document.querySelector('.recipe-image').addEventListener('click', function openRecipeView(event) {
-  document.querySelector('.hero-container').classList.add('hidden');
-  document.querySelector('.home-view').classList.add('hidden');
-  document.querySelector('.recipe-view').classList.remove('hidden');
-})
+let searchInput = document.querySelector('.search-input');
+
+let userAccountsIcon = document.querySelector('.accounts-icon');
+let userProfileIcon = document.querySelector('.dropdown-header-icon');
+let headerIcon = document.querySelector('.dropdown-content');
+let cookieIcon = document.querySelector('.solid-cookie-icon');
+let bookmarkIcon = document.querySelector('.bookmark-icon');
+
+// -----------------EVENT LISTENERS-----------------:
+window.addEventListener("load", sortUserAccounts);
+userAccounts.addEventListener("click", determineUser);
+// window.addEventListener("click", iconClickHandler);
+whatsCookinNavBar.addEventListener('click', displayHomePage);
+// recipeImage.addEventListener('click', displayRecipePage);
+homeView.addEventListener("click", imageClickHandler)
+searchInput.addEventListener('click', extendSearchBar);
+searchInput.addEventListener('keypress', searchInputHandler);
+userAccountsIcon.addEventListener("click", displayUserProfile);
+
+
+// -----------------FUNCTIONS-----------------:
