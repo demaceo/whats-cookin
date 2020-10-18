@@ -28,7 +28,7 @@ searchInput.addEventListener('click', extendSearchBar);
 searchInput.addEventListener('keypress', searchInputHandler);
 userAccountsIcon.addEventListener("click", displayUserProfile);
 
-
+let currentUser;
 // -----------------FUNCTIONS-----------------:
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
@@ -48,64 +48,44 @@ function sortUserAccounts() {
   })
 };
 
+function instantiateUser(user){
+  currentUser = user
+};
+
 function updateHomePageTitle(userName) {
 
 }
 
 function determineUser() {
-  let clickedUserName;
-  // console.log(clickedUserName);
-  usersData.find(user => {
-    user.name === event.target.innerText ? clickedUserName = user : false;
-    console.log(clickedUserName);
-    return clickedUserName;
+  let clickedUserName = usersData.find(user => {
+    user.name === event.target.innerText ? console.log("user", user) : console.log("event", event.target.innerText, "user", user.name)
   })
   userAccountsIcon.classList.add("hidden");
   userProfileIcon.classList.remove("hidden");
-  // console.log(event.target.innerText)
-}
-//{
-// console.log(user.name);
-//   if(user.name.includes(event.target.innerText)) {
-//     return theUser.push(user);
-//   }
-//   })
-//   console.log(theUser);
-// }
-// updateHomePageTitle(userName)
+  instantiateUser(clickedUserName);
+};
 
 function displayUserProfile() {
   let loggedInUser = event.target.innerText;
 }
 
-// function displayUserSectionHandler() {
-//   console.log(event.target.innerText);
-//   displayUserPage();
-//   if (event.target.innerText === "Recipes To Cook") {
-//     // displayUserPage();
-//     displayRecipesToCook();
-//   } else if (event.target.innerText === "Favorited Recipes") {
-//     // displayUserPage();
-//     displayFavoriteRecipes();
-//   } else if (event.target.innerText === "My Pantry") {
-//     // displayUserPage();
-//     displayUserPantry();
-//   } else if (event.target.innerText === "Change User") {
-//     displayUserAccounts();
-//   }
-// };
 
-// function displayRecipesToCook() {
-//
-// };
-//
-// function displayFavoriteRecipes() {
-//
-// };
-//
-// function displayUserPantry() {
-//
-// };
+function displayRecipesToCook() {
+
+};
+
+function displayFavoriteRecipes() {
+
+};
+
+function displayUserPantry() {
+
+};
+
+function logUserOut(){
+  userAccountsIcon.classList.remove("hidden");
+  userProfileIcon.classList.add("hidden");
+}
 
 
 // *---*---*SEARCH BAR functions*---*----*:
@@ -153,3 +133,20 @@ function clickHandler(event) {
     displayRecipePage()
   }
 }
+
+// function displayUserSectionHandler() {
+//   console.log(event.target.innerText);
+//   displayUserPage();
+//   if (event.target.innerText === "Recipes To Cook") {
+//     // displayUserPage();
+//     displayRecipesToCook();
+//   } else if (event.target.innerText === "Favorited Recipes") {
+//     // displayUserPage();
+//     displayFavoriteRecipes();
+//   } else if (event.target.innerText === "My Pantry") {
+//     // displayUserPage();
+//     displayUserPantry();
+//   } else if (event.target.innerText === "Log Out") {
+//     logUserOut()
+//   }
+// };
