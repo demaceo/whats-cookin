@@ -35,3 +35,9 @@ function displayHomePage() {
   homeView.classList.remove('hidden');
   recipeView.classList.add('hidden');
 };
+
+function displayRecipePage() {
+  heroContainer.classList.add('hidden');
+  homeView.classList.add('hidden');
+  recipeView.classList.remove('hidden');
+};
