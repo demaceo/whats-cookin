@@ -25,6 +25,9 @@
         <div class='navbar-user-name-wrapper'>
           <h1 class='navbar-user-name'></h1>
         </div>
+        <div class='navbar-user-section-wrapper'>
+          <h1 class='navbar-user-section'>.pantry</h1>
+        </div>
       </div>
     </div>
     <div>
@@ -71,8 +74,7 @@
               Salmon + Pineapple + Forks
             </div>
             <p class="featured-recipe-description">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, , when an unknown printer took a galley of type and scrambled it to make a type
-              specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, , when an unknown printer took a galley.
             </p>
           </div>
         </section>
@@ -295,7 +297,7 @@
         </section>
 
         <!-- USER VIEW '____' Section -->
-        <section class="user-view-section to-cook-view">
+        <section class="user-view-section to-cook-view fade-in">
           <section class='recipe-container'>
             <!-- <h3> Recipes To Cook</h3> -->
             <div class="user-recipe-image-block">
@@ -333,9 +335,35 @@
         <section class="user-view-section pantry-view hidden">
 
         </section>
-
+        <!-- User 'Add Item' Form Section -->
+        <section class="add-item-container">
+          <form class="add-item-form">
+            <h1>Add New Item</h1>
+            <div class="form-input">
+              Item Name: <input class="add-item-name" type="text" value="" />
+            </div>
+            <div class="form-input">
+              Amount: <input class="add-item-amount" max="99" min="1" step="1" type="number" value="0" />
+            </div>
+            <div class="form-input add-item-category">
+              Category:
+              <select class="add-item-category">
+                <option selected="selected" value="other">Other</option>
+                <option value="meat">Meat</option>
+                <option value="fish">Fish</option>
+                <option value="vegetable">Vegetable</option>
+                <option value="fruit">Fruit</option>
+                <option value="bread">Bread</option>
+                <option value="soup">Soup</option>
+                <option value="sauce">Sauce</option>
+                <option value="seasoning">Seasoning</option>
+              </select>
+            </div>
+            <input class="add-item-button" type="submit" value="Add Item" />
+          </form>
+        </section>
         <!-- User 'Filter By' Section -->
-        <section class="user-filter-content">
+        <section class="user-filter-content hidden">
           <label for="items">Filter By</label>
           <select id="items">
             <option value="item-1">Date Added</option>
