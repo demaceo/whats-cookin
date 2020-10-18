@@ -30,6 +30,27 @@ userAccountsIcon.addEventListener("click", displayUserProfile);
 
 
 // -----------------FUNCTIONS-----------------:
+
+function sortUserAccounts() {
+  let sortedUsersData = usersData.sort((a, b) => {
+    return a.name > b.name ? -1 : 1
+  });
+  sortedUsersData.forEach(user => {
+    userAccounts.insertAdjacentHTML('afterbegin', `
+    <a href="#"><img class="dropdown-icons" src="../assets/user-solid.svg" alt="">
+      ${user.name}</a>
+    `)
+  })
+};
+
+
+
+function extendSearchBar() {
+  searchInput.classList.add('search-input--clicked');
+};
+
+
+// ---*---DISPLAY (x) PAGE functions---*----
 function displayHomePage() {
   heroContainer.classList.remove('hidden');
   homeView.classList.remove('hidden');
@@ -40,8 +61,4 @@ function displayRecipePage() {
   heroContainer.classList.add('hidden');
   homeView.classList.add('hidden');
   recipeView.classList.remove('hidden');
-};
-
-function extendSearchBar() {
-  searchInput.classList.add('search-input--clicked');
 };
