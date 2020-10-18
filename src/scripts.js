@@ -3,6 +3,8 @@ const heroContainer = document.querySelector('.hero-container');
 const navbarTitle = document.querySelector('.navbar-whats-cookin')
 const navbarUserNameWrapper = document.querySelector('.navbar-user-name-wrapper');
 const navbarUserName = document.querySelector('.navbar-user-name');
+const navbarUserSectionWrapper = document.querySelector('.navbar-user-section-wrapper');
+const navbarUserSection = document.querySelector('.navbar-user-section');
 const navbar = document.querySelector('.navbar');
 
 const userAccounts = document.querySelector('.user-accounts');
@@ -36,7 +38,6 @@ let currentUser;
 window.addEventListener("load", sortUserAccounts);
 navbarTitle.addEventListener('click', displayHomePage);
 userAccounts.addEventListener("click", determineUser);
-navbar.addEventListener("click", logUserOut);
 // window.addEventListener("click", iconClickHandler);
 profileList.addEventListener("click", displayUserSectionHandler);
 // whatsCookinNavBar.addEventListener('click', displayHomePage);
@@ -66,11 +67,11 @@ function sortUserAccounts() {
 function determineUser() {
   let userObject = usersData.find(user => user.name === event.target.innerText.trim() ? user : null);
   userObject !== null ? displayUserIcon(userObject) : null;
+  // translateIngredientCode(userObject);
   currentUser = new User(userObject)
-  console.log(userObject);
 };
 // *********      CHANGE USER NAME NAVBAR    **********
-function updateHomePageTitle(user) {
+function displayUserName(user) {
   if (user) {
     navbarUserNameWrapper.classList.add('navbar-user-name-wrapper--active')
     navbarUserName.innerText = `${user.name.split(' ')[0]}`;
@@ -83,18 +84,23 @@ function displayUserIcon(user) {
   userAccountsIcon.classList.add("hidden");
   userProfileIcon.classList.remove("hidden");
   hideHero();
-  updateHomePageTitle(user);
+  displayUserName(user);
 }
 
-
-function logUserOut(event) {
-  if (event.target === profileLogOut) {
-    userAccountsIcon.classList.remove("hidden");
-    userProfileIcon.classList.add("hidden");
-    updateHomePageTitle();
+function displaySectionName(section) {
+  if (section === 'pantry') {
+    navbarUserSectionWrapper.classList.add('navbar-user-section-wrapper--active')
+    navbarUserSection.innerText = '.pantry';
+  } else if (section === 'favorites') {
+    navbarUserSectionWrapper.classList.add('navbar-user-section-wrapper--active')
+    navbarUserSection.innerText = '.favorites';
+  } else if (section === 'to cook') {
+    navbarUserSectionWrapper.classList.add('navbar-user-section-wrapper--active')
+    navbarUserSection.innerText = '.toCook';
+  } else {
+    navbarUserSectionWrapper.classList.remove('navbar-user-section-wrapper--active')
   }
 }
-
 
 // *---*---*SEARCH BAR functions*---*----*:
 function extendSearchBar() {
@@ -128,38 +134,78 @@ function displayHomePage() {
   heroContainer.classList.remove('hidden');
   homeView.classList.remove('hidden');
   recipeView.classList.add('hidden');
+  displaySectionName()
 };
 
 function displayRecipePage() {
   heroContainer.classList.add('hidden');
   homeView.classList.add('hidden');
   recipeView.classList.remove('hidden');
+  displaySectionName()
 };
 
-function displayUserPage() {
+function displayUserPage(section) {
   heroContainer.classList.add('hidden');
   homeView.classList.add('hidden');
   userView.classList.remove('hidden');
+
+  if (section === 'pantry') {
+    pantryView.classList.remove("hidden");
+    favoritesView.classList.add("hidden");
+    toCookView.classList.add("hidden");
+    displaySectionName('pantry')
+  } else if (section === 'favorites') {
+    pantryView.classList.add("hidden");
+    favoritesView.classList.remove("hidden");
+    toCookView.classList.add("hidden");
+    displaySectionName('favorites')
+  } else if (section === 'to cook') {
+    pantryView.classList.add("hidden");
+    favoritesView.classList.add("hidden");
+    toCookView.classList.remove("hidden");
+    displaySectionName('to cook')
+  } else if (section === 'logout') {
+    userAccountsIcon.classList.remove("hidden");
+    userProfileIcon.classList.add("hidden");
+    userView.classList.add("hidden");
+    homeView.classList.remove('hidden');
+    displayUserName();
+    displaySectionName()
+    currentUser = null;
+  }
 }
 
-function displayRecipesToCook() {
+// function displayRecipesToCook() {
+//
+// };
+//
+// function displayFavoriteRecipes() {
+//
+// };
 
-};
+function translateIngredientNumberToName(ingredientNumber) {
+  const ingredientName = ingredientsData.find(ingredient => ingredient.id === ingredientNumber);
+  return ingredientName.name;
+}
 
-function displayFavoriteRecipes() {
-
-};
-
-function displayUserPantry() {
-  currentUser.pantry.forEach(item => {
-    pantryView.insertAdjacentHTML('afterbegin', `
-    <section class='pantry-item-block'>
-    <div class="pantry-item">${item.ingredient}
-      <div class="item-quantity">
-        <img class="minus">
-        <input type="text" placeholder="${item.amount}">
-        <img class="plus">
+function populatePantry() {
+  pantryView.innerHTML = "";
+  currentUser.pantry.contents.forEach(item => {
+    let ingredientName = translateIngredientNumberToName(item.ingredient);
+   pantryView.insertAdjacentHTML('afterbegin', `
+  <section class='pantry-item-block'>
+    <div class="delete-item-container">
+      <img class="delete pantry-icon" src="../assets/times-solid.svg">
+    </div>
+    <div class="pantry-item">
+      <p>${ingredientName}</p>
       </div>
+      <div class="item-quantity">
+        <img class="minus pantry-icon" src="../assets/minus.svg">
+        <input class="item-amount-input" type="text" placeholder="${item.amount}">
+        <img class="plus pantry-icon" src="../assets/plus.svg">
+      </div>
+  </section>
     `)
   })
 };
@@ -173,21 +219,17 @@ function clickHandler(event) {
     searchInput.classList.remove('search-input--clicked')
   }
 }
-function displayUserSectionHandler() {
+
+function displayUserSectionHandler(event) {
   console.log(event.target.innerText);
-  if (event.target.innerText === "Recipes To Cook") {
-    // displayUserPage();
-    displayUserPage();
-    displayRecipesToCook();
-  } else if (event.target.innerText === "Favorited Recipes") {
-    // displayUserPage();
-    displayUserPage();
-    displayFavoriteRecipes();
-  } else if (event.target.innerText === "My Pantry") {
-    // displayUserPage();
-    displayUserPage();
-    displayUserPantry();
-  } else if (event.target.innerText === "Log Out") {
-    logUserOut()
+  if (event.target.innerText.trim() === "Recipes To Cook") {
+    displayUserPage('to cook');
+  } else if (event.target.innerText.trim() === "Favorited Recipes") {
+    displayUserPage('favorites');
+  } else if (event.target.innerText.trim() === "My Pantry") {
+    displayUserPage('pantry');
+    populatePantry();
+  } else if (event.target.innerText.trim() === "Log Out") {
+    displayUserPage('logout');
   }
 };
