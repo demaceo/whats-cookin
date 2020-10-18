@@ -88,6 +88,10 @@ padding-top: 11%;
   height: 1.5em;
 }
 
+.dropdown-header-icon {
+  align-self: center;
+}
+
 .header-icon {
   align-self: center;
 }
@@ -100,8 +104,14 @@ padding-top: 11%;
 
 #header-profile-icon {
   height: 3em;
-  padding-right: 4em;
-  padding-left: 2em;
+  /* padding-right: 0em;
+  padding-left: 0em; */
+}
+
+.nav-search-bar {
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
 }
 
 .nav-search-input {
@@ -152,8 +162,63 @@ padding-top: 11%;
   font-size: 1.1rem;
 }
 
-/**************  Main content  ******************/
+.accounts-icon {
+  align-self: center;
+}
+.user-accounts {
+  height: 250px;
+  overflow-y: scroll;
+}
+/*
+.dropbtn {
+  background-color: white;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+} */
 
+.dropdown {
+  padding: 10px;
+  /* border: none;
+  position: relative;
+  display: inline-block;
+  align-self: center; */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  right: 0px;
+  z-index: 1;
+}
+
+.dropdown-icons{
+  width: 15px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+/**************  Main content  ******************/
 .recipe-image {
   cursor: pointer;
   /* transform: scale(1); */
@@ -351,16 +416,67 @@ padding-top: 11%;
   width: 30px;
 }
 
+@keyframes pulse {
+  0% {
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+  }
+}
+
 .recipe-bookmark-icon {
   width: 36px;
+  background-image: url(../assets/bookmark-regular.svg);
+  background-repeat: no-repeat;
+  transform: scale(1);
+  transition: all .2s ease-in-out;
+}
+
+.recipe-bookmark-icon:hover {
+  width: 36px;
+  background-image: url(../assets/bookmark-solid-red.svg);
+  transform: scale(1.1);
+}
+
+.recipe-bookmark-icon--active {
+  width: 36px;
+  background-image: url(../assets/bookmark-solid-red.svg);
+  transform: scale(1.1);
+  animation-name: pulse;
+  animation-duration: .2s;
+  animation-iteration-count: 1;
 }
 
 .recipe-dollar-icon {
   width: 22px;
+  background-image: url(../assets/dollar-active.svg);
+  background-repeat: no-repeat;
+  transform: scale(1);
+  transition: all .2s ease-in-out;
+}
+
+.recipe-dollar-icon:hover {
+  transform: scale(1.1);
 }
 
 .recipe-basket-icon {
-  width: 50px;
+  background-image: url(../assets/basket.svg);
+  background-repeat: no-repeat;
+  transform: scale(1);
+  transition: all .2s ease-in-out;
+}
+
+.recipe-bookmark-icon:hover {
+  transform: scale(1.1);
+}
+
+.recipe-basket-icon--all-ingredients {
+  background-image: url(../assets/basket-green.svg);
+  background-repeat: no-repeat;
+  transform: scale(1);
+  transition: all .2s ease-in-out;
 }
 
 .recipe-solid-cookie-icon {
@@ -413,7 +529,8 @@ padding-top: 11%;
   padding-top: 0;
   width: 40vw;
   overflow-y: scroll;
-  height: 66em;}
+  height: 66em;
+}
 
 /* removes scroll bar */
 /* ::-webkit-scrollbar {
@@ -472,24 +589,36 @@ padding-top: 11%;
   text-decoration: underline;
 }
 
+/* --------------------- USER VIEW Section --------------------- */
+.main-user-body{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
-
-/* ---------- USER VIEW Section ----------- */
+            /* --------USER SUGGESTIONS Section-------- */
 .suggestions-container {
   /* border: solid 1px; */
-  /* padding: 10px 10px; */
+  padding: 50px 30px;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   max-width: 15vw;
 }
 
-.suggested-recipes-to-cook-container {
+.suggested {
   border: solid 1px;
   display: flex;
   flex-direction: column;
   padding: 10px 10px;
 }
+
+/* .suggested-recipes-to-cook-container {
+  border: solid 1px;
+  display: flex;
+  flex-direction: column;
+} */
 
 .suggested-recipes-to-cook {
   border: solid 1px;
@@ -498,12 +627,12 @@ padding-top: 11%;
   padding: 10px 10px;
 }
 
-.suggested-favorites-container {
+/* .suggested-favorites-container {
   border: solid 1px;
   display: flex;
   flex-direction: column;
   padding: 10px 10px;
-}
+} */
 
 .suggested-favorites {
   border: solid 1px;
@@ -511,55 +640,126 @@ padding-top: 11%;
   flex-direction: column;
   padding: 10px 10px;
 }
-
-.user-section {
+            /* --------USER VIEW '______' Section-------- */
+.user-view-section {
   border: solid .5px;
+  padding: 20px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
   /* max-width: 50px; */
 }
 
-.user-navigation {
+.recipe-container {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  /* flex: 1 1 160px; */
+  justify-content: space-around;
+  align-items: center;
+  /* max-width: 20; */
+}
+.user-view-section>* {
+       flex: 1 1 80px;
+   }
+
+
+.user-recipe-image {
+  padding: 20px;
+  width: 180px;
+}
+
+.recipe-info-block{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-info-icons{
+  display: flex;
+  flex-direction: row;
+  width: 10vw;
+}
+
+/* .user-navigation {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin-left: 150px;
   align-items: center;
-}
+} */
 
+
+
+
+
+
+
+
+
+
+/* -----------------------ADDITIONAL STYLINGS---------------------- */
 .hidden {
   display: none;
 }
 
 .fade-in {
-animation: fadeIn ease .5s;
--webkit-animation: fadeIn ease .5s;
--moz-animation: fadeIn ease .5s;
--o-animation: fadeIn ease .5s;
--ms-animation: fadeIn ease .5s;
+  animation: fadeIn ease .5s;
+  -webkit-animation: fadeIn ease .5s;
+  -moz-animation: fadeIn ease .5s;
+  -o-animation: fadeIn ease .5s;
+  -ms-animation: fadeIn ease .5s;
 }
 
 @keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @-moz-keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @-o-keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 @-ms-keyframes fadeIn {
-0% {opacity:0;}
-100% {opacity:1;}
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
