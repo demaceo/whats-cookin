@@ -83,6 +83,12 @@ body>h1 {
   height: 100%;
   margin: 0 1em;
   padding: 0 .5em;
+  animation-name: pulse;
+  animation-duration: .8s;
+  animation-iteration-count: 2;
+}
+.navbar-user-name-wrapper {
+  transition: background-color 1s ease-in .1s ease-out;
 }
 
 .navbar-user-name {
