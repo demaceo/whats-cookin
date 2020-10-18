@@ -30,3 +30,8 @@ userAccountsIcon.addEventListener("click", displayUserProfile);
 
 
 // -----------------FUNCTIONS-----------------:
+function displayHomePage() {
+  heroContainer.classList.remove('hidden');
+  homeView.classList.remove('hidden');
+  recipeView.classList.add('hidden');
+};
