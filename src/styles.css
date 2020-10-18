@@ -7,22 +7,24 @@
 }
 
 .hero {
-  width: 1920px;
-  height: 1080px;
+  /* width: 1920px;
+  height: 1080px; */
+}
+
+#hero-dish {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  text-align: center;
+  left: 50vw;
+  bottom: 20vh;
 }
 
 html {
   height: 100%;
   width: 100%;
   font-family: sans-serif;
-  /* font-family: sans-serif;
-background: linear-gradient(#e66465, #9198e5) no-repeat center center fixed;
--webkit-background-size: cover;
--moz-background-size: cover;
--o-background-size: cover;
-background-size: cover;
-min-width: 850px;
-min-height: 350px; */
 }
 
 body {
@@ -40,14 +42,6 @@ body>h1 {
   padding: .05em .1em;
 }
 
-/* main {
-display: flex;
-justify-content: space-between;
-height: 100vh;
-width: 100vw;
-align-items: center;
-padding-top: 11%;
-} */
 #hero-container {
   /* height: 40vh; */
   /* width: 100%; */
@@ -71,10 +65,27 @@ padding-top: 11%;
   top: 0;
   box-shadow: 0px 6px 12px 0px #0000003d;
   z-index: 10;
+  height: 5em;
 }
 
 .navbar>div {
   display: flex;
+}
+
+.navbar-title-container {
+  align-self: center;
+  display: contents;
+}
+
+.navbar-user-name-wrapper--active {
+  background-color: #C3025B;
+  height: 100%;
+  margin: 0 1em;
+  padding: 0 .5em;
+}
+
+.navbar-user-name {
+  color: white;
 }
 
 .navbar-whats-cookin {
@@ -112,6 +123,7 @@ padding-top: 11%;
   display: flex;
   align-content: center;
   justify-content: space-around;
+  align-self: center;
 }
 
 .nav-search-input {
@@ -126,13 +138,14 @@ padding-top: 11%;
   background-position-y: center;
   transition: width 3s;
   font-size: 1em;
-  margin: 3vh;
+  /* margin: 3vh; */
 }
 
 .search-bar {
   display: flex;
   flex-direction: column;
   margin: 2vh 0;
+  align-self: center;
 }
 
 .search-input {
@@ -661,9 +674,8 @@ padding-top: 11%;
   /* max-width: 20; */
 }
 .user-view-section>* {
-       flex: 1 1 80px;
-   }
-
+   flex: 1 1 80px;
+ }
 
 .user-recipe-image {
   padding: 20px;
