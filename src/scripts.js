@@ -6,6 +6,7 @@ let userAccounts = document.querySelector('.user-accounts');
 let homeView = document.querySelector('.home-view');
 let recipeView = document.querySelector('.recipe-view');
 let userView = document.querySelector(".main-user-body");
+let pantryView = document.querySelector(".pantry-view");
 
 let recipeImage = document.querySelector('.recipe-image');
 
@@ -48,27 +49,24 @@ function sortUserAccounts() {
   })
 };
 
-function instantiateUser(user){
-  currentUser = user
-};
+function updateHomePageTitle(user) {
+  whatsCookinNavBar.innerText += ` ${user.name}?!`;
+}
 
-function updateHomePageTitle(userName) {
-
+function displayUserProfile(user) {
+  userAccountsIcon.classList.add("hidden");
+  userProfileIcon.classList.remove("hidden");
+  updateHomePageTitle(user);
 }
 
 function determineUser() {
-  let clickedUserName = usersData.find(user => {
-    user.name === event.target.innerText ? console.log("user", user) : console.log("event", event.target.innerText, "user", user.name)
-  })
-  userAccountsIcon.classList.add("hidden");
-  userProfileIcon.classList.remove("hidden");
-  instantiateUser(clickedUserName);
+  currentUser = usersData.find(user => {
+    return user.name === event.target.innerText ?
+      console.log("why the frick doesn't this work. (this ternary is weird on purpose bc ive tried it all except the right way)") : user
+  });
+  console.log(currentUser);
+  displayUserProfile(currentUser);
 };
-
-function displayUserProfile() {
-  let loggedInUser = event.target.innerText;
-}
-
 
 function displayRecipesToCook() {
 
@@ -79,10 +77,20 @@ function displayFavoriteRecipes() {
 };
 
 function displayUserPantry() {
-
+  currentUser.pantry.forEach(item => {
+    pantryView.insertAdjacentHTML('afterbegin', `
+    <section class='pantry-item-block'>
+    <div class="pantry-item">${item.ingredient}
+      <div class="item-quantity">
+        <img class="minus">
+        <input type="text" placeholder="${item.amount}">
+        <img class="plus">
+      </div>
+    `)
+  })
 };
 
-function logUserOut(){
+function logUserOut() {
   userAccountsIcon.classList.remove("hidden");
   userProfileIcon.classList.add("hidden");
 }
@@ -128,25 +136,26 @@ function displayUserPage() {
   homeView.classList.add('hidden');
   userView.classList.remove('hidden');
 }
+
 function clickHandler(event) {
   if (event.target.className.includes('recipe-image')) {
     displayRecipePage()
   }
 }
 
-// function displayUserSectionHandler() {
-//   console.log(event.target.innerText);
-//   displayUserPage();
-//   if (event.target.innerText === "Recipes To Cook") {
-//     // displayUserPage();
-//     displayRecipesToCook();
-//   } else if (event.target.innerText === "Favorited Recipes") {
-//     // displayUserPage();
-//     displayFavoriteRecipes();
-//   } else if (event.target.innerText === "My Pantry") {
-//     // displayUserPage();
-//     displayUserPantry();
-//   } else if (event.target.innerText === "Log Out") {
-//     logUserOut()
-//   }
-// };
+function displayUserSectionHandler() {
+  console.log(event.target.innerText);
+  displayUserPage();
+  if (event.target.innerText === "Recipes To Cook") {
+    // displayUserPage();
+    displayRecipesToCook();
+  } else if (event.target.innerText === "Favorited Recipes") {
+    // displayUserPage();
+    displayFavoriteRecipes();
+  } else if (event.target.innerText === "My Pantry") {
+    // displayUserPage();
+    displayUserPantry();
+  } else if (event.target.innerText === "Log Out") {
+    logUserOut()
+  }
+};
