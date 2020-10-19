@@ -32,6 +32,18 @@ const profileLogOut = document.querySelector('#profile-dropdown-log-out')
 const headerIcon = document.querySelector('.dropdown-content');
 const cookieIcon = document.querySelector('.solid-cookie-icon');
 const bookmarkIcon = document.querySelector('.bookmark-icon');
+// const plusIcon = document.querySelector('.plus');
+// const minusIcon = document.querySelector('.minus');
+const pantryIcon = document.querySelector('.pantry-icon');
+
+const addNewItemContainer = document.querySelector('.add-item-container');
+const newItemName = document.querySelector('.add-item-name');
+const newItemAmount = document.querySelector('.add-item-amount');
+const newItemCategory = document.querySelector('.selected-category');
+const addItemButton = document.querySelector('.add-item-button');
+
+const filterContentList = document.querySelector('.user-filter-content');
+const starIcon = document.querySelector('.star-icon');
 
 let currentUser;
 // -----------------EVENT LISTENERS-----------------:
@@ -45,12 +57,54 @@ recipeImage.addEventListener('click', displayRecipePage);
 main.addEventListener("click", clickHandler);
 searchInput.addEventListener('click', extendSearchBar);
 searchInput.addEventListener('keypress', searchInputHandler);
+
+// pantryIcon.addEventListener('click', updateIngredientAmount);
+addItemButton.addEventListener('click', addItemToPantry);
+filterContentList.addEventListener('click', filterContent);
+
 // -----------------FUNCTIONS-----------------:
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length)
 }
 
-// *---*---*USER SECTION functions*---*----*:
+function translateIngredientNumberToName(ingredientNumber) {
+  const ingredientName = ingredientsData.find(ingredient => ingredient.id === ingredientNumber);
+  return ingredientName.name;
+}
+
+// *---*---**---*---* HOME SECTION functions *---*---**---*----*:
+
+window.onload = loadRandomStaffPicks();
+
+function loadRandomStaffPicks() {
+  document.querySelector('.staff-picks').innerHTML = "";
+
+  recipeData.forEach((recipe, i) => {
+    let randomIndex = getRandomIndex(recipeData)
+    if (i < 3) {
+      document.querySelector('.staff-picks').insertAdjacentHTML('afterbegin',`
+      <div class="staff-pick-${i}">
+        <img class="staff-pick-img ${i}-img recipe-image" src='${recipeData[randomIndex].image}' alt="">
+        <h3 class="staff-pick-title ${i}-title">${recipeData[randomIndex].name}</h3>
+        <div class="staff-pick-icons ${i}-icons">
+          <img class="bookmark-icon icon">
+          <img class="cart-icon icon">
+          <img class="price-icon icon">
+          <div class="popularity">
+            <img class="solid-cookie-icon icon"> 60
+          </div>
+        </div>
+      </div>
+      `)
+    }
+  })
+}
+//    **** to use after creating .popularity property in recipe class ****
+// <img class="solid-cookie-icon icon"> ${recipe.popularity}
+
+// *---*---**---*---* USER SECTION functions *---*---**---*----*:
+
 // *********      Sorting user drop down    **********
 function sortUserAccounts() {
   let sortedUsersData = usersData.sort((a, b) => {
@@ -63,13 +117,17 @@ function sortUserAccounts() {
     `)
   })
 };
+
 // *********      WHICH USER IS BEING CHOSEN    **********
 function determineUser() {
   let userObject = usersData.find(user => user.name === event.target.innerText.trim() ? user : null);
   userObject !== null ? displayUserIcon(userObject) : null;
-  // translateIngredientCode(userObject);
   currentUser = new User(userObject)
+  // currentUser.pantry.contents.forEach(item => {
+  //   let ingredientName = translateIngredientNumberToName(item.ingredient)
+  //   currentUser.pantryByName.push(ingredientName);
 };
+
 // *********      CHANGE USER NAME NAVBAR    **********
 function displayUserName(user) {
   if (user) {
@@ -79,6 +137,16 @@ function displayUserName(user) {
     navbarUserNameWrapper.classList.remove('navbar-user-name-wrapper--active')
   }
 }
+
+function logOutUser() {
+  userAccountsIcon.classList.remove("hidden");
+  userProfileIcon.classList.add("hidden");
+  userView.classList.add("hidden");
+  homeView.classList.remove('hidden');
+  displayUserName();
+  displaySectionName()
+}
+
 // *********     SWITCH CHOOSE USER TO USER ICON    **********
 function displayUserIcon(user) {
   userAccountsIcon.classList.add("hidden");
@@ -124,6 +192,27 @@ function searchInputHandler(e) {
   }
 };
 
+
+function populateFavorites(){
+  favoritesView.innerHTML = "";
+  currentUser.favoriteRecipes.forEach(favorite => {
+    favoritesView.insertAdjacentHTML('afterbegin', `
+    <section class='favorite-recipe-container' id=${favoriteRecipe.id}>
+      <img class='star-icon icon' src='star-solid.svg'>
+      <div class='favorite-recipe'>
+        <img class="favorite-recipe-image" src=${favorite.image}>
+          <h2>${favoriteRecipe.name}</h2>
+        </div>
+      </div>
+    </section>
+    `)
+  })
+};
+
+function filterContent(){
+
+}
+
 // *---*---*DISPLAY PAGE functions*---*----*:
 
 function hideHero() {
@@ -144,56 +233,87 @@ function displayRecipePage() {
   displaySectionName()
 };
 
-function displayUserPage(section) {
+function displayRecipesToCook() {
+  pantryView.classList.add("hidden");
+  favoritesView.classList.add("hidden");
+  toCookView.classList.remove("hidden");
+  filterContentList.classList.remove('hidden');
+  addNewItemContainer.classList.add('hidden');
+};
+
+function displayFavoriteRecipes() {
+  pantryView.classList.add("hidden");
+  toCookView.classList.add("hidden");
+  addNewItemContainer.classList.add('hidden');
+  filterContentList.classList.remove('hidden');
+  favoritesView.classList.remove("hidden");
+  populateFavorites();
+};
+
+function displayPantry() {
+  favoritesView.classList.add("hidden");
+  toCookView.classList.add("hidden");
+  filterContentList.classList.add('hidden');
+  addNewItemContainer.classList.remove('hidden');
+  pantryView.classList.remove("hidden");
+};
+
+function hideHomePage(){
   heroContainer.classList.add('hidden');
   homeView.classList.add('hidden');
   userView.classList.remove('hidden');
-
+}
+function displayUserPage(section) {
+  hideHomePage();
   if (section === 'pantry') {
-    pantryView.classList.remove("hidden");
-    favoritesView.classList.add("hidden");
-    toCookView.classList.add("hidden");
+    displayPantry();
     displaySectionName('pantry')
   } else if (section === 'favorites') {
-    pantryView.classList.add("hidden");
-    favoritesView.classList.remove("hidden");
-    toCookView.classList.add("hidden");
+    displayFavoriteRecipes();
     displaySectionName('favorites')
   } else if (section === 'to cook') {
-    pantryView.classList.add("hidden");
-    favoritesView.classList.add("hidden");
-    toCookView.classList.remove("hidden");
+    displayRecipesToCook();
+
     displaySectionName('to cook')
   } else if (section === 'logout') {
-    userAccountsIcon.classList.remove("hidden");
-    userProfileIcon.classList.add("hidden");
-    userView.classList.add("hidden");
-    homeView.classList.remove('hidden');
-    displayUserName();
-    displaySectionName()
+    logOutUser();
     currentUser = null;
   }
 }
 
-// function displayRecipesToCook() {
-//
-// };
-//
-// function displayFavoriteRecipes() {
-//
-// };
+// *---*---*PANTRY Section functions*---*----*:
 
-function translateIngredientNumberToName(ingredientNumber) {
-  const ingredientName = ingredientsData.find(ingredient => ingredient.id === ingredientNumber);
-  return ingredientName.name;
-}
+// function updateIngredientAmount(event) {
+//   if(event.target.className === 'plus'){
+//     currentUser.pantry.contents.amount -= 1
+//   } else if(event.target.className === 'minus'){
+//     currentUser.pantry.contents.amount += 1
+//   }
+// }
+
+function clearInputFields() {
+  newItemName.value = "";
+  newItemAmount.value = "0";
+  newItemCategory.selected = "other"
+};
+
+function addItemToPantry(event) {
+  event.preventDefault();
+  const newItem = {
+    ingredientName: `${newItemName.value}`,
+    ingredient: `${Math.round(Math.random() * 1000)}`,
+    amount: `${newItemAmount.value}`
+  };
+  currentUser.pantry.contents.unshift(newItem);
+  clearInputFields();
+};
 
 function populatePantry() {
   pantryView.innerHTML = "";
   currentUser.pantry.contents.forEach(item => {
     let ingredientName = translateIngredientNumberToName(item.ingredient);
-   pantryView.insertAdjacentHTML('afterbegin', `
-  <section class='pantry-item-block'>
+    pantryView.insertAdjacentHTML('afterbegin', `
+  <section class='pantry-item-block' id=${item.ingredient}>
     <div class="delete-item-container">
       <img class="delete pantry-icon" src="../assets/times-solid.svg">
     </div>
@@ -211,14 +331,13 @@ function populatePantry() {
 };
 
 // *---*---*EVENT HANDLER functions*---*----*:
-
 function clickHandler(event) {
   if (event.target.className.includes('recipe-image')) {
     displayRecipePage()
   } else if (event.target !== searchInput) {
     searchInput.classList.remove('search-input--clicked')
   }
-}
+};
 
 function displayUserSectionHandler(event) {
   console.log(event.target.innerText);
@@ -232,4 +351,7 @@ function displayUserSectionHandler(event) {
   } else if (event.target.innerText.trim() === "Log Out") {
     displayUserPage('logout');
   }
+
+
+
 };
