@@ -73,6 +73,14 @@ function translateIngredientNumberToName(ingredientNumber) {
   return ingredientName.name;
 }
 
+function openNav() {
+  document.getElementById("sideNav").style.width = "300px";
+}
+
+function closeNav() {
+  document.getElementById("sideNav").style.width = "0";
+}
+
 // *---*---**---*---* HOME SECTION functions *---*---**---*----*:
 
 window.onload = loadRandomStaffPicks();
@@ -127,11 +135,12 @@ function loadRandomOthersCookin() {
       `
       <article class='others-sidebar-card'>
         <div class="others-sidebar-card-info-block">
-          <img class="users-icon icon" src='../assets/user-solid.svg'>
+          <img class="users-icon sidebar-icon" src='../assets/user-solid.svg'>
           <p>${randomUser.name}</p>
           <div class="others-sidebar-card-info-icons">
-            <img class="bookmark--solid-icon icon">
-            <img class="solid-cookie-icon icon">${Math.round(Math.random()*500)}
+            <img class="recipe-basket-icon sidebar-icon">
+            <img class="recipe-bookmark-icon sidebar-icon">
+            <img class="recipe-solid-cookie-icon sidebar-icon">${Math.round(Math.random()*500)}
           </div>
         </div>
         <div class="others-sidebar-card-image-block">
@@ -186,7 +195,7 @@ function logOutUser() {
   userView.classList.add("hidden");
   homeView.classList.remove('hidden');
   displayUserName();
-  displaySectionName()
+  navbarDisplayUserSection()
 }
 
 // *********     SWITCH CHOOSE USER TO USER ICON    **********
@@ -197,7 +206,7 @@ function displayUserIcon(user) {
   displayUserName(user);
 }
 
-function displaySectionName(section) {
+function navbarDisplayUserSection(section) {
   if (section === 'pantry') {
     navbarUserSectionWrapper.classList.add('navbar-user-section-wrapper--active')
     navbarUserSection.innerText = '.pantry';
@@ -265,14 +274,14 @@ function displayHomePage() {
   heroContainer.classList.remove('hidden');
   homeView.classList.remove('hidden');
   recipeView.classList.add('hidden');
-  displaySectionName()
+  navbarDisplayUserSection()
 };
 
 function displayRecipePage() {
   heroContainer.classList.add('hidden');
   homeView.classList.add('hidden');
   recipeView.classList.remove('hidden');
-  displaySectionName()
+  navbarDisplayUserSection()
 };
 
 function displayRecipesToCook() {
@@ -309,14 +318,14 @@ function displayUserPage(section) {
   hideHomePage();
   if (section === 'pantry') {
     displayPantry();
-    displaySectionName('pantry')
+    navbarDisplayUserSection('pantry')
   } else if (section === 'favorites') {
     displayFavoriteRecipes();
-    displaySectionName('favorites')
+    navbarDisplayUserSection('favorites')
   } else if (section === 'to cook') {
     displayRecipesToCook();
 
-    displaySectionName('to cook')
+    navbarDisplayUserSection('to cook')
   } else if (section === 'logout') {
     logOutUser();
     currentUser = null;
