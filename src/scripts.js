@@ -341,6 +341,7 @@ function hideHomePage(){
 }
 function displayUserPage(section) {
   hideHomePage();
+  recipeView.classList.add('hidden')
   if (section === 'pantry') {
     displayPantry();
     navbarDisplayUserSection('pantry')
