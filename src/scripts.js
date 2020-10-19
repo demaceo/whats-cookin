@@ -81,6 +81,31 @@ function closeNav() {
   document.getElementById("sideNav").style.width = "0";
 }
 
+// *---*---**---*---* ICON BEHAVIOR *---*---**---*----*:
+
+function iconHandler(event) {
+  if (event.target.className.includes('recipe-bookmark-icon--inactive')) {
+    event.target.classList.add('recipe-bookmark-icon--active');
+    event.target.classList.remove('recipe-bookmark-icon--inactive');
+  } else if (event.target.className.includes('recipe-bookmark-icon--active')) {
+    console.log(event);
+    event.target.classList.remove('recipe-bookmark-icon--active');
+    event.target.classList.add('recipe-bookmark-icon--inactive');
+  }
+
+  //      if we want cookies clickable for COOKED, use these animations
+
+  //   else if (event.target.className.includes('recipe-solid-cookie-icon--inactive')) {
+  //   event.target.classList.add('recipe-solid-cookie-icon--active');
+  //   event.target.classList.remove('recipe-solid-cookie-icon--inactive');
+  // } else if (event.target.className.includes('recipe-solid-cookie-icon--active')) {
+  //   console.log(event);
+  //   event.target.classList.remove('recipe-solid-cookie-icon--active');
+  //   event.target.classList.add('recipe-solid-cookie-icon--inactive');
+  // }
+}
+
+
 // *---*---**---*---* HOME SECTION functions *---*---**---*----*:
 
 window.onload = loadRandomStaffPicks();
@@ -101,7 +126,7 @@ function loadRandomStaffPicks() {
           <img class="cart-icon icon">
           <img class="price-icon icon">
           <div class="popularity">
-            <img class="solid-cookie-icon icon"> 60
+            <img class="recipe-solid-cookie-icon--inactive icon"> 60
           </div>
         </div>
       </div>
@@ -136,11 +161,11 @@ function loadRandomOthersCookin() {
       <article class='others-sidebar-card'>
         <div class="others-sidebar-card-info-block">
           <img class="users-icon sidebar-icon" src='../assets/user-solid.svg'>
-          <p>${randomUser.name}</p>
+          <p>${randomUser.name.split(' ')[0]} ${randomUser.name.split(' ')[1].charAt(0)}.</p>
           <div class="others-sidebar-card-info-icons">
             <img class="recipe-basket-icon sidebar-icon">
-            <img class="recipe-bookmark-icon sidebar-icon">
-            <img class="recipe-solid-cookie-icon sidebar-icon">${Math.round(Math.random()*500)}
+            <img class="recipe-bookmark-icon--inactive sidebar-icon">
+            <img class="recipe-solid-cookie-icon--inactive sidebar-icon">${Math.round(Math.random()*500)}
           </div>
         </div>
         <div class="others-sidebar-card-image-block">
@@ -384,10 +409,11 @@ function populatePantry() {
 // *---*---*EVENT HANDLER functions*---*----*:
 function clickHandler(event) {
   if (event.target.className.includes('recipe-image')) {
-    displayRecipePage()
-  } else if (event.target !== searchInput) {
-    searchInput.classList.remove('search-input--clicked')
-  }
+    displayRecipePage();
+  } else if (event.target.className.includes('icon')) {
+    iconHandler(event);
+  };
+  event.target !== searchInput ? searchInput.classList.remove('search-input--clicked') : null;
 };
 
 function displayUserSectionHandler(event) {
