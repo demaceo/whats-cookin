@@ -82,12 +82,12 @@ function loadRandomStaffPicks() {
 
   recipeData.forEach((recipe, i) => {
     let randomIndex = getRandomIndex(recipeData)
-    if (i < 3) {
+    if (i < 6) {
       document.querySelector('.staff-picks').insertAdjacentHTML('afterbegin',`
-      <div class="staff-pick-${i}">
-        <img class="staff-pick-img ${i}-img recipe-image" src='${recipeData[randomIndex].image}' alt="">
-        <h3 class="staff-pick-title ${i}-title">${recipeData[randomIndex].name}</h3>
-        <div class="staff-pick-icons ${i}-icons">
+      <div class="staff-pick-block staff-pick-${i+1}">
+        <img class="staff-pick-img ${i+1}-img recipe-image" src='${recipeData[randomIndex].image}' alt="">
+        <h3 class="staff-pick-title ${i+1}-title">${recipeData[randomIndex].name}</h3>
+        <div class="staff-pick-icons ${i+1}-icons">
           <img class="bookmark-icon icon">
           <img class="cart-icon icon">
           <img class="price-icon icon">
@@ -209,7 +209,7 @@ function populateFavorites(){
   })
 };
 
-function filterContent(){
+function filterContent() {
 
 }
 
