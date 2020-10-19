@@ -273,6 +273,7 @@ body>h1 {
 
 .home-view {
   display: flex;
+  margin-bottom: 4em;
   padding-left: 3.5vw;
   transition: .2 fade-in;
 }
@@ -400,6 +401,20 @@ body>h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.staff-picks-title {
+  background-color: black;
+  color: white;
+  padding: 2vh 0;
+  margin: 1.3em 0;
+  font-weight: lighter;
+}
+
+.staff-pick-block {
+  max-width: 20vw;
+  overflow: hidden;
 }
 
 .staff-pick-img {
@@ -411,7 +426,9 @@ body>h1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  font-size: 1.5em;
+  font-size: 1.2em;
+  font-weight: lighter;
+  width: 81%;
 }
 
 .staff-pick-icons {
