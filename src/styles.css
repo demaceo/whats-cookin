@@ -392,6 +392,10 @@ body>h1 {
   max-width: 120px;
   min-width: 110px; */
 }
+.others-sidebar-card-info-block > p {
+  text-align: center;
+  font-weight: lighter;
+}
 
 .others-sidebar-card-image-block > p {
   max-width: fit-content;
@@ -504,17 +508,17 @@ body>h1 {
   }
 }
 
-.recipe-bookmark-icon {
+.recipe-bookmark-icon--inactive {
   width: 36px;
-  background-image: url(../assets/bookmark-regular.svg);
+  background-image: url(../assets/bookmark-gray.svg);
   background-repeat: no-repeat;
   transform: scale(1);
   transition: all .2s ease-in-out;
 }
 
-.recipe-bookmark-icon:hover {
+.recipe-bookmark-icon--inactive:hover {
   width: 36px;
-  background-image: url(../assets/bookmark-solid-red.svg);
+  background-image: url(../assets/bookmark-hover-red.svg);
   transform: scale(1.1);
 }
 
@@ -522,6 +526,7 @@ body>h1 {
   width: 36px;
   background-image: url(../assets/bookmark-solid-red.svg);
   transform: scale(1.1);
+  background-repeat: no-repeat;
   animation-name: pulse;
   animation-duration: .2s;
   animation-iteration-count: 1;
@@ -529,7 +534,7 @@ body>h1 {
 
 .recipe-dollar-icon {
   width: 22px;
-  background-image: url(../assets/dollar.svg);
+  background-image: url(../assets/dollar-color2.svg);
   background-repeat: no-repeat;
   transform: scale(1);
   transition: all .2s ease-in-out;
@@ -537,16 +542,17 @@ body>h1 {
 
 .recipe-dollar-icon:hover {
   transform: scale(1.1);
+
 }
 
 .recipe-basket-icon {
-  background-image: url(../assets/basket.svg);
+  background-image: url(../assets/cart-empty.svg);
   background-repeat: no-repeat;
   transform: scale(1);
   transition: all .2s ease-in-out;
 }
 
-.recipe-bookmark-icon:hover {
+.recipe-basket-icon:hover {
   transform: scale(1.1);
 }
 
@@ -557,12 +563,26 @@ body>h1 {
   transition: all .2s ease-in-out;
 }
 
-.recipe-solid-cookie-icon {
-  background-image: url(../assets/cookie.svg);
+.recipe-solid-cookie-icon--inactive {
+  background-image: url(../assets/cookie-bite.svg);
   background-repeat: no-repeat;
   width: 45px;
   padding-right: 20px;
+  transition: all .2s ease-in-out
 }
+
+/* .recipe-solid-cookie-icon--inactive:hover {
+  background-image: url(../assets/cookie-color.svg);
+  transform: scale(1.1);
+}
+
+.recipe-solid-cookie-icon--active {
+  background-image: url(../assets/cookie-bite.svg);
+  transform: scale(1.1);
+  animation-name: pulse;
+  animation-duration: .2s;
+  animation-iteration-count: 1;
+} */
 
 .recipe-cost {
   display: flex;
