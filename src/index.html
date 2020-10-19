@@ -19,7 +19,28 @@
 
   <header class='navbar'>
     <div>
-      <img id='header-hamburger-menu' class='header-icon icon' src='../assets/bars-solid.svg'>
+      <div class="sidenav" id="sideNav">
+        <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="browse-categories">
+          <h2><u>Browse by Category:</u></h2>
+          <a href="#">Breakfast</a>
+          <a href="#">Lunch</a>
+          <a href="#">Dinner</a>
+          <a href="#">Appetizers</a>
+          <a href="#">Salads</a>
+          <a href="#">Sandwhiches</a>
+          <a href="#">Entrees</a>
+          <a href="#">Desserts</a>
+        </div>
+        <div class="social-icons">
+          <img class="social-icon" src="../assets/instagram.svg" alt="">
+          <img class="social-icon" src="../assets/facebook.svg" alt="">
+          <img class="social-icon" src="../assets/twitter.svg" alt="">
+        </div>
+      </div>
+      <span onclick="openNav()">
+        <img id='header-hamburger-menu' class='header-icon icon' src='../assets/bars-solid.svg'>
+      </span>
       <div class='navbar-title-container'>
         <h1 class='navbar-whats-cookin'>What's Cookin'</h1>
         <div class='navbar-user-name-wrapper'>
@@ -78,79 +99,44 @@
             </p>
           </div>
         </section>
-        <h1>Popular Recipes</h1>
+        <h1 class='staff-picks-title'>Popular Recipes</h1>
         <section class="staff-picks">
-          <div class="staff-pick-one">
-            <img class="staff-pick-img one-img recipe-image" src='https://spoonacular.com/recipeImages/595736-556x370.jpg' alt="">
-            <h3 class="staff-pick-title one-title">(Recipe Title)</h3>
-            <div class="staff-pick-icons one-icons">
-              <img class="bookmark-icon icon">
-              <img class="cart-icon icon">
-              <img class="price-icon icon">
-              <div class="popularity">
-                <img class="solid-cookie-icon icon"> 60
-              </div>
-            </div>
-          </div>
-          <div class="staff-pick-two">
-            <img class="staff-pick-img two-img recipe-image" src="https://spoonacular.com/recipeImages/412309-556x370.jpeg" alt="">
-            <h3 class="staff-pick-title two-title">(Recipe Title)</h3>
-            <div class="staff-pick-icons two-icons">
-              <img class="bookmark-icon icon">
-              <img class="cart-icon icon">
-              <img class="price-icon icon">
-              <div class="popularity">
-                <img class="solid-cookie-icon icon"> 60
-              </div>
-            </div>
-          </div>
-          <div class="staff-pick-three">
-            <img class="staff-pick-img three-img recipe-image" src="https://spoonacular.com/recipeImages/741603-556x370.jpeg" alt="">
-            <h3 class="staff-pick-title three-title">(Recipe Title)</h3>
-            <div class="staff-pick-icons three-icons">
-              <img class="bookmark-icon icon">
-              <img class="cart-icon icon">
-              <img class="price-icon icon">
-              <div class="popularity">
-                <img class="solid-cookie-icon icon"> 60
-              </div>
-            </div>
-          </div>
         </section>
       </section>
 
 
       <section class="others-sidebar">
         <h2 id='others-sidebar-title'>What Others Are Cookin'</h2>
-        <article class='others-sidebar-card'>
-          <div class="others-sidebar-card-info-block">
-            <img class="users-icon icon" src='../assets/user-solid.svg'>
-            <p>Anita Cox</p>
-            <div class="others-sidebar-card-info-icons">
-              <img class="bookmark--solid-icon icon">
-              <img class="solid-cookie-icon icon">142
+        <div class='others-sidebar-card-container'>
+          <!-- <article class='others-sidebar-card'>
+            <div class="others-sidebar-card-info-block">
+              <img class="users-icon icon" src='../assets/user-solid.svg'>
+              <p>Anita Cox</p>
+              <div class="others-sidebar-card-info-icons">
+                <img class="bookmark--solid-icon icon">
+                <img class="solid-cookie-icon icon">142
+              </div>
             </div>
-          </div>
-          <div class="others-sidebar-card-image-block">
-            <img class='others-sidebar-card-image recipe-image' src="https://spoonacular.com/recipeImages/507921-556x370.jpg" alt="">
-            <p>Schweaty Balls</p>
-          </div>
-        </article>
-        <article class='others-sidebar-card'>
-          <div class="others-sidebar-card-info-block">
-            <img class="users-icon icon" src='../assets/user-solid.svg'>
-            <p>Mike Oxlong</p>
-            <div class="others-sidebar-card-info-icons">
-              <img class="bookmark-solid-icon icon">
-              <img class="solid-cookie-icon icon">142
+            <div class="others-sidebar-card-image-block">
+              <img class='others-sidebar-card-image recipe-image' src="https://spoonacular.com/recipeImages/507921-556x370.jpg" alt="">
+              <p>Schweaty Balls</p>
             </div>
-          </div>
-          <div class="others-sidebar-card-image-block">
-            <img class='others-sidebar-card-image recipe-image' src="https://spoonacular.com/recipeImages/724018-556x370.jpg" alt="">
-            <p>Schweaty Balls</p>
-          </div>
-        </article>
-        <article class='others-sidebar-card'>
+          </article>
+          <article class='others-sidebar-card'>
+            <div class="others-sidebar-card-info-block">
+              <img class="users-icon icon" src='../assets/user-solid.svg'>
+              <p>Mike Oxlong</p>
+              <div class="others-sidebar-card-info-icons">
+                <img class="bookmark-solid-icon icon">
+                <img class="solid-cookie-icon icon">142
+              </div>
+            </div>
+            <div class="others-sidebar-card-image-block">
+              <img class='others-sidebar-card-image recipe-image' src="https://spoonacular.com/recipeImages/724018-556x370.jpg" alt="">
+              <p>Schweaty Balls</p>
+            </div>
+          </article>
+          <article class='others-sidebar-card'>
           <div class="others-sidebar-card-info-block">
             <img class="users-icon icon" src='../assets/user-solid.svg'>
             <p>Anna Lee</p>
@@ -163,7 +149,8 @@
             <img class='others-sidebar-card-image recipe-image' src="https://spoonacular.com/recipeImages/618332-556x370.jpg" alt="">
             <p>Schweaty Balls</p>
           </div>
-        </article>
+        </article> -->
+        </div>
       </section>
     </section>
 
@@ -338,7 +325,7 @@
         <!-- User 'Add Item' Form Section -->
         <section class="add-item-container">
           <form class="add-item-form">
-            <h1>Add New Item</h1>
+            <h2>New Item</h2>
             <div class="form-input">
               Item Name: <input class="add-item-name" type="text" value="" />
             </div>
@@ -348,15 +335,16 @@
             <div class="form-input add-item-category">
               Category:
               <select class="add-item-category">
-                <option selected="selected" value="other">Other</option>
-                <option value="meat">Meat</option>
-                <option value="fish">Fish</option>
-                <option value="vegetable">Vegetable</option>
-                <option value="fruit">Fruit</option>
-                <option value="bread">Bread</option>
-                <option value="soup">Soup</option>
-                <option value="sauce">Sauce</option>
-                <option value="seasoning">Seasoning</option>
+                <option class="selected-category" selected="selected" value="other">Other</option>
+                <option class="selected-category" value="meat">Meat</option>
+                <option class="selected-category" value="fish">Fish</option>
+                <option class="selected-category" value="vegetable">Vegetable</option>
+                <option class="selected-category" value="munchie">Munchie</option>
+                <option class="selected-category" value="fruit">Fruit</option>
+                <option class="selected-category" value="bread">Bread</option>
+                <option class="selected-category" value="soup">Soup</option>
+                <option class="selected-category" value="sauce">Sauce</option>
+                <option class="selected-category" value="seasoning" value"seasoning">Seasoning</option>
               </select>
             </div>
             <input class="add-item-button" type="submit" value="Add Item" />
