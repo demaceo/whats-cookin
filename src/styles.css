@@ -504,7 +504,7 @@ body>h1 {
 
 .recipe-dollar-icon {
   width: 22px;
-  background-image: url(../assets/dollar-active.svg);
+  background-image: url(../assets/dollar.svg);
   background-repeat: no-repeat;
   transform: scale(1);
   transition: all .2s ease-in-out;
@@ -695,7 +695,7 @@ body>h1 {
 }
             /* --------USER VIEW '______' Section-------- */
 .user-view-section {
-  border: solid .5px;
+  /* border: solid .5px; */
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
