@@ -84,6 +84,7 @@ function loadRandomStaffPicks() {
     let randomIndex = getRandomIndex(recipeData)
     if (i < 6) {
       document.querySelector('.staff-picks').insertAdjacentHTML('afterbegin',`
+
       <div class="staff-pick-block staff-pick-${i+1}">
         <img class="staff-pick-img ${i+1}-img recipe-image" src='${recipeData[randomIndex].image}' alt="">
         <h3 class="staff-pick-title ${i+1}-title">${recipeData[randomIndex].name}</h3>
@@ -102,6 +103,47 @@ function loadRandomStaffPicks() {
 }
 //    **** to use after creating .popularity property in recipe class ****
 // <img class="solid-cookie-icon icon"> ${recipe.popularity}
+
+window.onload = loadRandomOthersCookin();
+
+function loadRandomOthersCookin() {
+  document.querySelector('.others-sidebar-card-container').innerHTML = "";
+
+  usersData.forEach((user, i) => {
+    let randomRecipe;
+    let randomIndex = getRandomIndex(usersData);
+    let randomUser = usersData[randomIndex];
+
+    recipeData.forEach((recipe, i) => {
+      let randomIndex = getRandomIndex(recipeData)
+      randomRecipe = recipeData[randomIndex]
+    })
+    // console.log(randomUser);
+    // randomUser.favoriteRecipe(randomRecipe);  // Wanted add to favorites, but requires instantiation
+    // randomUser.completeRecipe(randomRecipe);  // and additional logic for local storage of secondary users
+
+    if (i < 6) {
+      document.querySelector('.others-sidebar-card-container').insertAdjacentHTML('afterbegin',
+      `
+      <article class='others-sidebar-card'>
+        <div class="others-sidebar-card-info-block">
+          <img class="users-icon icon" src='../assets/user-solid.svg'>
+          <p>${randomUser.name}</p>
+          <div class="others-sidebar-card-info-icons">
+            <img class="bookmark--solid-icon icon">
+            <img class="solid-cookie-icon icon">${Math.round(Math.random()*500)}
+          </div>
+        </div>
+        <div class="others-sidebar-card-image-block">
+          <img class='others-sidebar-card-image recipe-image' src="${randomRecipe.image}" alt="">
+          <p>${randomRecipe.name}</p>
+        </div>
+      </article>
+      `
+    )};
+  });
+};
+
 
 // *---*---**---*---* USER SECTION functions *---*---**---*----*:
 
