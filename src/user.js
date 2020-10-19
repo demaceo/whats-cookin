@@ -1,6 +1,6 @@
-const Pantry = require("./pantry");
-const ingredients = require('../data/ingredients');
-const ingredientsData = ingredients.ingredientsData;
+// const Pantry = require("./pantry");
+// const ingredients = require('../data/ingredients');
+// const ingredientsData = ingredients.ingredientsData;
 
 class User {
   constructor(user) {
@@ -77,4 +77,4 @@ class User {
 };
 
 
-module.exports = User;
+// module.exports = User;
