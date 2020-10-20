@@ -1,6 +1,6 @@
 let usersData = [
   {
-    "name": "Colin Forsec",
+    "name": "Colin Forsecs",
     "id": 1,
     "pantry": [
       {
@@ -594,7 +594,7 @@ let usersData = [
     ]
   },
   {
-    "name": "Dill Doe",
+    "name": "Libby Doe",
     "id": 4,
     "pantry": [
       {
@@ -816,7 +816,7 @@ let usersData = [
     ]
   },
   {
-    "name": "Harry Johnson",
+    "name": "Jacques Strap",
     "id": 5,
     "pantry": [
       {
@@ -2684,7 +2684,7 @@ let usersData = [
     ]
   },
   {
-    "name": "Buck Nekkid",
+    "name": "Rick O’Shea",
     "id": 17,
     "pantry": [
       {
@@ -3359,7 +3359,7 @@ let usersData = [
     "pantry": []
   },
   {
-    "name": "Earline Von",
+    "name": "Justin Thyme",
     "id": 23,
     "pantry": [
       {
@@ -3731,7 +3731,7 @@ let usersData = [
     ]
   },
   {
-    "name": "Charlene Kuvalis",
+    "name": "Joe King",
     "id": 25,
     "pantry": [
       {
@@ -4091,7 +4091,7 @@ let usersData = [
     ]
   },
   {
-    "name": "Domenick Russel",
+    "name": "Hugh Jass",
     "id": 27,
     "pantry": [
       {
@@ -7601,7 +7601,7 @@ let usersData = [
     ]
   }
 ]
-
-module.exports = {
-  usersData
-};
+//
+// module.exports = {
+//   usersData
+// };
