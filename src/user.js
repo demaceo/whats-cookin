@@ -12,12 +12,28 @@ class User {
     this.pantry = new Pantry(user);
   };
 
+  removeFromFavorites(recipe) {
+    if (this.favoriteRecipes.includes(recipe)) {
+      this.favoriteRecipes.splice(this.favoriteRecipes.indexOf(recipe), 1)
+    }
+  }
+
+  removeFromToCook(recipe) {
+    if (this.recipesToCook.includes(recipe)) {
+      this.recipesToCook.splice(this.recipesToCook.indexOf(recipe), 1)
+    }
+  }
+
   favoriteRecipe(recipe) {
-    this.favoriteRecipes.unshift(recipe)
+    if (!this.favoriteRecipes.includes(recipe)) {
+      this.favoriteRecipes.unshift(recipe)
+    }
   };
 
   addToRecipesToCook(recipe) {
-    this.recipesToCook.unshift(recipe)
+    if (!this.recipesToCook.includes(recipe)) {
+      this.recipesToCook.unshift(recipe)
+    }
   };
 
   addItemToPantry(ingredient, quantity) {
