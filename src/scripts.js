@@ -83,15 +83,24 @@ function closeNav() {
 
 // *---*---**---*---* ICON BEHAVIOR *---*---**---*----*:
 
+function addRemoveToCook(event, addRecipe) {
+  let recipeObject = recipeData.find(recipe => recipe.id.toString() === event.target.nextSibling.innerText)
+  console.log(recipeObject, currentUser.recipesToCook)
+  addRecipe === true ? currentUser.addToRecipesToCook(recipeObject) : currentUser.removeFromToCook(recipeObject);
+}
+
 function iconHandler(event) {
-  if (event.target.className.includes('recipe-bookmark-icon--inactive')) {
+  if (event.target.classList.contains('recipe-bookmark-icon--inactive')) {
     event.target.classList.add('recipe-bookmark-icon--active');
     event.target.classList.remove('recipe-bookmark-icon--inactive');
-  } else if (event.target.className.includes('recipe-bookmark-icon--active')) {
-    console.log(event);
+    currentUser ? addRemoveToCook(event, true) : null;
+  } else if (event.target.classList.contains('recipe-bookmark-icon--active')) {
+    // console.log(event);
     event.target.classList.remove('recipe-bookmark-icon--active');
     event.target.classList.add('recipe-bookmark-icon--inactive');
+    currentUser ? addRemoveToCook(event, false) : null;
   }
+
 
   //      if we want cookies clickable for COOKED, use these animations
 
@@ -114,19 +123,19 @@ function loadRandomStaffPicks() {
   document.querySelector('.staff-picks').innerHTML = "";
 
   recipeData.forEach((recipe, i) => {
-    let randomIndex = getRandomIndex(recipeData)
+    let randomRecipe = recipeData[getRandomIndex(recipeData)];
     if (i < 6) {
       document.querySelector('.staff-picks').insertAdjacentHTML('afterbegin',`
 
       <div class="staff-pick-block staff-pick-${i+1}">
         <div class='staff-pick-image-wrapper'>
-          <img class="staff-pick-img ${i+1}-img recipe-image" src='${recipeData[randomIndex].image}' alt="">
+          <img class="staff-pick-img ${i+1}-img recipe-image" src='${randomRecipe.image}' alt="">
         </div>
-        <h3 class="staff-pick-title ${i+1}-title">${recipeData[randomIndex].name}</h3>
+        <h3 class="staff-pick-title ${i+1}-title">${randomRecipe.name}</h3>
         <div class="staff-pick-icons ${i+1}-icons">
-          <img class="bookmark-icon icon">
-          <img class="cart-icon icon">
-          <img class="price-icon icon">
+          <img class="recipe-bookmark-icon--inactive icon"><span class='hidden'>${randomRecipe.id}</span>
+          <img class="recipe-basket-icon--inactive icon">
+          <img class="recipe-dollar-icon icon">
           <div class="popularity">
             <img class="recipe-solid-cookie-icon--inactive icon"> 60
           </div>
@@ -165,9 +174,11 @@ function loadRandomOthersCookin() {
           <img class="users-icon sidebar-icon" src='../assets/user-solid.svg'>
           <p>${randomUser.name.split(' ')[0]} ${randomUser.name.split(' ')[1].charAt(0)}.</p>
           <div class="others-sidebar-card-info-icons">
-            <img class="recipe-basket-icon sidebar-icon">
-            <img class="recipe-bookmark-icon--inactive sidebar-icon">
-            <img class="recipe-solid-cookie-icon--inactive sidebar-icon">${Math.round(Math.random()*500)}
+            <svg class="recipe-bookmark-icon--inactive sidebar-icon icon"></svg>
+            <svg class="recipe-basket-icon--inactive sidebar-icon icon"></svg>
+            <span class='hidden'>${randomRecipe.id}</span>
+            <svg class="recipe-solid-cookie-icon--inactive sidebar-icon icon"><p>${Math.round(Math.random()*500)}</p></svg>
+
           </div>
         </div>
         <div class="others-sidebar-image-block">
@@ -232,6 +243,8 @@ function displayUserIcon(user) {
   userAccountsIcon.classList.add("hidden");
   userProfileIcon.classList.remove("hidden");
   hideHero();
+  loadRandomStaffPicks();
+  loadRandomOthersCookin()
   displayUserName(user);
 }
 
@@ -413,10 +426,15 @@ function populatePantry() {
 
 // *---*---*EVENT HANDLER functions*---*----*:
 function clickHandler(event) {
-  if (event.target.className.includes('recipe-image')) {
+  // event.target.classList.forEach(iconHandler(event));
+
+
+  if (event.target.classList.contains('recipe-image')) {
     displayRecipePage();
-  } else if (event.target.className.includes('icon')) {
+    console.log('recipe image');
+  } else if (event.target.classList.contains('icon')) {
     iconHandler(event);
+    console.log('icon');
   };
   event.target !== searchInput ? searchInput.classList.remove('search-input--clicked') : null;
 };
