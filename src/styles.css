@@ -123,7 +123,10 @@ body>h1 {
 }
 
 .sidebar-icon {
-  height: 1.5em;
+  background-size: 3.25vh;
+  /* width: 3em; */
+  height: 5vh;
+  cursor: pointer;
 }
 
 .dropdown-header-icon {
@@ -335,7 +338,7 @@ body>h1 {
   line-height: 2em;
   border-radius: 8px;
   text-align: justify;
-  padding: .5vw .1vw;
+  padding: .5vw 1.2vw;
   height: 34vh;
   transition: background-color 0.2s ease-in, color ease-in .2s;
 }
@@ -363,6 +366,10 @@ body>h1 {
   display: flex;
   flex-direction: column;
   align-content: center;
+}
+
+.users-icon {
+  cursor: default;
 }
 
 .others-sidebar-card-container {
@@ -528,23 +535,22 @@ body>h1 {
 }
 
 .recipe-bookmark-icon--inactive {
-  width: 36px;
+  background-size: 2.25vh;
   background-image: url(../assets/bookmark-gray.svg);
   background-repeat: no-repeat;
-  transform: scale(1);
+  /* transform: scale(1); */
   transition: all .2s ease-in-out;
 }
 
 .recipe-bookmark-icon--inactive:hover {
-  width: 36px;
   background-image: url(../assets/bookmark-hover-red.svg);
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }
 
 .recipe-bookmark-icon--active {
-  width: 36px;
+  background-size: 2.7vh;
   background-image: url(../assets/bookmark-solid-red.svg);
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
   background-repeat: no-repeat;
   animation-name: pulse;
   animation-duration: .2s;
@@ -552,7 +558,6 @@ body>h1 {
 }
 
 .recipe-dollar-icon {
-  width: 22px;
   background-image: url(../assets/dollar-color2.svg);
   background-repeat: no-repeat;
   transform: scale(1);
@@ -564,7 +569,7 @@ body>h1 {
 
 }
 
-.recipe-basket-icon {
+.recipe-basket-icon--inactive {
   background-image: url(../assets/cart-empty.svg);
   background-repeat: no-repeat;
   transform: scale(1);
@@ -583,10 +588,8 @@ body>h1 {
 }
 
 .recipe-solid-cookie-icon--inactive {
-  background-image: url(../assets/cookie-bite.svg);
+  background-image: url(../assets/cookie-color.svg);
   background-repeat: no-repeat;
-  width: 45px;
-  padding-right: 20px;
   transition: all .2s ease-in-out
 }
 
