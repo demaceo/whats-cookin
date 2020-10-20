@@ -119,7 +119,9 @@ function loadRandomStaffPicks() {
       document.querySelector('.staff-picks').insertAdjacentHTML('afterbegin',`
 
       <div class="staff-pick-block staff-pick-${i+1}">
-        <img class="staff-pick-img ${i+1}-img recipe-image" src='${recipeData[randomIndex].image}' alt="">
+        <div class='staff-pick-image-wrapper'>
+          <img class="staff-pick-img ${i+1}-img recipe-image" src='${recipeData[randomIndex].image}' alt="">
+        </div>
         <h3 class="staff-pick-title ${i+1}-title">${recipeData[randomIndex].name}</h3>
         <div class="staff-pick-icons ${i+1}-icons">
           <img class="bookmark-icon icon">
@@ -168,8 +170,10 @@ function loadRandomOthersCookin() {
             <img class="recipe-solid-cookie-icon--inactive sidebar-icon">${Math.round(Math.random()*500)}
           </div>
         </div>
-        <div class="others-sidebar-card-image-block">
-          <img class='others-sidebar-card-image recipe-image' src="${randomRecipe.image}" alt="">
+        <div class="others-sidebar-image-block">
+          <div class="others-sidebar-card-image-wrapper">
+            <img class='others-sidebar-card-image recipe-image' src="${randomRecipe.image}" alt="">
+          </div>
           <p>${randomRecipe.name}</p>
         </div>
       </article>
