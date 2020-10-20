@@ -132,7 +132,7 @@ function loadRandomStaffPicks() {
 
       <div class="staff-pick-block staff-pick-${i+1}">
         <div class='staff-pick-image-wrapper'>
-          <img class="staff-pick-img ${i+1}-img recipe-image" src='${randomRecipe.image}' alt="">
+          <img class="staff-pick-img ${i+1}-img recipe-image" src='${randomRecipe.image}' id='${randomRecipe.id} alt="">
         </div>
         <h3 class="staff-pick-title ${i+1}-title">${randomRecipe.name}</h3>
         <div class="staff-pick-icons ${i+1}-icons">
@@ -184,7 +184,7 @@ function loadRandomOthersCookin() {
         </div>
         <div class="others-sidebar-image-block">
           <div class="others-sidebar-card-image-wrapper">
-            <img class='others-sidebar-card-image recipe-image' src="${randomRecipe.image}" alt="">
+            <img class='others-sidebar-card-image recipe-image' src="${randomRecipe.image}" id='${randomRecipe.id}' alt="">
           </div>
           <p>${randomRecipe.name}</p>
         </div>
@@ -283,16 +283,6 @@ function searchInputHandler(e) {
   }
 };
 
-// function displaySearchResult() {
-//   recipes.forEach(recipe => {
-//     recipe.filter(recipeName => {
-//       return recipeName.includes(searchInput.innerText)
-//     })
-//   })
-//   searchInput.innerText
-// };
-
-
 function gatherSearchResults(searchInput) {
   let searchResults = [];
   let capitalizeInput = searchInput[0].toUpperCase() + searchInput.substring(1);
@@ -305,7 +295,7 @@ function gatherSearchResults(searchInput) {
 };
 
 function populateSearchResults(searchResults) {
-  searchView.innerHtml = "";
+  // searchView.innerHtml = "";
   searchResults.forEach(searchResult => {
     searchView.insertAdjacentHTML('afterbegin', `
     <section class='search-result-container' id=${searchResult.id}>
@@ -318,35 +308,19 @@ function populateSearchResults(searchResults) {
     `)
   })
 }
-
-function gatherSearchResults(searchInput) {
-  let searchResults = [];
-  let capitalizeInput = searchInput[0].toUpperCase() + searchInput.substring(1);
-  recipeData.filter(recipe => {
-    if (recipe.name.includes(capitalizeInput)) {
-      return searchResults.push(recipe)
-    }
-  });
-  populateSearchResults(searchResults)
-};
-
-function populateSearchResults(searchResults) {
-  searchView.innerHtml = "";
-  searchResults.forEach(searchResult => {
-    searchView.insertAdjacentHTML('afterbegin', `
-    <section class='search-result-container' id=${searchResult.id}>
-    <img class="searched-recipe-image recipe-image" src=${searchResult.image} id=${searchResult.id}>
-      <div class='search-result'>
-      <img class='star-icon icon' src='../assets/star-regular.svg'>
-      <h2>${searchResult.name}</h2>
-      </div>
-    </section>
-    `)
-  })
-}
-
 
 // *---*---*DISPLAY RECIPE functions*---*----*:
+function targetClickedRecipe(){
+  if(event.target.closest('.recipe-image')){
+      let closestElement = event.target.closest('.recipe-image');
+      recipeData.forEach(recipe => {
+        if()
+      })
+  }
+}
+
+
+
 //all of this needs heavy refactoring: 👇
 
 // function targetClickedRecipe() {
@@ -442,7 +416,7 @@ function populateFavorites() {
     <section class='favorite-recipe-container' id=${favoriteRecipe.id}>
       <img class='star-icon icon' src='star-solid.svg'>
       <div class='favorite-recipe'>
-        <img class="favorite-recipe-image" src=${favorite.image}>
+        <img class="favorite-recipe-image" src=${favorite.image} id='${favorite.id}' >
           <h2>${favoriteRecipe.name}</h2>
         </div>
       </div>
