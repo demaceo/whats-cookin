@@ -104,6 +104,7 @@ function addRemoveToCook(event, addRecipe) {
   let recipeObject = recipeData.find(recipe => recipe.id.toString() === event.target.nextElementSibling.innerText)
   console.log(event.target.nextElementSibling);
   addRecipe === true ? currentUser.addToRecipesToCook(recipeObject) : currentUser.removeFromToCook(recipeObject);
+  currentUser.saveToStorage();
 }
 
 function iconHandler(event) {
@@ -178,7 +179,7 @@ function loadRandomOthersCookin() {
             <svg class="recipe-bookmark-icon--inactive sidebar-icon icon"></svg>
             <span class='hidden'>${randomRecipe.id}</span>
             <svg class="recipe-basket-icon--inactive sidebar-icon icon"></svg>
-            <svg class="recipe-solid-cookie-icon--inactive sidebar-icon icon"><p>${Math.round(Math.random()*500)}</p></svg>
+            <svg class="recipe-solid-cookie-icon--inactive sidebar-icon icon"><p id="others-score">${Math.round(Math.random()*500)}</p></svg>
           </div>
         </div>
         <div class="others-sidebar-image-block">
@@ -293,22 +294,6 @@ function gatherSearchResults(searchInput) {
   populateSearchResults(searchResults);
 }
 
-function populateSearchResults(searchResults) {
-  searchView.innerHTML = " ";
-  searchResults.forEach(searchResult => {
-    searchView.insertAdjacentHTML('afterbegin', `
-    <section class='search-result-container' id=${searchResult.id}>
-    <img class="searched-recipe-image recipe-image" src=${searchResult.image} id='${searchResult.id}'>
-      <div class='search-result'>
-      <svg class="search-result-icon recipe-bookmark-icon--inactive sidebar-icon icon"></svg>
-      <span class='hidden'>${searchResult.id}</span>
-      <h2>${searchResult.name}</h2>
-      </div>
-    </section>
-    `);
-  });
-};
-
 function gatherMoreSearchResults(searchInput) {
   let searchResults = [];
   let lowerCaseInput = searchInput.toLowerCase();
@@ -324,19 +309,40 @@ function gatherMoreSearchResults(searchInput) {
   populateSearchResults(searchResults);
 }
 
+
+
+function populateSearchResults(searchResults) {
+  // if (searchResults.length === 0) {
+  //   displayNoSearchResults();
+  // } else {
+    searchView.innerHTML = " ";
+    searchResults.forEach(searchResult => {
+      searchView.insertAdjacentHTML('afterbegin', `
+    <section class='search-result-container' id=${searchResult.id}>
+    <img class="searched-recipe-image recipe-image" src=${searchResult.image} id='${searchResult.id}'>
+      <div class='search-result'>
+      <svg class="search-result-icon recipe-bookmark-icon--inactive sidebar-icon icon"></svg>
+      <span class='hidden'>${searchResult.id}</span>
+      <h2>${searchResult.name}</h2>
+      </div>
+    </section>
+    `);
+    })
+  };
+// };
+
+
 function populateIngredientInformation() {
   clickedRecipe.ingredients.forEach(recipeIngredient => {
     let matchedIngredient = ingredientsData.find(ingredient => ingredient.id === recipeIngredient.id);
     let ingredientTotalCost = (recipeIngredient.quantity.amount * matchedIngredient.estimatedCostInCents) / 100;
-    document.querySelector('.ingredients-h2').insertAdjacentHTML('beforeend',
-      `
+    document.querySelector('.ingredients-h2').insertAdjacentHTML('beforeend', `
     <p>${matchedIngredient.name}</p>
     `)
-    document.querySelector('.amount-h2').insertAdjacentHTML('beforeend',
-      `<p>${recipeIngredient.quantity.amount.toFixed(2)} ${recipeIngredient.quantity.unit}</p>
+    document.querySelector('.amount-h2').insertAdjacentHTML('beforeend', `
+    <p>${recipeIngredient.quantity.amount.toFixed(2)} ${recipeIngredient.quantity.unit}</p>
     `)
-    document.querySelector('.cost-h2').insertAdjacentHTML('beforeend',
-      `
+    document.querySelector('.cost-h2').insertAdjacentHTML('beforeend', `
     <p>$ ${ingredientTotalCost.toFixed(2)}</p>
     `)
   });
