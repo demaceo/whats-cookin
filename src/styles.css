@@ -39,8 +39,10 @@ body>h1 {
   margin-left: 2vh;
   font-size: 2.3em;
   color: white;
-  border: solid .1px;
-  padding: .05em .1em;
+  border: solid 6px;
+  padding: .5em .6em;
+  top: .2em;
+  left: 1em;
 }
 
 #hero-container {
@@ -66,7 +68,8 @@ body>h1 {
   top: 0;
   box-shadow: 0px 6px 12px 0px #0000003d;
   z-index: 10;
-  height: 5em;
+  height: fit-content;
+  /* height: 5em; */
 }
 
 .navbar>div {
@@ -118,7 +121,8 @@ body>h1 {
 .navbar-whats-cookin {
   font-size: 2.3em;
   color: #C3025A;
-  margin: 2.75vh 0vh;
+  margin: 0;
+  margin-top: .7em;
   cursor: pointer;
 }
 
@@ -151,9 +155,11 @@ body>h1 {
 
 .nav-search-bar {
   display: flex;
-  align-content: center;
+  align-content: baseline;
   justify-content: space-around;
   align-self: center;
+  /* padding-right: 5px; */
+  padding-bottom: 20px;
 }
 
 .nav-search-input {
@@ -171,17 +177,17 @@ body>h1 {
   /* margin: 3vh; */
 }
 
-.search-bar {
+/* .search-bar {
   display: flex;
   flex-direction: column;
   margin: 2vh 0;
   align-self: center;
-}
+} */
 
 .search-input {
   background-image: url(../assets/search-solid.svg);
   background-repeat: no-repeat;
-  background-position-x: 96%;
+  background-position-x: 98%;
   stroke-width: 1em;
   /* width: 14em; */
   width: 240px;
@@ -200,12 +206,13 @@ body>h1 {
   width: 44vw;
 }
 
-.search-bar>div {
+/* .search-bar>div {
   margin-top: 0.5vw;
   font-size: 1.1rem;
-}
+} */
 
 .accounts-icon {
+  margin-top: 5px;
   align-self: center;
 }
 
@@ -280,6 +287,7 @@ body>h1 {
   margin-bottom: 4em;
   padding-left: 3.5vw;
   transition: .2 fade-in;
+  margin-top: 2.5em;
 }
 
 .home-main-content {
@@ -405,8 +413,9 @@ body>h1 {
   height: 23vh;
 }
 
-.others-sidebar-card-image-wrapper > p {
-
+.others-title {
+  margin: 0;
+  text-align: center;
 }
 
 .others-sidebar-card-info-block > p {
@@ -425,54 +434,54 @@ body>h1 {
 }
 
 /* ---------- STAFF PICKS Section ----------- */
+
 .staff-picks {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   flex-wrap: wrap;
+  width: 100%;
+  padding: .2em 0;
+  margin: 1em 0;
 }
 
 .staff-picks-title {
   background-color: black;
   color: white;
   padding: 2vh 0;
-  margin: 1.3em 0;
+  margin: 0;
   font-weight: lighter;
 }
 
 .staff-pick-block {
-  max-width: 20vw;
-  overflow: hidden;
-  padding: 0 1em;
-  min-width: 14em;
+  padding: .2em .4em;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.staff-pick-image-wrapper {
+  max-width: min-content;
   display: flex;
   flex-direction: column;
 }
 
-.staff-pick-image-wrapper {
-  overflow: hidden;
-  height: 28vh;
-  width: fit-content;
+.staff-pick-image-wrapper:hover {
+  opacity: .35;
 }
 
 .staff-pick-img {
-  height: 100%;
-  width: 107%;
+  height: 21.5vw;
+}
+
+.staff-pick-title-wrapper {
+  max-width: fit-content;
+  height: -webkit-fill-available;
 }
 
 .staff-pick-title {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-size: 1.2em;
   font-weight: lighter;
-}
-
-.staff-pick-icons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-content: center;
+  text-align: center;
+  margin: 1em 0;
 }
 
 /* ---------- VIEW RECIPE PAGE Section ----------- */
@@ -489,6 +498,7 @@ body>h1 {
   /* justify-content: space-around; */
   padding-left: 4vw;
   overflow: hidden;
+  width: 50vw;
 }
 
 .recipe-img {
@@ -496,7 +506,6 @@ body>h1 {
   /* width: 60vw;
   min-width: 500px; */
   width: 60vw;
-  min-width: 500px;
   max-width: 50vw;
 }
 
@@ -623,14 +632,53 @@ body>h1 {
   font-size: 2em;
 }
 
+.recipe-view-icons {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 9em;
+}
+
+#recipe-bookmark {
+  background-position: center;
+}
+
+#recipe-basket {
+  background-position: center;
+}
+
+#recipe-cookie {
+  background-position: center;
+  width: 16em;
+}
+
 .recipe-ingredients {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  font-size: 1em;
+  font-size: .8em;
   border: solid .1px;
+  overflow: hidden;
 }
+
+.recipe-ingredients-table-title {
+  text-decoration: underline;
+  margin: 0;
+  margin-top: 1em;
+}
+
+.recipe-ingredients-table-data {
+  font-weight: lighter;
+}
+
+/* .recipe-ingredients {
+  font-size: 1.5em;
+  line-height: 1.5em;
+  border: black solid;
+  margin-top: 5vh;
+  padding: 1em;
+} */
 
 .ingredients-amount {
   align-content: center;
@@ -678,14 +726,6 @@ body>h1 {
   text-align: center;
 }
 
-.recipe-ingredients {
-  font-size: 1.5em;
-  line-height: 1.5em;
-  border: black solid;
-  margin-top: 5vh;
-  padding: 1em;
-}
-
 .recipe-instructions {
   font-size: 1.5em;
   line-height: 1.5em;
@@ -697,6 +737,10 @@ body>h1 {
   border-radius: 8px;
   margin: 0;
   margin-bottom: 1em;
+}
+
+.recipe-instructions-list {
+  height: 100vh;
 }
 
 .recipe-instructions-step:hover {
@@ -781,6 +825,16 @@ body>h1 {
   justify-content: space-around;
   align-items: center;
   /* max-width: 20; */
+}
+
+.this-recipe-container {
+
+}
+.this-recipe{
+
+}
+.this-recipe-image{
+
 }
 
 .user-view-section>* {
@@ -881,19 +935,21 @@ body>h1 {
 /* --------SEARCH VIEW Section -------- */
 .search-view {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  /* overflow: hidden; */
-  margin-left: -250px;
-  width: 50em;
+  flex-wrap: wrap;
+  padding-top: 1em;
+  width: 100vw;
+  margin: 0 1vw;
 }
 
 .search-result-container {
+  padding: .2em .2em;
   display: flex;
   flex-direction: column;
-  background-color: white;
-  border-radius: 20px;
-  padding: 20px;
+  max-width: min-content;
+}
+
+.searched-recipe-image {
+  height: 32vw;
 }
 
 .star-icon {
@@ -903,9 +959,8 @@ body>h1 {
 
 .search-result {
   display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  font-size: 1em;
+  justify-content: center;
+  display: contents;
 }
 
 .search-recipe-image {
@@ -913,6 +968,13 @@ body>h1 {
   border-radius: 20px;
 }
 
+.search-result-icon {
+  position: absolute;
+  margin: 1em;
+  background-size: 2em;
+  height: 4em;
+  background-image: url(../assets/bookmark-light.svg);
+}
 
 /* --------SIDE NAVIGATION MENU -------- */
 span {
@@ -930,7 +992,7 @@ span {
   background-color: #1A1918;
   overflow-x: hidden;
   padding-top: 60px;
-  transition: width .75s;
+  transition: width .35s;
 }
 
 .browse-categories {
