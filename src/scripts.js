@@ -134,12 +134,20 @@ function sideNavHandler() {
 }
 
 // *---*---**---*---* ICON BEHAVIOR *---*---**---*----*:
+function addRemoveFavorite(event, addRecipe) {
+  console.log(event.target)
+  console.log(event.target.id);
+
+  let recipeObject = recipeData.find(recipe => recipe.id.toString() === event.target.id.toString())
+  addRecipe === true ? currentUser.addFavoriteRecipe(recipeObject) : currentUser.removeFromFavorites(recipeObject);
+  // currentUser.saveToStorage();
+}
 
 function addRemoveToCook(event, addRecipe) {
   let recipeObject = recipeData.find(recipe => recipe.id.toString() === event.target.nextElementSibling.innerText)
   console.log(event.target.nextElementSibling);
   addRecipe === true ? currentUser.addToRecipesToCook(recipeObject) : currentUser.removeFromToCook(recipeObject);
-  currentUser.saveToStorage();
+  // currentUser.saveToStorage();
 }
 
 function iconHandler(event) {
@@ -149,9 +157,14 @@ function iconHandler(event) {
   } else if (event.target.classList.contains('recipe-bookmark-icon--active')) {
     event.target.classList.replace('recipe-bookmark-icon--active', 'recipe-bookmark-icon--inactive')
     addRemoveToCook(event, false);
+  } else if (event.target.classList.contains('star-icon')) {
+    event.target.classList.replace('star-icon', 'star-icon--active')
+    addRemoveFavorite(event, true);
+  } else if (event.target.classList.contains('star-icon--active')) {
+    event.target.classList.replace('star-icon--active', 'star-icon')
+    addRemoveFavorite(event, false);
   }
 }
-
 //      if we want cookies clickable for COOKED, use these animations
 
 //   else if (event.target.className.includes('recipe-solid-cookie-icon--inactive')) {
@@ -249,12 +262,12 @@ function determineUser() {
   let userObject = usersData.find(user => user.name === event.target.innerText.trim() ? user : null);
   userObject !== null ? displayUserIcon(userObject) : null;
   currentUser = new User(userObject);
-
-  let retrievedUserData = JSON.parse(localStorage.getItem(`${currentUser.id}`));
-  if (retrievedUserData) {
-    currentUser = new User(retrievedUserData)
-  }
+  //
+  // let retrievedUserData = JSON.parse(localStorage.getItem(`${currentUser.id}`));
+  // if (retrievedUserData) {
+  //   currentUser = new User(retrievedUserData)
 };
+// };
 
 // *********      CHANGE USER NAME NAVBAR    **********
 function displayUserName(user) {
@@ -433,12 +446,12 @@ function populateFavorites() {
     favoritesView.insertAdjacentHTML('afterbegin', `
     <div class="staff-pick-block staff-pick">
       <div class='staff-pick-image-wrapper'>
-        <svg class="staff-pick-img recipe-image" src='${favorite.image}' id='${favorite.id}'></svg>
+        <img class="staff-pick-img recipe-image" src='${favorite.image}' id='${favorite.id}'>
       </div>
       <div class='staff-pick-title-wrapper'>
-        <img class='star-icon icon' id=${favorite.id} src=${favorite.src}>
+        <svg class='star-icon--active icon' id=${favorite.id} src=${favorite.src}></svg>
+        <h3 class="staff-pick-title">${favorite.name}</h3>
       </div>
-      <h3 class="staff-pick-title">${favorite.name}</h3>
     </div>
     `)
   })
@@ -458,9 +471,11 @@ function populateRecipesToCook() {
         <img class="staff-pick-img recipe-image" src='${recipeToCook.image}' id='${recipeToCook.id}'>
       </div>
       <div class='staff-pick-title-wrapper'>
-      <svg class='star-icon icon' id=${recipeToCook.id} src=${recipeToCook.src}></svg>
-        <h3 class="staff-pick-title">${recipeToCook.name}</h3>
+        <svg class='star-icon icon' id=${recipeToCook.id}></svg>
+        <svg class="search-result-icon recipe-bookmark-icon--active sidebar-icon icon"></svg>
+        <span class='hidden'>${recipeToCook.id}</span>
       </div>
+      <h3 class="staff-pick-title">${recipeToCook.name}</h3>
     </div>
     `)
   })
@@ -468,36 +483,36 @@ function populateRecipesToCook() {
 
 // ===================== PANTRY Section functions =====================:
 
-function updateIngredientAmount() {
-  let pantryItem = event.target();
-  if (event.target.className === 'plus') {
-    currentUser.pantry.contents.amount -= 1
-  } else if (event.target.className === 'minus') {
-    currentUser.pantry.contents.amount += 1
-  } else if (event.target.className === 'delete') {
-    currentUser.pantry.contents
-  }
-  populatePantry();
-}
+// function updateIngredientAmount() {
+//   let pantryItem = event.target();
+//   if (event.target.className === 'plus') {
+//     currentUser.pantry.contents.amount -= 1
+//   } else if (event.target.className === 'minus') {
+//     currentUser.pantry.contents.amount += 1
+//   } else if (event.target.className === 'delete') {
+//     currentUser.pantry.contents
+//   }
+//   populatePantry();
+// }
 
 function clearInputFields() {
-  newItemName.value = "";
-  newItemAmount.value = "0";
-  newItemCategory.selected = "other"
+  // newItemName.value = "";
+  // newItemAmount.value = "0";
+  // newItemCategory.selected = "other"
 };
 
 function addItemToPantry() {
-  event.preventDefault();
-  const newItem = {
-    name: `${newItemName.value}`,
-    // ingredient: `${Date.now()}`,
-    ingredient: `${Math.round(Math.random() * 1000)}`,
-    amount: `${newItemAmount.value}`
-  };
-  // console.log("newitem", newItem);
-  currentUser.addItemToPantry(newItem.name, newItem.amount)
-  populatePantry();
-  clearInputFields();
+  // event.preventDefault();
+  // const newItem = {
+  //   name: `${newItemName.value}`,
+  //   // ingredient: `${Date.now()}`,
+  //   ingredient: `${Math.round(Math.random() * 1000)}`,
+  //   amount: `${newItemAmount.value}`
+  // };
+  // // console.log("newitem", newItem);
+  // currentUser.addItemToPantry(newItem.name, newItem.amount)
+  // populatePantry();
+  // clearInputFields();
 };
 
 function populatePantry() {
@@ -576,13 +591,14 @@ function displayRecipesToCook() {
 };
 
 function displayFavoriteRecipes() {
+  // hideHomePage();
   pantryView.classList.add("hidden");
   toCookView.classList.add("hidden");
   recipeView.classList.add('hidden');
   searchView.classList.add('hidden');
   addNewItemContainer.classList.add('hidden');
   filterContentList.classList.remove('hidden');
-  favoritesView.classList.remove("hidden");
+  favoritesView.classList.remove('hidden');
   populateFavorites();
 };
 
@@ -640,7 +656,4 @@ function displayUserSectionHandler(event) {
   } else if (event.target.innerText.trim() === "Log Out") {
     displayUserPage('logout');
   }
-
-
-
 };
