@@ -104,7 +104,15 @@ function closeNav() {
 }
 
 function displayCategoryPage(category) {
-  console.log(category)
+  console.log(category);
+  // const saladTags = ["salad"];
+  // const breakfastTags = ["morning meal", "brunch", "breakfast"];
+  // const lunchTags = ["lunch", "brunch"];
+  // const dinnerTags = ["dinner"];
+  // const entreeTags = ["main course", "main dish"];
+  // const appetizerTags = ["appetizer", "side dish", "antipasti”, "starter", "snack", "antipasto”, `${hor d'oeuvre}`, “condiment", "dip", "spread", "sauce"];
+  // if(category === "appetizer"){
+  // }
 }
 
 function sideNavHandler() {
@@ -115,11 +123,9 @@ function sideNavHandler() {
   } else if (event.target.innerText.trim() === "Dinner") {
     displayCategoryPage('dinner');
   } else if (event.target.innerText.trim() === "Appetizers") {
-    displayCategoryPage('appetizers');
+    displayCategoryPage('appetizer');
   } else if (event.target.innerText.trim() === "Salads") {
-    displayCategoryPage('salads');
-  } else if (event.target.innerText.trim() === "Sandwiches") {
-    displayCategoryPage('sandwiches');
+    displayCategoryPage('salad');
   } else if (event.target.innerText.trim() === "Entrees") {
     displayCategoryPage('entrees');
   } else if (event.target.innerText.trim() === "Desserts") {
@@ -427,12 +433,12 @@ function populateFavorites() {
     favoritesView.insertAdjacentHTML('afterbegin', `
     <div class="staff-pick-block staff-pick">
       <div class='staff-pick-image-wrapper'>
-        <img class="staff-pick-img recipe-image" src='${favorite.image}' id='${favorite.id}'>
+        <svg class="staff-pick-img recipe-image" src='${favorite.image}' id='${favorite.id}'></svg>
       </div>
       <div class='staff-pick-title-wrapper'>
         <img class='star-icon icon' id=${favorite.id} src=${favorite.src}>
-        <h3 class="staff-pick-title">${favorite.name}</h3>
       </div>
+      <h3 class="staff-pick-title">${favorite.name}</h3>
     </div>
     `)
   })
@@ -452,7 +458,7 @@ function populateRecipesToCook() {
         <img class="staff-pick-img recipe-image" src='${recipeToCook.image}' id='${recipeToCook.id}'>
       </div>
       <div class='staff-pick-title-wrapper'>
-      <img class='star-icon icon' id=${recipeToCook.id} src=${recipeToCook.src}>
+      <svg class='star-icon icon' id=${recipeToCook.id} src=${recipeToCook.src}></svg>
         <h3 class="staff-pick-title">${recipeToCook.name}</h3>
       </div>
     </div>
