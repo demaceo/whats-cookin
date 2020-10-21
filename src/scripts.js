@@ -49,8 +49,13 @@ const recipeLeftColumn = document.querySelector('.recipe-left-column');
 const recipeRightColumn = document.querySelector('.recipe-right-column');
 const searchView = document.querySelector('.search-view');
 
+const recipeIngredients = document.querySelector('.ingredients-h2');
+const recipeAmount = document.querySelector('.amount-h2');
+const recipeCost = document.querySelector('.cost-h2');
+const recipeInstructions = document.querySelector('.recipe-instructions-title');
+
 let currentUser;
-// let currentRecipe;
+let clickedRecipe;
 // -----------------EVENT LISTENERS-----------------:
 window.addEventListener("load", sortUserAccounts);
 navbarTitle.addEventListener('click', displayHomePage);
@@ -58,7 +63,8 @@ userAccounts.addEventListener("click", determineUser);
 // window.addEventListener("click", iconClickHandler);
 profileList.addEventListener("click", displayUserSectionHandler);
 // whatsCookinNavBar.addEventListener('click', displayHomePage);
-recipeImage.addEventListener('click', displayRecipePage);
+// recipeImage.addEventListener('click', displayRecipePage);
+// recipeImage.addEventListener('click', targetClickedRecipe);
 main.addEventListener("click", clickHandler);
 searchInput.addEventListener('click', extendSearchBar);
 searchInput.addEventListener('keypress', searchInputHandler);
@@ -103,7 +109,7 @@ function iconHandler(event) {
     event.target.classList.replace('recipe-bookmark-icon--active', 'recipe-bookmark-icon--inactive')
     addRemoveToCook(event, false);
   }
-
+}
 
   //      if we want cookies clickable for COOKED, use these animations
 
@@ -115,7 +121,7 @@ function iconHandler(event) {
   //   event.target.classList.remove('recipe-solid-cookie-icon--active');
   //   event.target.classList.add('recipe-solid-cookie-icon--inactive');
   // }
-}
+
 
 
 // *---*---**---*---* HOME SECTION functions *---*---**---*----*:
@@ -128,24 +134,18 @@ function loadRandomStaffPicks() {
   recipeData.forEach((recipe, i) => {
     let randomRecipe = recipeData[getRandomIndex(recipeData)];
     if (i < 6) {
-      document.querySelector('.staff-picks').insertAdjacentHTML('afterbegin', `
-
+      document.querySelector('.staff-picks').insertAdjacentHTML('afterbegin',
+      `
       <div class="staff-pick-block staff-pick-${i+1}">
         <div class='staff-pick-image-wrapper'>
-          <img class="staff-pick-img ${i+1}-img recipe-image" src='${randomRecipe.image}' id='${randomRecipe.id} alt="">
+          <img class="staff-pick-img ${i+1}-img recipe-image" src='${randomRecipe.image}' id='${randomRecipe.id}'>
         </div>
-        <h3 class="staff-pick-title ${i+1}-title">${randomRecipe.name}</h3>
-        <div class="staff-pick-icons ${i+1}-icons">
-          <img class="recipe-bookmark-icon--inactive icon">
-          <span class='hidden'>${randomRecipe.id}</span>
-          <img class="recipe-basket-icon--inactive icon">
-          <img class="recipe-dollar-icon icon">
-          <div class="popularity">
-            <img class="recipe-solid-cookie-icon--inactive icon"> 60
-          </div>
+        <div class='staff-pick-title-wrapper'>
+          <h3 class="staff-pick-title ${i+1}-title">${randomRecipe.name}</h3>
         </div>
       </div>
-      `)
+      `
+      )
     }
   })
 }
@@ -295,29 +295,106 @@ function gatherSearchResults(searchInput) {
 };
 
 function populateSearchResults(searchResults) {
-  // searchView.innerHtml = "";
+  searchView.innerHTML = " ";
   searchResults.forEach(searchResult => {
     searchView.insertAdjacentHTML('afterbegin', `
     <section class='search-result-container' id=${searchResult.id}>
-    <img class="searched-recipe-image recipe-image" src=${searchResult.image} id=${searchResult.id}>
+    <img class="searched-recipe-image recipe-image" src=${searchResult.image} id='${searchResult.id}'>
       <div class='search-result'>
       <img class='star-icon icon' src='../assets/star-regular.svg'>
       <h2>${searchResult.name}</h2>
       </div>
     </section>
-    `)
-  })
-}
+    `);
+  });
+};
 
 // *---*---*DISPLAY RECIPE functions*---*----*:
+function populateRecipeIngredients(){
+  recipeAmount.innerHTML = '';
+  clickedRecipe.ingredients.forEach(ingredient => {
+    // recipeAmount.innerHTML += `<p>${ingredient.amount}</p>`;
+    recipeAmount.insertAdjacentHTML('afterbegin', `
+    <p>${ingredient.amount}</p>
+    `)
+  });
+  recipeCost.innerHTML = '';
+  clickedRecipe.ingredients.forEach(ingredient => {
+    // recipeCost.innerHTML += `<p>$${ingredient.estimatedCostInCents / 100}</p>`;
+    recipeCost.insertAdjacentHTML('afterbegin', `
+    <p>$${ingredient.estimatedCostInCents / 100}</p>
+    `)
+  })
+};
+
+function populateRecipeLeftColumn(){
+  recipeLeftColumn.innerHTML = " ";
+  recipeLeftColumn.insertAdjacentHTML('afterbegin', `
+  <img class="recipe-img recipe-image" src=${clickedRecipe.image} id=${clickedRecipe.id} alt="">
+  <section class="recipe-icons">
+    <img class="recipe-bookmark-icon--inactive recipe-icon icon">
+    <img class="recipe-basket-icon--inactive recipe-icon icon">
+    <div class="recipe-popularity">
+      <img class="recipe-solid-cookie-icon--inactive recipe-icon icon">
+      <div class="popularity-score">${Math.round(Math.random() * 100)}</div>
+    </div>
+  </section>
+  `);
+  recipeIngredients.innerHTML = '';
+  clickedRecipe.ingredients.forEach(ingredient => {
+    let ingredientName = translateIngredientNumberToName(ingredient.id)
+    console.log("ingredientNames", ingredientName);
+    // recipeIngredients.innerHTML += `<p>${ingredientName}</p>`;
+    recipeIngredients.insertAdjacentHTML('afterbegin', `
+    <p>${ingredientName}</p>
+    `)
+  });
+  populateRecipeIngredients();
+};
+
+function populateRecipeInstructions(){
+  clickedRecipe.instructions.forEach(instruction => {
+    // recipeInstructions.insertAdjacentHTML('beforeend', `
+    console.log("number", instruction.number);
+    console.log("instruction", instruction.instruction);
+    recipeInstructions.insertAdjacentHTML('afterbegin', `
+    <p class="recipe-instructions recipe-instructions-step"><br>${instruction.number}. ${instruction.instruction}<br></p>
+    `);
+  })
+  recipeInstructions.classList.remove('hidden');
+  console.log("recipeInstructions", recipeInstructions);
+};
+
+function populateRecipeRightColumn(){
+  recipeRightColumn.innerHTML = '';
+  recipeRightColumn.insertAdjacentHTML('afterbegin', `
+  <h2 class="recipe-title">${clickedRecipe.name}</h2>
+  `);
+  populateRecipeInstructions();
+};
+
 function targetClickedRecipe(){
-  if(event.target.closest('.recipe-image')){
-      let closestElement = event.target.closest('.recipe-image');
+  // console.log("clickedRecipe", clickedRecipe);
+  // console.log("EVENTTARGET", event.target);
+  // if(event.target.contains('.recipe-image')){
+      let clickedRecipeImg = event.target.closest('.recipe-image');
+      // console.log("clickedRecipeImg", clickedRecipeImg)
       recipeData.forEach(recipe => {
-        if()
-      })
+      // recipe.id ===clickedRecipeImg.id ? clickedRecipe = recipe : false;
+        if(recipe.id === Number(clickedRecipeImg.id)){
+          // console.log("recipe", recipe);
+          // console.log("clickedRecipeImg", clickedRecipeImg);
+          clickedRecipe = recipe;
+          // console.log("clickedRecipe", clickedRecipe);
+          populateRecipeLeftColumn();
+          populateRecipeRightColumn();
+          // displayRecipePage();
+        }
+    })
+    // populateRecipeLeftColumn();
+    // populateRecipeRightColumn();
   }
-}
+// }
 
 
 
@@ -447,45 +524,54 @@ function displayHomePage() {
   recipeView.classList.add('hidden');
   heroContainer.classList.remove('hidden');
   homeView.classList.remove('hidden');
+  userView.classList.add("hidden");
+  searchView.classList.add('hidden');
   navbarDisplayUserSection()
 };
 
 function displaySearchResults() {
   hideHomePage();
-  heroContainer.classList.add('hidden');
+  // heroContainer.classList.add('hidden');
   favoritesView.classList.add("hidden");
-  pantryView.classList.add("hidden");
-  recipeView.classList.add('hidden');
-  toCookView.classList.add("hidden");
-  filterContentList.classList.remove('hidden');
+  userView.classList.add("hidden");
+  // pantryView.classList.add("hidden");
+  // recipeView.classList.add('hidden');
+  // toCookView.classList.add("hidden");
+  // filterContentList.classList.remove('hidden');
   searchView.classList.remove('hidden');
   navbarDisplayUserSection();
 }
 
 function displayRecipePage() {
-  heroContainer.classList.add('hidden');
-  homeView.classList.add('hidden');
-  favoritesView.classList.add("hidden");
-  pantryView.classList.add("hidden");
+  // heroContainer.classList.add('hidden');
+  // homeView.classList.add('hidden');
+  hideHomePage();
+  // favoritesView.classList.add("hidden");
+  // pantryView.classList.add("hidden");
+  userView.classList.add("hidden");
+  searchView.classList.add('hidden');
   recipeView.classList.remove('hidden');
   navbarDisplayUserSection();
-  // targetClickedRecipe();
+  targetClickedRecipe();
 };
 
 function displayRecipesToCook() {
+  userView.classList.remove('hidden');
+  toCookView.classList.remove("hidden");
+  filterContentList.classList.remove('hidden');
   pantryView.classList.add("hidden");
   favoritesView.classList.add("hidden");
   recipeView.classList.add('hidden');
   addNewItemContainer.classList.add('hidden');
-  toCookView.classList.remove("hidden");
-  filterContentList.classList.remove('hidden');
-
+  searchView.classList.add('hidden');
+  hideHomePage()
 };
 
 function displayFavoriteRecipes() {
   pantryView.classList.add("hidden");
   toCookView.classList.add("hidden");
   recipeView.classList.add('hidden');
+  searchView.classList.add('hidden');
   addNewItemContainer.classList.add('hidden');
   filterContentList.classList.remove('hidden');
   favoritesView.classList.remove("hidden");
@@ -497,6 +583,7 @@ function displayPantry() {
   toCookView.classList.add("hidden");
   recipeView.classList.add('hidden');
   filterContentList.classList.add('hidden');
+  searchView.classList.add('hidden');
   addNewItemContainer.classList.remove('hidden');
   pantryView.classList.remove("hidden");
 };
@@ -578,6 +665,7 @@ function populatePantry() {
 function clickHandler(event) {
   // event.target.classList.forEach(iconHandler(event));
   if (event.target.classList.contains('recipe-image')) {
+  // if (event.target.classList.contains('recipe-image')) {
     displayRecipePage();
   } else if (event.target.classList.contains('icon')) {
     currentUser ? iconHandler(event) : alert('Please sign in to save this recipe for later');
