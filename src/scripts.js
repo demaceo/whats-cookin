@@ -277,6 +277,7 @@ function searchInputHandler(e) {
     let searchEntry = searchInput.value;
     if (searchEntry.length !== 0) {
       displaySearchResults();
+      searchView.innerHTML = "";
       gatherSearchResults(searchEntry);
       gatherMoreSearchResults(searchEntry);
     }
@@ -313,9 +314,10 @@ function gatherMoreSearchResults(searchInput) {
 
 function populateSearchResults(searchResults) {
   // if (searchResults.length === 0) {
-  //   displayNoSearchResults();
-  // } else {
-    searchView.innerHTML = " ";
+  //   searchView.innerHTML = " ";
+  //   searchView.innerHTML = "No Search Results"
+  // }
+    // searchView.innerHTML = "";
     searchResults.forEach(searchResult => {
       searchView.insertAdjacentHTML('afterbegin', `
     <section class='search-result-container' id=${searchResult.id}>
@@ -329,7 +331,6 @@ function populateSearchResults(searchResults) {
     `);
     })
   };
-// };
 
 
 function populateIngredientInformation() {
@@ -351,8 +352,7 @@ function populateIngredientInformation() {
 function populateRecipeInstructions() {
   let instructions = clickedRecipe.getInstructions()
   instructions.forEach(instruction => {
-    document.querySelector('.recipe-instructions-list').insertAdjacentHTML('afterbegin',
-      `
+    document.querySelector('.recipe-instructions-list').insertAdjacentHTML('afterbegin', `
     <p class="recipe-instructions recipe-instructions-step">${instruction}<br>
     `)
   });
