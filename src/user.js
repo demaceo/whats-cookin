@@ -92,7 +92,7 @@ class User {
 
   saveToStorage() {
     // when favoriting/unfavoriting, add/remove to cook later, add/remove from pantry
-    localStorage.setItem(`${this.id}`, JSON.stringify("currentUser"));
+    localStorage.setItem(`${this.id}`, JSON.stringify(`${currentUser}`));
   }
 
   pullFromStorage() {
