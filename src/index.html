@@ -10,10 +10,10 @@
 <body>
   <h1>What's Cookin'</h1>
   <div class='hero-container fade-in'>
-    <section id='hero-dish'>
+    <!-- <section id='hero-dish'>
       <h6>IT'S-A-PIZZA</h6>
       <h1>Margheritta Pizza</h1>
-    </section>
+    </section> -->
     <img class='hero' src='../assets/board.jpg'>
   </div>
 
@@ -119,73 +119,38 @@
 
     <!-- VIEW RECIPE PAGE -->
     <section class="recipe-view hidden fade-in">
-
       <section class="recipe-left-column">
-        <!-- <img class="recipe-img recipe-image" src="../assets/salmon.jpg" alt=""> -->
-        <section class="recipe-icons">
-          <img class="recipe-bookmark-icon--inactive recipe-icon icon">
-          <img class="recipe-basket-icon--inactive recipe-icon icon">
-          <!-- <div class="recipe-cost">
-            <img class="recipe-dollar-icon recipe-icon icon">
-            <img class="recipe-dollar-icon recipe-icon icon">
-            <img class="recipe-dollar-icon recipe-icon icon">
-          </div> -->
-          <!-- <div class="recipe-popularity">
-            <img class="recipe-solid-cookie-icon--inactive recipe-icon icon">
-            <div class="popularity-score">56</div>
-          </div> -->
-        </section>
+        <img class="recipe-img recipe-image" src="../assets/salmon.jpg" alt="">
+        <div class="recipe-view-icons">
+          <svg id='recipe-bookmark' class="recipe-bookmark-icon--inactive sidebar-icon icon"></svg>
+          <span id='recipe-id' class='hidden'></span>
+          <svg id='recipe-basket'class="recipe-basket-icon--inactive sidebar-icon icon"></svg>
+          <svg id='recipe-cookie'class="recipe-solid-cookie-icon--inactive sidebar-icon icon"><p id='recipe-count'></p></svg>
+        </div>
         <section class="recipe-ingredients">
           <div class="ingredient ingredient-name">
-            <h2 class="ingredients-h2">Ingredients</h2>
-            <!-- <p>Ingredient 1</p> -->
-            <!-- <p>Ingredient 2</p>
-            <p>Ingredient 3</p> -->
+            <h2 class="recipe-ingredients-table-title">Ingredients</h2>
+            <h2 class="ingredients-h2"></h2>
           </div>
           <div class="ingredient ingredient-amount">
-            <h2 class='amount-h2'>Amount</h2>
-            <!-- <p>2</p>
-            <p>4</p>
-            <p>6</p> -->
+            <h2 class='recipe-ingredients-table-title'>Amount</h2>
+            <h2 class='amount-h2'></h2>
           </div>
           <div class="ingredient ingredient-cost">
-            <h2 class='cost-h2'>Cost</h2>
-            <!-- <p>$3.50</p>
-            <p>$3.50</p>
-            <p>$3.50</p> -->
+            <h2 class='recipe-ingredients-table-title'>Cost</h2>
+            <h2 class='cost-h2'></h2>
           </div>
         </section>
-        <!-- <div class="recipe-ingredients">
-          <title>Ingredients:</title>
-          <p>
-            <br>• Ingredient 1
-            <br>• Ingredient 2
-            <br>• Ingredient 3
-            <br>• Ingredient 4
-            <br>• Ingredient 5
-            <br>• Ingredient 6
-          </p>
-        </div> -->
       </section>
       <section class="recipe-right-column">
-        <h2 class="recipe-title">Recipe Title</h2>
-        <p class="recipe-details">Short blurb of what it is. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. </p>
+        <h2 class="recipe-title"></h2>
+        <p class="recipe-details"></p>
         <p class="recipe-instructions recipe-instructions-title">Instructions:<br>
-          <!-- <div class="recipe-instructions-list"> -->
-        <!-- <p class="recipe-instructions recipe-instructions-step"><br>1. take the things and cook them to their own liking. más o menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido aquí". Estos textos
-          hacen parecerlo un español que se puede leer. Muchos
-          paquetes de autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqued<br></p>
-        <p class="recipe-instructions recipe-instructions-step"><br>2. maybe let the thing rest. más o menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido aquí". Estos textos hacen parecerlo un español
-          que se puede leer. Muchos paquetes de autoedición y
-          editores de páginas web<br></p>
-        <p class="recipe-instructions recipe-instructions-step"><br>3. eat the thing on your favorite plate.más o menos normal de las letras, al contrario de usar textos como por ejemplo "Contenido aquí, contenido aquí". Estos textos hacen parecerlo
-          un español que se puede leer. Muchos paquetes de
-          autoedición y editores de páginas web usan el Lorem Ipsum como su texto por defecto, y al hacer una búsqued</p> -->
-        <!-- </div> -->
-        </p>
+          <div class="recipe-instructions-list">
+          </div>
       </section>
-
     </section>
+
 
     <!-- USER VIEW PAGE -->
     <section class="user-view fade-in">
