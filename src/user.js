@@ -32,8 +32,9 @@ class User {
 
   addFavoriteRecipe(recipe) {
     if (!this.favoriteRecipes.includes(recipe)) {
-      recipe.favoriteRecipe();
       this.favoriteRecipes.unshift(recipe)
+      let toCookFavoriteMatch = this.recipesToCook.find(recipeToCook => recipeToCook.name === recipe.name);
+      this.recipesToCook.splice(this.recipesToCook.indexOf(toCookFavoriteMatch), 1);
     }
   };
 
@@ -89,27 +90,28 @@ class User {
     });
     return searchResult;
   }
+}
 
-  saveToStorage() {
-    // when favoriting/unfavoriting, add/remove to cook later, add/remove from pantry
-    localStorage.setItem(`${this.id}`, JSON.stringify(`${currentUser}`));
-  }
+  // saveToStorage() {
+  //   // when favoriting/unfavoriting, add/remove to cook later, add/remove from pantry
+  //   localStorage.setItem(`${this.id}`, JSON.stringify(`${currentUser}`));
+  // }
 
-  pullFromStorage() {
+  // pullFromStorage() {
     // on login
     // check to see if this.id matches any parsed objects in storage array
     // if yes, then currentUser = that local storage object
     // if no, then currentUser = userSelection
-  }
+  // }
 
-  deleteFromStorage() {
-    let localStorageUsers = JSON.parse(localStorage.getItem(`${this.id}`));
-    localStorageUsers.forEach(user => {
-      if (user.id === this.id) {
-        localStorageUsers.splice(i, 1)
-      }
-    });
-    localStorage.setItem(`${this.id}`, JSON.stringify(localStorageUsers))
-  }
-}
+//   deleteFromStorage() {
+//     let localStorageUsers = JSON.parse(localStorage.getItem(`${this.id}`));
+//     localStorageUsers.forEach(user => {
+//       if (user.id === this.id) {
+//         localStorageUsers.splice(i, 1)
+//       }
+//     });
+//     localStorage.setItem(`${this.id}`, JSON.stringify(localStorageUsers))
+//   }
+// }
 // module.exports = User;
