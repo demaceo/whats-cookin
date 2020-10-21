@@ -46,8 +46,6 @@ const addItemButton = document.querySelector('.add-item-button');
 const filterContentList = document.querySelector('.user-filter-content');
 const starIcon = document.querySelector('.star-icon');
 
-const recipeLeftColumn = document.querySelector('.recipe-left-column');
-const recipeRightColumn = document.querySelector('.recipe-right-column');
 const searchView = document.querySelector('.search-view');
 
 const recipeIngredients = document.querySelector('.ingredients-h2');
@@ -70,8 +68,10 @@ main.addEventListener("click", clickHandler);
 searchInput.addEventListener('click', extendSearchBar);
 searchInput.addEventListener('keypress', searchInputHandler);
 
+// starIcon.addEventListener('click', toggleFavoriteRecipe);
+
 // pantryIcon.addEventListener('click', updateIngredientAmount);
-addItemButton.addEventListener('click', addItemToPantry);
+// addItemButton.addEventListener('click', addItemToPantry);
 filterContentList.addEventListener('click', filterContent);
 // -----------------FUNCTIONS-----------------:
 
@@ -81,7 +81,13 @@ function getRandomIndex(array) {
 
 function translateIngredientNumberToName(ingredientNumber) {
   const ingredientName = ingredientsData.find(ingredient => ingredient.id === ingredientNumber);
-  return ingredientName.name;
+  if (ingredientName === undefined) {
+    console.log("ingredientName".ingredientName);
+    console.log("ingredient", ingredientNumber);
+    return ingredientNumber;
+  } else {
+    return ingredientName.name;
+  }
 }
 
 function openNav() {
@@ -162,9 +168,8 @@ function loadRandomOthersCookin() {
       let randomIndex = getRandomIndex(recipeData)
       randomRecipe = recipeData[randomIndex]
     })
-    if (i < 6) {
-      document.querySelector('.others-sidebar-card-container').insertAdjacentHTML('afterbegin',
-        `
+    if (i < 8) {
+      document.querySelector('.others-sidebar-card-container').insertAdjacentHTML('afterbegin', `
       <article class='others-sidebar-card'>
         <div class="others-sidebar-card-info-block">
           <img class="users-icon sidebar-icon" src='../assets/user-solid.svg'>
@@ -174,18 +179,16 @@ function loadRandomOthersCookin() {
             <span class='hidden'>${randomRecipe.id}</span>
             <svg class="recipe-basket-icon--inactive sidebar-icon icon"></svg>
             <svg class="recipe-solid-cookie-icon--inactive sidebar-icon icon"><p>${Math.round(Math.random()*500)}</p></svg>
-
           </div>
         </div>
         <div class="others-sidebar-image-block">
           <div class="others-sidebar-card-image-wrapper">
             <img class='others-sidebar-card-image recipe-image' src="${randomRecipe.image}" id='${randomRecipe.id}' alt="">
           </div>
-          <p>${randomRecipe.name}</p>
+          <p class='others-title'>${randomRecipe.name}</p>
         </div>
       </article>
-      `
-      )
+      `)
     };
   });
 };
@@ -210,10 +213,12 @@ function sortUserAccounts() {
 function determineUser() {
   let userObject = usersData.find(user => user.name === event.target.innerText.trim() ? user : null);
   userObject !== null ? displayUserIcon(userObject) : null;
-  currentUser = new User(userObject)
-  // currentUser.pantry.contents.forEach(item => {
-  //   let ingredientName = translateIngredientNumberToName(item.ingredient)
-  //   currentUser.pantryByName.push(ingredientName);
+  currentUser = new User(userObject);
+
+  let retrievedUserData = JSON.parse(localStorage.getItem(`${currentUser.id}`));
+  if (retrievedUserData) {
+    currentUser = new User(retrievedUserData)
+  }
 };
 
 // *********      CHANGE USER NAME NAVBAR    **********
@@ -232,7 +237,8 @@ function logOutUser() {
   userView.classList.add("hidden");
   homeView.classList.remove('hidden');
   displayUserName();
-  navbarDisplayUserSection()
+  navbarDisplayUserSection();
+  loadRandomOthersCookin();
 }
 
 // *********     SWITCH CHOOSE USER TO USER ICON    **********
@@ -266,14 +272,12 @@ function extendSearchBar() {
 };
 
 function searchInputHandler(e) {
-  console.log(searchInput);
   if (searchInput.value !== undefined && e.key === 'Enter') {
     let searchEntry = searchInput.value;
     if (searchEntry.length !== 0) {
       displaySearchResults();
       gatherSearchResults(searchEntry);
-    } else {
-      return
+      gatherMoreSearchResults(searchEntry);
     }
   }
 };
@@ -286,8 +290,8 @@ function gatherSearchResults(searchInput) {
       return searchResults.push(recipe)
     }
   });
-  populateSearchResults(searchResults)
-};
+  populateSearchResults(searchResults);
+}
 
 function populateSearchResults(searchResults) {
   searchView.innerHTML = " ";
@@ -296,7 +300,8 @@ function populateSearchResults(searchResults) {
     <section class='search-result-container' id=${searchResult.id}>
     <img class="searched-recipe-image recipe-image" src=${searchResult.image} id='${searchResult.id}'>
       <div class='search-result'>
-      <img class='star-icon icon' src='../assets/star-regular.svg'>
+      <svg class="search-result-icon recipe-bookmark-icon--inactive sidebar-icon icon"></svg>
+      <span class='hidden'>${searchResult.id}</span>
       <h2>${searchResult.name}</h2>
       </div>
     </section>
@@ -304,87 +309,97 @@ function populateSearchResults(searchResults) {
   });
 };
 
-// *---*---*DISPLAY RECIPE functions*---*----*:
-function populateRecipeIngredients() {
-  recipeAmount.innerHTML = '';
-  clickedRecipe.ingredients.forEach(ingredient => {
-    recipeAmount.insertAdjacentHTML('afterbegin', `
-    <p>${ingredient.amount}</p>
-    `)
-  });
-  recipeCost.innerHTML = '';
-  clickedRecipe.ingredients.forEach(ingredient => {
-    recipeCost.insertAdjacentHTML('afterbegin', `
-    <p>$${ingredient.estimatedCostInCents / 100}</p>
-    `)
+function gatherMoreSearchResults(searchInput) {
+  let searchResults = [];
+  let lowerCaseInput = searchInput.toLowerCase();
+  let matchedIngredient;
+  recipeData.forEach(recipe => {
+    recipe.ingredients.filter(ingredient => {
+      let ingredientName = translateIngredientNumberToName(ingredient.id)
+      if (ingredientName.includes(lowerCaseInput)) {
+        return searchResults.push(recipe)
+      }
+    });
   })
-};
+  populateSearchResults(searchResults);
+}
 
-function populateRecipeLeftColumn() {
-  recipeLeftColumn.innerHTML = " ";
-  recipeLeftColumn.insertAdjacentHTML('afterbegin', `
-  <img class="recipe-img recipe-image" src=${clickedRecipe.image} id=${clickedRecipe.id} alt="">
-  <section class="recipe-icons">
-    <img class="recipe-bookmark-icon--inactive recipe-icon icon">
-    <img class="recipe-basket-icon--inactive recipe-icon icon">
-    <div class="recipe-popularity">
-      <img class="recipe-solid-cookie-icon--inactive recipe-icon icon">
-      <div class="popularity-score">${Math.round(Math.random() * 100)}</div>
-    </div>
-  </section>
-  `);
-  recipeIngredients.innerHTML = '';
-  clickedRecipe.ingredients.forEach(ingredient => {
-    let ingredientName = translateIngredientNumberToName(ingredient.id)
-    recipeIngredients.insertAdjacentHTML('afterbegin', `
-    <p>${ingredientName}</p>
+function populateIngredientInformation() {
+  clickedRecipe.ingredients.forEach(recipeIngredient => {
+    let matchedIngredient = ingredientsData.find(ingredient => ingredient.id === recipeIngredient.id);
+    let ingredientTotalCost = (recipeIngredient.quantity.amount * matchedIngredient.estimatedCostInCents) / 100;
+    document.querySelector('.ingredients-h2').insertAdjacentHTML('beforeend',
+      `
+    <p>${matchedIngredient.name}</p>
+    `)
+    document.querySelector('.amount-h2').insertAdjacentHTML('beforeend',
+      `<p>${recipeIngredient.quantity.amount.toFixed(2)} ${recipeIngredient.quantity.unit}</p>
+    `)
+    document.querySelector('.cost-h2').insertAdjacentHTML('beforeend',
+      `
+    <p>$ ${ingredientTotalCost.toFixed(2)}</p>
     `)
   });
-  populateRecipeIngredients();
 };
 
 function populateRecipeInstructions() {
-  clickedRecipe.instructions.forEach(instruction => {
-    recipeInstructions.insertAdjacentHTML('afterbegin', `
-    <p class="recipe-instructions recipe-instructions-step"><br>${instruction.number}. ${instruction.instruction}<br></p>
-    `);
-  })
-  recipeInstructions.classList.remove('hidden');
+  let instructions = clickedRecipe.getInstructions()
+  instructions.forEach(instruction => {
+    document.querySelector('.recipe-instructions-list').insertAdjacentHTML('afterbegin',
+      `
+    <p class="recipe-instructions recipe-instructions-step">${instruction}<br>
+    `)
+  });
 };
 
-function populateRecipeRightColumn() {
-  recipeRightColumn.innerHTML = '';
-  recipeRightColumn.insertAdjacentHTML('afterbegin', `
-  <h2 class="recipe-title">${clickedRecipe.name}</h2>
-  `);
+// *---*---*DISPLAY RECIPE functions*---*----*:
+function populateRecipeView() {
+  clearRecipeViewData();
+  document.querySelector('.recipe-img').src = `${clickedRecipe.image}`;
+  document.querySelector('#recipe-count').innerText = `${Math.round(Math.random()*500)}`
+  document.querySelector('#recipe-id').innerText = `${clickedRecipe.id}`
+  populateIngredientInformation();
+  document.querySelector('.recipe-title').innerText = `${clickedRecipe.name}`
+  document.querySelector('.recipe-details').innerText = `One of our most popular recipes, ${clickedRecipe.name} is a surprisingly versatile dish that ${document.querySelector('#recipe-count').innerText} of our users have been cookin'`
   populateRecipeInstructions();
-};
+}
 
 function targetClickedRecipe() {
   let clickedRecipeImg = event.target.closest('.recipe-image');
   recipeData.forEach(recipe => {
     if (recipe.id === Number(clickedRecipeImg.id)) {
       clickedRecipe = new Recipe(recipe);
-      populateRecipeLeftColumn();
-      populateRecipeRightColumn();
+      populateRecipeView();
     }
   })
 }
-// }
+
+function clearRecipeViewData() {
+  document.querySelector('.recipe-instructions-list').innerHTML = '';
+  document.querySelector('.ingredients-h2').innerHTML = '';
+  document.querySelector('.amount-h2').innerHTML = '';
+  document.querySelector('.cost-h2').innerHTML = '';
+}
 
 // *============*============*FAVORITES SECTION FUNCTIONS*============*============*:
+// function toggleFavoriteRecipe(event){
+//   currentUser.addFavoriteRecipe(event.target);
+//   currentUser.saveToStorage()
+//   }
+
 function populateFavorites() {
   favoritesView.innerHTML = "";
   currentUser.favoriteRecipes.forEach(favorite => {
     favoritesView.insertAdjacentHTML('afterbegin', `
-    <section class='favorite-recipe-container' id=${favoriteRecipe.id}>
-      <img class='star-icon icon' src='star-solid.svg'>
-      <div class='favorite-recipe'>
-        <img class="favorite-recipe-image" src=${favorite.image} id='${favorite.id}' >
-          <h2>${favoriteRecipe.name}</h2>
-        </div>
+    <div class="staff-pick-block staff-pick">
+      <div class='staff-pick-image-wrapper'>
+        <img class="staff-pick-img recipe-image" src='${favorite.image}' id='${favorite.id}'>
       </div>
-    </section>
+      <div class='staff-pick-title-wrapper'>
+        <img class='star-icon icon' id=${favorite.id} src=${favorite.src}>
+        <h3 class="staff-pick-title">${favorite.name}</h3>
+      </div>
+    </div>
     `)
   })
 };
@@ -394,8 +409,83 @@ function filterContent() {
 }
 
 // *============*============*RECIPES TO COOK SECTION FUNCTIONS*============*============*:
+function populateRecipesToCook() {
+  toCookView.innerHTML = '';
+  currentUser.recipesToCook.forEach(recipeToCook => {
+    toCookView.insertAdjacentHTML('afterbegin', `
+    <div class="staff-pick-block staff-pick">
+      <div class='staff-pick-image-wrapper'>
+        <img class="staff-pick-img recipe-image" src='${recipeToCook.image}' id='${recipeToCook.id}'>
+      </div>
+      <div class='staff-pick-title-wrapper'>
+      <img class='star-icon icon' id=${recipeToCook.id} src=${recipeToCook.src}>
+        <h3 class="staff-pick-title">${recipeToCook.name}</h3>
+      </div>
+    </div>
+    `)
+  })
+}
 
+// ===================== PANTRY Section functions =====================:
 
+function updateIngredientAmount() {
+  let pantryItem = event.target();
+  if (event.target.className === 'plus') {
+    currentUser.pantry.contents.amount -= 1
+  } else if (event.target.className === 'minus') {
+    currentUser.pantry.contents.amount += 1
+  } else if (event.target.className === 'delete') {
+    currentUser.pantry.contents
+  }
+  populatePantry();
+}
+
+function clearInputFields() {
+  newItemName.value = "";
+  newItemAmount.value = "0";
+  newItemCategory.selected = "other"
+};
+
+function addItemToPantry() {
+  event.preventDefault();
+  const newItem = {
+    name: `${newItemName.value}`,
+    // ingredient: `${Date.now()}`,
+    ingredient: `${Math.round(Math.random() * 1000)}`,
+    amount: `${newItemAmount.value}`
+  };
+  // console.log("newitem", newItem);
+  currentUser.addItemToPantry(newItem.name, newItem.amount)
+  populatePantry();
+  clearInputFields();
+};
+
+function populatePantry() {
+  pantryView.innerHTML = "";
+  console.log(currentUser.pantry.contents);
+  currentUser.pantry.contents.forEach(item => {
+    let ingredientName = translateIngredientNumberToName(item.ingredient);
+    if (typeof ingredientName === 'number') {
+      console.log(newItem.name)
+      ingredientName = item.name;
+    }
+    pantryView.insertAdjacentHTML('afterbegin', `
+  <section class='pantry-item-block' id="${item.ingredient}">
+    <div class="delete-item-container">
+      <img class="delete pantry-icon" src="../assets/times-solid.svg">
+    </div>
+    <div class="pantry-item">
+      <p>${ingredientName}</p>
+      </div>
+      <div class="item-quantity">
+        <img class="minus pantry-icon" src="../assets/minus.svg">
+        <input class="item-amount-input" type="text" placeholder="${item.amount}">
+        <img class="plus pantry-icon" src="../assets/plus.svg">
+      </div>
+  </section>
+    `)
+  })
+};
 
 
 
@@ -418,6 +508,7 @@ function displaySearchResults() {
   hideHomePage();
   favoritesView.classList.add("hidden");
   userView.classList.add("hidden");
+  recipeView.classList.add('hidden');
   searchView.classList.remove('hidden');
   navbarDisplayUserSection();
 }
@@ -432,6 +523,7 @@ function displayRecipePage() {
 };
 
 function displayRecipesToCook() {
+  hideHomePage();
   userView.classList.remove('hidden');
   toCookView.classList.remove("hidden");
   filterContentList.classList.remove('hidden');
@@ -440,7 +532,7 @@ function displayRecipesToCook() {
   recipeView.classList.add('hidden');
   addNewItemContainer.classList.add('hidden');
   searchView.classList.add('hidden');
-  hideHomePage()
+  populateRecipesToCook();
 };
 
 function displayFavoriteRecipes() {
@@ -486,57 +578,6 @@ function displayUserPage(section) {
     currentUser = null;
   }
 }
-
-// *---*---*PANTRY Section functions*---*----*:
-
-function updateIngredientAmount() {
-  if (event.target.className === 'plus') {
-    currentUser.pantry.contents.amount -= 1
-  } else if (event.target.className === 'minus') {
-    currentUser.pantry.contents.amount += 1
-  }
-  displayPantry()
-}
-
-function clearInputFields() {
-  newItemName.value = "";
-  newItemAmount.value = "0";
-  newItemCategory.selected = "other"
-};
-
-function addItemToPantry(event) {
-  event.preventDefault();
-  const newItem = {
-    ingredientName: `${newItemName.value}`,
-    ingredient: `${Math.round(Math.random() * 1000)}`,
-    amount: `${newItemAmount.value}`
-  };
-  currentUser.pantry.contents.unshift(newItem);
-  clearInputFields();
-};
-
-function populatePantry() {
-  pantryView.innerHTML = "";
-  currentUser.pantry.contents.forEach(item => {
-    let ingredientName = translateIngredientNumberToName(item.ingredient);
-    pantryView.insertAdjacentHTML('afterbegin', `
-  <section class='pantry-item-block' id=${item.ingredient}>
-    <div class="delete-item-container">
-      <img class="delete pantry-icon" src="../assets/times-solid.svg">
-    </div>
-    <div class="pantry-item">
-      <p>${ingredientName}</p>
-      </div>
-      <div class="item-quantity">
-        <img class="minus pantry-icon" src="../assets/minus.svg">
-        <input class="item-amount-input" type="text" placeholder="${item.amount}">
-        <img class="plus pantry-icon" src="../assets/plus.svg">
-      </div>
-  </section>
-    `)
-  })
-};
-
 // *---*---*EVENT HANDLER functions*---*----*:
 function clickHandler(event) {
   if (event.target.classList.contains('recipe-image')) {
