@@ -412,7 +412,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  height: 23vh;
+  /* height: 23vh; */
 }
 
 #others-score{
@@ -468,7 +468,7 @@ body {
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .staff-pick-image-wrapper {
@@ -483,6 +483,10 @@ body {
 
 .staff-pick-img {
   height: 21.5vw;
+}
+
+.staff-pick-img:hover {
+  box-shadow: 5px 9px 20px 4px black;
 }
 
 .staff-pick-title-wrapper {
@@ -741,11 +745,10 @@ body {
 .recipe-instructions {
   font-size: 1.5em;
   line-height: 1.5em;
-  padding: 0 1.5vw;
   font-weight: lighter;
   text-align: justify;
   transition: background-color 0.2s ease-in, color ease-in .2s;
-  padding-bottom: 1.5em;
+  padding: 1em 1.5em;
   border-radius: 8px;
   margin: 0;
   margin-bottom: 1em;
@@ -851,7 +854,7 @@ body {
 }
 
 .user-view-section>* {
-  flex: 1 1 80px;
+  /* flex: 1 1 80px; */
 }
 
 .user-recipe-image {
@@ -978,6 +981,7 @@ body {
   background-image: url(../assets/star-empty.svg);
   background-repeat: no-repeat;
   transition: all .2s ease-in-out;
+  cursor: pointer;
 }
 
 .star-icon:hover {
