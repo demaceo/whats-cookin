@@ -6,11 +6,18 @@ class Recipe {
     this.name = recipe.name;
     this.id = recipe.id;
     this.image = recipe.image;
+    // this.star = star || false;
+    // this.src =  src || "../assets/star-regular.svg";
     this.ingredients = recipe.ingredients;
     this.instructions = recipe.instructions;
     this.tags = recipe.tags;
     this.timesCompleted = Math.round(Math.random() * 100)
   };
+
+  // favoriteRecipe() {
+  //   this.star = !this.star;
+  //   this.star ? this.src = "../assets/star-solid.svg" : this.src = "../assets/star-regular.svg"
+  // }
 
   calculateCost() {
     let total = 0;
@@ -27,7 +34,7 @@ class Recipe {
   getInstructions() {
     let instructionList = [];
     this.instructions.forEach(instruction => {
-      instructionList.push(`Step ${instruction.number}: ${instruction.instruction}`)
+      instructionList.unshift(`Step ${instruction.number}: ${instruction.instruction}`)
     });
     return instructionList;
   }
