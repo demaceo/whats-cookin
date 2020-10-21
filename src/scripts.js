@@ -53,6 +53,9 @@ const recipeAmount = document.querySelector('.amount-h2');
 const recipeCost = document.querySelector('.cost-h2');
 const recipeInstructions = document.querySelector('.recipe-instructions-title');
 
+const browseCategories = document.querySelector('.browse-categories');
+const categoryOption = document.querySelector('.category-option');
+
 let currentUser;
 let clickedRecipe;
 // -----------------EVENT LISTENERS-----------------:
@@ -90,12 +93,17 @@ function translateIngredientNumberToName(ingredientNumber) {
   }
 }
 
+
+// *---*---**---*---* SIDE NAV MENU FUNCTIONS *---*---**---*----*:
 function openNav() {
   document.getElementById("sideNav").style.width = "300px";
 }
 
 function closeNav() {
   document.getElementById("sideNav").style.width = "0";
+}
+
+function sideNavHandler(){
 }
 
 // *---*---**---*---* ICON BEHAVIOR *---*---**---*----*:
@@ -127,7 +135,6 @@ function iconHandler(event) {
 //   event.target.classList.remove('recipe-solid-cookie-icon--active');
 //   event.target.classList.add('recipe-solid-cookie-icon--inactive');
 // }
-
 
 
 // *---*---**---*---* HOME SECTION functions *---*---**---*----*:
