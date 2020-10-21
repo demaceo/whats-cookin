@@ -557,6 +557,7 @@ function displayPantry() {
 };
 
 function hideHomePage() {
+  searchInput.value = "";
   heroContainer.classList.add('hidden');
   homeView.classList.add('hidden');
   userView.classList.remove('hidden');
