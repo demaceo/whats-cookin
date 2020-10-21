@@ -70,7 +70,7 @@ profileList.addEventListener("click", displayUserSectionHandler);
 main.addEventListener("click", clickHandler);
 searchInput.addEventListener('click', extendSearchBar);
 searchInput.addEventListener('keypress', searchInputHandler);
-
+browseCategories.addEventListener('click', sideNavHandler);
 // starIcon.addEventListener('click', toggleFavoriteRecipe);
 
 // pantryIcon.addEventListener('click', updateIngredientAmount);
@@ -103,7 +103,28 @@ function closeNav() {
   document.getElementById("sideNav").style.width = "0";
 }
 
-function sideNavHandler(){
+function displayCategoryPage(category) {
+  console.log(category)
+}
+
+function sideNavHandler() {
+  if (event.target.innerText.trim() === "Breakfast") {
+    displayCategoryPage('breakfast');
+  } else if (event.target.innerText.trim() === "Lunch") {
+    displayCategoryPage('lunch');
+  } else if (event.target.innerText.trim() === "Dinner") {
+    displayCategoryPage('dinner');
+  } else if (event.target.innerText.trim() === "Appetizers") {
+    displayCategoryPage('appetizers');
+  } else if (event.target.innerText.trim() === "Salads") {
+    displayCategoryPage('salads');
+  } else if (event.target.innerText.trim() === "Sandwiches") {
+    displayCategoryPage('sandwiches');
+  } else if (event.target.innerText.trim() === "Entrees") {
+    displayCategoryPage('entrees');
+  } else if (event.target.innerText.trim() === "Desserts") {
+    displayCategoryPage('desserts');
+  }
 }
 
 // *---*---**---*---* ICON BEHAVIOR *---*---**---*----*:
@@ -324,9 +345,9 @@ function populateSearchResults(searchResults) {
   //   searchView.innerHTML = " ";
   //   searchView.innerHTML = "No Search Results"
   // }
-    // searchView.innerHTML = "";
-    searchResults.forEach(searchResult => {
-      searchView.insertAdjacentHTML('afterbegin', `
+  // searchView.innerHTML = "";
+  searchResults.forEach(searchResult => {
+    searchView.insertAdjacentHTML('afterbegin', `
     <section class='search-result-container' id=${searchResult.id}>
     <img class="searched-recipe-image recipe-image" src=${searchResult.image} id='${searchResult.id}'>
       <div class='search-result'>
@@ -336,8 +357,8 @@ function populateSearchResults(searchResults) {
       </div>
     </section>
     `);
-    })
-  };
+  })
+};
 
 
 function populateIngredientInformation() {
