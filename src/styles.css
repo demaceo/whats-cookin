@@ -340,7 +340,7 @@ body {
 }
 
 .featured-recipe-description {
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-style: italic;
   font-weight: 100;
   line-height: 2em;
@@ -492,7 +492,6 @@ body {
 .staff-pick-title-wrapper {
   max-width: fit-content;
   height: -webkit-fill-available;
-  display: flex;
 }
 
 .staff-pick-title {
@@ -1013,7 +1012,6 @@ body {
 }
 
 .search-result-icon {
-  /* position: absolute; */
   margin: 1em;
   background-size: 2em;
   height: 4em;
