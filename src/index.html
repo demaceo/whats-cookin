@@ -10,10 +10,6 @@
 <body>
   <div class='hero-container fade-in'>
     <h1>What's Cookin'</h1>
-    <!-- <section id='hero-dish'>
-      <h6>IT'S-A-PIZZA</h6>
-      <h1>Margheritta Pizza</h1>
-    </section> -->
     <img class='hero' src='../assets/board.jpg'>
   </div>
 
@@ -28,9 +24,7 @@
           <a class="category-option" href="#">Dinner</a>
           <a class="category-option" href="#">Appetizers</a>
           <a class="category-option" href="#">Salads</a>
-          <!-- <a class="category-option" href="#">Sandwiches</a> -->
           <a class="category-option" href="#">Entrees</a>
-          <a class="category-option" href="#">Desserts</a>
         </div>
         <div class="social-icons">
           <img class="social-icon" src="../assets/instagram.svg" alt="">
@@ -53,12 +47,7 @@
     </div>
     <div>
       <div class="nav-search-bar">
-        <!-- <div class="search-bar"> -->
           <input class="search-input" type="text" placeholder="Search Recipes">
-          <!-- <div>
-            <input type="checkbox" name="search-by-ingredient" value="search-by-ingredient"> Search Recipes by Ingredient
-          </div> -->
-        <!-- </div> -->
       </div>
       <div class="dropdown accounts-icon">
         <img id='header-profile-icon' class='accounts-icon icon' src='../assets/users-solid.svg'>
@@ -85,22 +74,18 @@
   <main>
     <section class="home-view fade-in">
       <section class="home-main-content">
-        <!-- <div class="search-bar">
-          <input class="search-input" type="text" placeholder="Search Recipes">
-          <div>
-            <input type="checkbox" name="search-by-ingredient" value="search-by-ingredient"> Search Recipes by Ingredient
-          </div>
-        </div> -->
         <section class="featured-recipe">
           <div class='featured-recipe-image-wrapper'>
-            <img class="featured-recipe-img recipe-image" src="../assets/salmon.jpg" alt="">
+            <img class="featured-recipe-img recipe-image" src="../assets/salmon.jpg" alt="" id='111111'>
           </div>
           <div class="featured-recipe-info">
             <div class="featured-recipe-title">
               Salmon + Pineapple + Forks
             </div>
             <p class="featured-recipe-description">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, , when an unknown printer took a galley.
+              Looking for different ideas when it comes to the holidays?
+              Fish can make a wonderful main dish even when the temperature drops! Learn how to make
+              Baked Pineapple Salmon and wow your guests at the next dinner party!
             </p>
           </div>
         </section>
@@ -108,7 +93,6 @@
         <section class="staff-picks">
         </section>
       </section>
-
 
       <section class="others-sidebar">
         <h2 id='others-sidebar-title'>What Others Are Cookin'</h2>
@@ -122,10 +106,10 @@
       <section class="recipe-left-column">
         <img class="recipe-img" src="../assets/salmon.jpg" alt="">
         <div class="recipe-view-icons">
-          <svg id='recipe-bookmark' class="recipe-bookmark-icon--inactive sidebar-icon icon"></svg>
+          <svg id='recipe-bookmark' class="recipe-view-bookmark-icon recipe-bookmark-icon--inactive sidebar-icon icon"></svg>
           <span id='recipe-id' class='hidden'></span>
-          <svg id='recipe-basket'class="recipe-basket-icon--inactive sidebar-icon icon"></svg>
-          <svg id='recipe-cookie'class="recipe-solid-cookie-icon--inactive sidebar-icon icon"><p id='recipe-count'></p></svg>
+          <svg id='recipe-basket'class="sidebar-icon icon"></svg>
+          <svg id='recipe-cookie'class="recipe-solid-cookie-icon--active sidebar-icon icon"><p id='recipe-count'></p></svg>
         </div>
         <section class="recipe-ingredients">
           <div class="ingredient ingredient-name">
@@ -139,6 +123,10 @@
           <div class="ingredient ingredient-cost">
             <h2 class='recipe-ingredients-table-title'>Cost</h2>
             <h2 class='cost-h2'></h2>
+          </div>
+          <div class="ingredient ingredient-needed">
+            <h2 class='recipe-ingredients-table-title'>Missing</h2>
+            <h2 class='needed-h2'></h2>
           </div>
         </section>
       </section>
@@ -176,7 +164,7 @@
       <section class="main-user-body hidden">
 
         <!-- SUGGESTIONS Section -->
-        <section class="suggestions-container">
+        <!-- <section class="suggestions-container hidden">
           <div class="suggestions-main-title">
             <h2>Suggestions</h2>
             <p>Based On Your:</p>
@@ -214,44 +202,21 @@
             </div>
           </div>
         </section>
-
+ -->
         <!-- USER VIEW '____' Section -->
         <section class="user-view-section to-cook-view fade-in">
-          <!-- <section class='recipe-container'>
-            <h3> Recipes To Cook</h3>
-            <div class="user-recipe-image-block">
-              <img class='user-recipe-image' src="https://spoonacular.com/recipeImages/764184-556x370.jpg" alt="">
-              <h1>Recipe Title</h1>
-            </div>
-            <div class="recipe-info-block">
-              <div class="recipe-info-icons">
-                <img class="bookmark--solid-icon icon">
-                <img class="recipe-solid-cookie-icon--inactive icon">142
-              </div>
-            </div>
-          </section>
-          <section class='recipe-container'>
-            <div class="user-recipe-image-block">
-              <img class='user-recipe-image' src="https://spoonacular.com/recipeImages/764184-556x370.jpg" alt="">
-              <title>Recipe Title</title>
-            </div>
-            <div class="recipe-info-block">
-              <div class="recipe-info-icons">
-                <img class="bookmark--solid-icon icon">
-                <img class="recipe-solid-cookie-icon--inactive icon">142
-              </div>
-            </div>
-          </section>
-          <section class="recipe">
-            <img src="https://spoonacular.com/recipeImages/764184-556x370.jpg" alt="">
-            <title>Recipe Title</title>
-            <div class="">
-          </div> -->
+
         </section>
         <section class="user-view-section favorites-view hidden">
 
         </section>
         <section class="user-view-section pantry-view hidden">
+
+        </section>
+        <section class="user-view-section category-view hidden">
+
+        </section>
+        <section class="user-view-section user-search-view hidden">
 
         </section>
         <!-- User 'Add Item' Form Section -->
@@ -284,13 +249,14 @@
         </section>
         <!-- User 'Filter By' Section -->
         <section class="user-filter-content hidden">
-          <label for="items">Filter By</label>
+          <div class="nav-search-bar">
+              <input class="saved-recipes-search search-input" type="text" placeholder="Search Your Saved Recipes">
+          </div>
+          <label for="filter-items">Filter By</label>
           <select id="items">
-            <option value="item-1">Date Added</option>
-            <option value="item-2">Name</option>
-            <option value="item-3">Popularity</option>
-            <option value="item-4">Cost</option>
-            <option value="item-5">Dietary</option>
+            <option class="filter-option" value="item-1">Name</option>
+            <option class="filter-option" value="item-2">Category</option>
+            <option class="filter-option" value="item-3">Date Added</option>
           </select>
         </section>
       </section>
