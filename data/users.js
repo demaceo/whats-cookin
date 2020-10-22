@@ -1,5 +1,159 @@
 let usersData = [
   {
+    "name": "Scotty Brabby",
+    "id": 1,
+    "pantry": [
+      {
+        "ingredient": 11477,
+        "amount": 100
+      },
+      {
+        "ingredient": 11294,
+        "amount": 100
+      },
+      {
+        "ingredient": 11297,
+        "amount": 100
+      },
+      {
+        "ingredient": 1082047,
+        "amount": 1000
+      },
+      {
+        "ingredient": 20081,
+        "amount": 100
+      },
+      {
+        "ingredient": 11215,
+        "amount": 100
+      },
+      {
+        "ingredient": 2047,
+        "amount": 100
+      },
+      {
+        "ingredient": 1123,
+        "amount": 100
+      },
+      {
+        "ingredient": 11282,
+        "amount": 100
+      },
+      {
+        "ingredient": 6172,
+        "amount": 100
+      },
+      {
+        "ingredient": 2044,
+        "amount": 100
+      },
+      {
+        "ingredient": 2050,
+        "amount": 100
+      },
+      {
+        "ingredient": 1032009,
+        "amount": 100
+      },
+      {
+        "ingredient": 5114,
+        "amount": 100
+      },
+      {
+        "ingredient": 1017,
+        "amount": 100
+      },
+      {
+        "ingredient": 18371,
+        "amount": 100
+      },
+      {
+        "ingredient": 1001,
+        "amount": 100
+      },
+      {
+        "ingredient": 99223,
+        "amount": 100
+      },
+      {
+        "ingredient": 1230,
+        "amount": 100
+      },
+      {
+        "ingredient": 9152,
+        "amount": 100
+      },
+      {
+        "ingredient": 10611282,
+        "amount": 100
+      },
+      {
+        "ingredient": 93607,
+        "amount": 100
+      },
+      {
+        "ingredient": 14106,
+        "amount": 100
+      },
+      {
+        "ingredient": 1077,
+        "amount": 100
+      },
+      {
+        "ingredient": 6150,
+        "amount": 100
+      },
+      {
+        "ingredient": 1124,
+        "amount": 100
+      },
+      {
+        "ingredient": 10011693,
+        "amount": 100
+      },
+      {
+        "ingredient": 1102047,
+        "amount": 100
+      },
+      {
+        "ingredient": 19206,
+        "amount": 100
+      },
+      {
+        "ingredient": 1145,
+        "amount": 100
+      },
+      {
+        "ingredient": 1002030,
+        "amount": 100
+      },
+      {
+        "ingredient": 12061,
+        "amount": 100
+      },
+      {
+        "ingredient": 19335,
+        "amount": 100
+      },
+      {
+        "ingredient": 15152,
+        "amount": 100
+      },
+      {
+        "ingredient": 9003,
+        "amount": 100
+      },
+      {
+        "ingredient": 18372,
+        "amount": 100
+      },
+      {
+        "ingredient": 2027,
+        "amount": 100
+      }
+    ]
+  },
+  {
     "name": "Colin Forsecs",
     "id": 1,
     "pantry": [
