@@ -23,7 +23,7 @@ class Pantry {
       }
     });
     return this.hasIngredients.length === recipe.ingredients.length ? true : false;
-  };
-};
+  }
+}
 
 // module.exports = Pantry;
