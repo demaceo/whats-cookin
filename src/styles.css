@@ -340,7 +340,7 @@ body {
 }
 
 .featured-recipe-description {
-  font-size: 1.1em;
+  font-size: 1.3em;
   font-style: italic;
   font-weight: 100;
   line-height: 2em;
@@ -492,6 +492,7 @@ body {
 .staff-pick-title-wrapper {
   max-width: fit-content;
   height: -webkit-fill-available;
+  display: flex;
 }
 
 .staff-pick-title {
@@ -582,6 +583,13 @@ body {
   animation-iteration-count: 1;
 }
 
+.recipe-view-bookmark-icon {
+  background-size: 2.25vh;
+  background-image: url(../assets/bookmark-hover-red.svg);
+  background-repeat: no-repeat;
+  transition: all .2s ease-in-out;
+}
+
 .recipe-dollar-icon {
   background-image: url(../assets/dollar-color2.svg);
   background-repeat: no-repeat;
@@ -597,19 +605,12 @@ body {
 .recipe-basket-icon--inactive {
   background-image: url(../assets/cart-empty.svg);
   background-repeat: no-repeat;
-  transform: scale(1);
-  transition: all .2s ease-in-out;
 }
 
-.recipe-basket-icon:hover {
-  transform: scale(1.1);
-}
-
-.recipe-basket-icon--all-ingredients {
-  background-image: url(../assets/basket-green.svg);
+.recipe-basket-icon--active {
+  background-image: url(../assets/cart-full.svg);
   background-repeat: no-repeat;
-  transform: scale(1);
-  transition: all .2s ease-in-out;
+  transform: scale(1.5);
 }
 
 .recipe-solid-cookie-icon--inactive {
@@ -626,9 +627,7 @@ body {
 .recipe-solid-cookie-icon--active {
   background-image: url(../assets/cookie-bite.svg);
   transform: scale(1.1);
-  animation-name: pulse;
-  animation-duration: .2s;
-  animation-iteration-count: 1;
+  background-repeat: no-repeat;
 }
 
 .recipe-cost {
@@ -1014,7 +1013,7 @@ body {
 }
 
 .search-result-icon {
-  position: absolute;
+  /* position: absolute; */
   margin: 1em;
   background-size: 2em;
   height: 4em;
