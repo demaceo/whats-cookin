@@ -64,6 +64,7 @@ function removeUserDuplicates(array) {
   array.forEach(object => {
     uniqueArray[0].id !== object.id ? uniqueArray.unshift(object) : duplicatesArray.unshift(object);
   })
+  console.log(uniqueArray);
   populateFilterRecipes(uniqueArray);
 }
 
@@ -105,11 +106,12 @@ function filterToCookRecipes() {
 
 function populateFilterRecipes(filterTagResults) {
   toCookView.classList.add('hidden');
-  console.log(filterTagResults);
   filterRecipeView.classList.remove('hidden');
   filterRecipeView.innerHTML = " ";
+  console.log(filterTagResults);
   filterTagResults.forEach(result => {
-    userSearchView.insertAdjacentHTML('afterbegin', `
+    console.log(result);
+    filterRecipeView.insertAdjacentHTML('afterbegin', `
     <div class="staff-pick-block staff-pick">
       <div class='staff-pick-image-wrapper'>
         <img class="staff-pick-img recipe-image" src=${result.image} id=${result.id}>
@@ -504,12 +506,23 @@ function populateRecipeView() {
   clearRecipeViewData();
   document.querySelector('.recipe-img').src = `${clickedRecipe.image}`;
   document.querySelector('#recipe-count').innerText = `${Math.round(Math.random()*500)}`
+  // document.querySelector('#recipe-bookmark').classList.add(isItBookmarked(clickedRecipe))
+  isItBookmarked(clickedRecipe)
   document.querySelector('#recipe-id').innerText = `${clickedRecipe.id}`
   populateIngredientInformation();
   indicateEnoughIngredientsRecipeView(clickedRecipe);
   document.querySelector('.recipe-title').innerText = `${clickedRecipe.name}`
   document.querySelector('.recipe-details').innerText = `One of our most popular recipes, ${clickedRecipe.name} is a surprisingly versatile dish that ${document.querySelector('#recipe-count').innerText} of our users have been cookin'`
   populateRecipeInstructions();
+}
+
+function isItBookmarked(recipeToCheck) {
+  let matchedRecipe = currentUser.recipesToCook.find(recipe => recipe.id === recipeToCheck.id)
+  if (matchedRecipe) {
+    document.querySelector('#recipe-bookmark').classList.replace('recipe-view-bookmark-icon', 'recipe-bookmark-icon--active')
+  } else {
+    document.querySelector('#recipe-bookmark').classList.replace('recipe-bookmark-icon--active', 'recipe-view-bookmark-icon')
+  }
 }
 
 function targetClickedRecipe() {
