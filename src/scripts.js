@@ -69,25 +69,28 @@ function filterRecipes(){
 function searchUserRecipesHandler(e) {
   if (userSearchBar.value !== undefined && e.key === 'Enter') {
     if (navbarUserSection.innerText === ".toCook") {
-      let foundRecipes = currentUser.searchRecipesToCook(event.target.value);
-      let foundIngredients = currentUser.searchToCookByIngredient(event.target.value);
-      console.log("foundIngredients", foundIngredients);
       toCookView.classList.add('hidden');
-      populateUserSearchResults(foundRecipes, foundIngredients);
+      populateUserSearchResults(currentUser.searchRecipesToCook(event.target.value));
+      removeUserSearchDuplicates(currentUser.searchToCookByIngredient(event.target.value));
     } else if (navbarUserSection.innerText === ".favorites") {
-      let foundFavorites = currentUser.searchFavorites(event.target.value);
-      let foundIngredients = currentUser.searchFavoritesByIngredient(event.target.value);
       favoritesView.classList.add('hidden');
-      populateUserSearchResults(foundFavorites, foundIngredients)
+      populateUserSearchResults(currentUser.searchFavorites(event.target.value));
+      removeUserSearchDuplicates(currentUser.searchFavoritesByIngredient(event.target.value));
     }
   }
 }
 
-function populateUserSearchResults(searchResultsOne, searchResultsTwo) {
-  let searchResults = [];
-  searchResults.unshift(searchResultsOne);
-  searchResults.unshift(searchResultsTwo);
-  console.log("searchResults", searchResults);
+function removeUserSearchDuplicates(array) {
+  let uniqueArray = [];
+  let duplicatesArray = [];
+  uniqueArray.unshift(array[0])
+  array.forEach(object => {
+    uniqueArray[0].id !== object.id ? uniqueArray.unshift(object) : duplicatesArray.unshift(object);
+  })
+  populateUserSearchResults(uniqueArray);
+}
+
+function populateUserSearchResults(searchResults) {
   userSearchView.classList.remove('hidden');
   userSearchView.innerHTML = "";
   searchResults.forEach(result => {

@@ -48,14 +48,15 @@ class User {
 
   searchFavoritesByIngredient(searchEntry) {
     let searchResults = [];
-    const ingredientObject = ingredientsData.find(ingredient => ingredient.name === searchEntry)
+    let lowerCaseIngredient = searchEntry.toLowerCase();
     this.favoriteRecipes.forEach(recipe => {
-      recipe.ingredients.forEach(ingredient => {
-        if (ingredient.id === ingredientObject.id) {
+      recipe.ingredients.filter(ingredient => {
+        let ingredientName = translateIngredientNumberToName(ingredient.id)
+        if(ingredientName.includes(lowerCaseIngredient)){
           return searchResults.push(recipe)
         }
       })
-    })
+    });
     return searchResults
   }
 
@@ -83,15 +84,15 @@ class User {
 
   searchToCookByIngredient(searchEntry) {
     let searchResults = [];
-    const ingredientObject = ingredientsData.find(ingredient => ingredient.name === searchEntry)
-    console.log(ingredientObject);
+    let lowerCaseIngredient = searchEntry.toLowerCase();
     this.recipesToCook.forEach(recipe => {
-      recipe.ingredients.forEach(ingredient => {
-        if (ingredient.id === ingredientObject.id) {
+      recipe.ingredients.filter(ingredient => {
+        let ingredientName = translateIngredientNumberToName(ingredient.id)
+        if(ingredientName.includes(lowerCaseIngredient)){
           return searchResults.push(recipe)
         }
       })
-    })
+    });
     return searchResults
   }
 }
