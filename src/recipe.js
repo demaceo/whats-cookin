@@ -6,19 +6,11 @@ class Recipe {
     this.name = recipe.name;
     this.id = recipe.id;
     this.image = recipe.image;
-    // this.star = star || false;
-    // this.src =  src || "../assets/star-regular.svg";
     this.ingredients = recipe.ingredients;
     this.instructions = recipe.instructions;
     this.tags = recipe.tags;
     this.timesCompleted = Math.round(Math.random() * 100)
-  };
-
-  // favoriteRecipe() {
-  //   this.star = !this.star;
-  //   this.star ? this.src = "../assets/star-solid.svg" : this.src = "../assets/star-regular.svg"
-  // }
-
+  }
   calculateCost() {
     let total = 0;
     this.ingredients.forEach((recipeIngredient) => {
@@ -29,7 +21,7 @@ class Recipe {
       });
     })
     return `$${total/100}`;
-  };
+  }
 
   getInstructions() {
     let instructionList = [];
@@ -38,7 +30,7 @@ class Recipe {
     });
     return instructionList;
   }
-};
+}
 
 
 // module.exports = Recipe;

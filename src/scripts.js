@@ -5,10 +5,7 @@ const navbarUserNameWrapper = document.querySelector('.navbar-user-name-wrapper'
 const navbarUserName = document.querySelector('.navbar-user-name');
 const navbarUserSectionWrapper = document.querySelector('.navbar-user-section-wrapper');
 const navbarUserSection = document.querySelector('.navbar-user-section');
-const navbar = document.querySelector('.navbar');
-
 const userAccounts = document.querySelector('.user-accounts');
-
 const main = document.querySelector('main');
 const homeView = document.querySelector('.home-view');
 const recipeView = document.querySelector('.recipe-view');
@@ -18,47 +15,15 @@ const favoritesView = document.querySelector('.favorites-view');
 const pantryView = document.querySelector('.pantry-view');
 const categoryView = document.querySelector('.category-view');
 const userSearchView = document.querySelector('.user-search-view');
-
-const recipeImage = document.querySelector('.recipe-image');
 const searchInput = document.querySelector('.search-input');
-
 const userAccountsIcon = document.querySelector('.accounts-icon');
 const userProfileIcon = document.querySelector('.dropdown-header-icon');
 const profileList = document.querySelector(".profile-list");
-
-// const profileRecipesToCook = document.querySelector('#profile-dropdown-recipes-to-cook')
-// const profileFavoriteRecipes = document.querySelector('#profile-dropdown-favorite-recipes')
-// const profilePantry = document.querySelector('#profile-dropdown-pantry')
-// const profileLogOut = document.querySelector('#profile-dropdown-log-out')
-
-// const headerIcon = document.querySelector('.dropdown-content');
-// const cookieIcon = document.querySelector('.solid-cookie-icon');
-// const bookmarkIcon = document.querySelector('.bookmark-icon');
-
-// const plusIcon = document.querySelector('.plus');
-// const minusIcon = document.querySelector('.minus');
-const pantryIcon = document.querySelector('.pantry-icon');
-
 const addNewItemContainer = document.querySelector('.add-item-container');
-const newItemName = document.querySelector('.add-item-name');
-const newItemAmount = document.querySelector('.add-item-amount');
-const newItemCategory = document.querySelector('.selected-category');
-const addItemButton = document.querySelector('.add-item-button');
-
 const filterContentList = document.querySelector('.user-filter-content');
-// const starIcon = document.querySelector('.star-icon');
-
-
 const searchView = document.querySelector('.search-view');
 const userSearchBar = document.querySelector('.saved-recipes-search');
-
-// const recipeIngredients = document.querySelector('.ingredients-h2');
-// const recipeAmount = document.querySelector('.amount-h2');
-// const recipeCost = document.querySelector('.cost-h2');
-const recipeInstructions = document.querySelector('.recipe-instructions-title');
-const filterItems = document.querySelector('#filter-list');
 const browseCategories = document.querySelector('.browse-categories');
-// const categoryOption = document.querySelector('.category-option');
 
 let currentUser;
 let clickedRecipe;
@@ -97,11 +62,7 @@ function translateIngredientNumberToName(ingredientNumber) {
 }
 
 // *---*---**---*---* FILTER RECIPES FUNCTIONS *---*---**---*----*:
-// function filterRecipes(){
-//   if(event.target.value === "category"){
-//       console.log("category");
-//   }
-// }
+
 
 
 // *---*---**---*---* SEARCH USER SAVED RECIPES FUNCTIONS *---*---**---*----*:
@@ -147,31 +108,26 @@ function closeNav() {
 }
 
 function removeDuplicates(array) {
-  uniqueArray = [];
-  duplicatesArray = [];
+  let uniqueArray = [];
+  let duplicatesArray = [];
   uniqueArray.unshift(array[0])
   array.forEach(object => {
     uniqueArray[0].id !== object.id ? uniqueArray.unshift(object) : duplicatesArray.unshift(object);
   })
-  console.log("uniqueArray", uniqueArray);
-  console.log("duplicates", duplicatesArray);
   populateCategoryPage(uniqueArray);
 }
 
 
 function matchCategoryTags(category, mealTag) {
-  console.log(category, mealTag);
-  categoryResults = [];
+  let categoryResults = [];
   recipeData.forEach(recipe => {
     recipe.tags.filter(tag => {
       if (mealTag.includes(tag)) {
-        console.log("tagName", tag);
         categoryResults.push(recipe)
       }
     })
   })
   removeDuplicates(categoryResults);
-  console.log("original", categoryResults);
 }
 
 function populateCategoryPage(recipeResults) {
@@ -194,12 +150,8 @@ function populateCategoryPage(recipeResults) {
 
 // *---*---**---*---* ICON BEHAVIOR *---*---**---*----*:
 function addRemoveFavorite(event, addRecipe) {
-  console.log(event.target)
-  console.log(event.target.id);
-
   let recipeObject = recipeData.find(recipe => recipe.id.toString() === event.target.id.toString())
   addRecipe === true ? currentUser.addFavoriteRecipe(recipeObject) : currentUser.removeFromFavorites(recipeObject);
-  // currentUser.saveToStorage();
 }
 
 function addRemoveToCook(event, addRecipe) {
@@ -263,8 +215,6 @@ function loadRandomStaffPicks() {
     }
   })
 }
-//    **** to use after creating .popularity property in recipe class ****
-// <img class="solid-cookie-icon icon"> ${recipe.popularity}
 
 function loadRandomOthersCookin() {
   document.querySelector('.others-sidebar-card-container').innerHTML = "";
@@ -298,9 +248,9 @@ function loadRandomOthersCookin() {
         </div>
       </article>
       `)
-    };
-  });
-};
+    }
+  })
+}
 
 function indicateEnoughIngredients(recipe) {
   if (currentUser) {
@@ -338,19 +288,14 @@ function sortUserAccounts() {
       ${user.name}</a>
     `)
   })
-};
+}
 
 // *********      WHICH USER IS BEING CHOSEN    **********
 function determineUser() {
   let userObject = usersData.find(user => user.name === event.target.innerText.trim() ? user : null);
   userObject !== null ? displayUserIcon(userObject) : null;
   currentUser = new User(userObject);
-  //
-  // let retrievedUserData = JSON.parse(localStorage.getItem(`${currentUser.id}`));
-  // if (retrievedUserData) {
-  //   currentUser = new User(retrievedUserData)
-};
-// };
+}
 
 // *********      CHANGE USER NAME NAVBAR    **********
 function displayUserName(user) {
@@ -402,7 +347,7 @@ function navbarDisplayUserSection(section) {
 // *============*============*SEARCH BAR FUNCTIONS*============*============*:
 function extendSearchBar() {
   searchInput.classList.add('search-input--clicked');
-};
+}
 
 function searchInputHandler(e) {
   if (searchInput.value !== undefined && e.key === 'Enter') {
@@ -414,7 +359,7 @@ function searchInputHandler(e) {
       gatherMoreSearchResults(searchEntry);
     }
   }
-};
+}
 
 function gatherSearchResults(searchInput) {
   let searchResults = [];
@@ -430,7 +375,7 @@ function gatherSearchResults(searchInput) {
 function gatherMoreSearchResults(searchInput) {
   let searchResults = [];
   let lowerCaseInput = searchInput.toLowerCase();
-  let matchedIngredient;
+  // let matchedIngredient;
   recipeData.forEach(recipe => {
     recipe.ingredients.filter(ingredient => {
       let ingredientName = translateIngredientNumberToName(ingredient.id)
@@ -445,11 +390,6 @@ function gatherMoreSearchResults(searchInput) {
 
 
 function populateSearchResults(searchResults) {
-  // if (searchResults.length === 0) {
-  //   searchView.innerHTML = " ";
-  //   searchView.innerHTML = "No Search Results"
-  // }
-  // searchView.innerHTML = "";
   searchResults.forEach(searchResult => {
     searchView.insertAdjacentHTML('afterbegin', `
     <section class='search-result-container' id=${searchResult.id}>
@@ -462,7 +402,7 @@ function populateSearchResults(searchResults) {
     </section>
     `);
   })
-};
+}
 
 function getMissingIngredient(recipeIngredient) {
   let missingIngredient;
@@ -471,7 +411,7 @@ function getMissingIngredient(recipeIngredient) {
     missingIngredient = currentUser.pantry.missingIngredients.find(ingredient => ingredient.id === recipeIngredient.id)
   }
   return missingIngredient
-};
+}
 
 function populateIngredientInformation() {
   clickedRecipe.ingredients.forEach(recipeIngredient => {
@@ -496,8 +436,8 @@ function populateIngredientInformation() {
         `<p style="color:red">${missingIngredient.quantity.amountMissing.toFixed(2)} ${missingIngredient.quantity.unit}</p>
       `)
     }
-  });
-};
+  })
+}
 
 function populateRecipeInstructions() {
   let instructions = clickedRecipe.getInstructions()
@@ -505,8 +445,8 @@ function populateRecipeInstructions() {
     document.querySelector('.recipe-instructions-list').insertAdjacentHTML('afterbegin', `
     <p class="recipe-instructions recipe-instructions-step">${instruction}<br>
     `)
-  });
-};
+  })
+}
 
 // *---*---*DISPLAY RECIPE functions*---*----*:
 function populateRecipeView() {
@@ -540,10 +480,6 @@ function clearRecipeViewData() {
 }
 
 // *============*============*FAVORITES SECTION FUNCTIONS*============*============*:
-// function toggleFavoriteRecipe(event){
-//   currentUser.addFavoriteRecipe(event.target);
-//   currentUser.saveToStorage()
-//   }
 
 function populateFavorites() {
   favoritesView.innerHTML = "";
@@ -560,7 +496,7 @@ function populateFavorites() {
     </div>
     `)
   })
-};
+}
 
 function filterContent() {
 
@@ -587,46 +523,11 @@ function populateRecipesToCook() {
 }
 
 // ===================== PANTRY Section functions =====================:
-
-// function updateIngredientAmount() {
-//   let pantryItem = event.target();
-//   if (event.target.className === 'plus') {
-//     currentUser.pantry.contents.amount -= 1
-//   } else if (event.target.className === 'minus') {
-//     currentUser.pantry.contents.amount += 1
-//   } else if (event.target.className === 'delete') {
-//     currentUser.pantry.contents
-//   }
-//   populatePantry();
-// }
-
-function clearInputFields() {
-  // newItemName.value = "";
-  // newItemAmount.value = "0";
-  // newItemCategory.selected = "other"
-};
-
-function addItemToPantry() {
-  // event.preventDefault();
-  // const newItem = {
-  //   name: `${newItemName.value}`,
-  //   // ingredient: `${Date.now()}`,
-  //   ingredient: `${Math.round(Math.random() * 1000)}`,
-  //   amount: `${newItemAmount.value}`
-  // };
-  // // console.log("newitem", newItem);
-  // currentUser.addItemToPantry(newItem.name, newItem.amount)
-  // populatePantry();
-  // clearInputFields();
-};
-
 function populatePantry() {
   pantryView.innerHTML = "";
-  console.log(currentUser.pantry.contents);
   currentUser.pantry.contents.forEach(item => {
     let ingredientName = translateIngredientNumberToName(item.ingredient);
     if (typeof ingredientName === 'number') {
-      console.log(newItem.name)
       ingredientName = item.name;
     }
     pantryView.insertAdjacentHTML('afterbegin', `
@@ -645,7 +546,7 @@ function populatePantry() {
   </section>
     `)
   })
-};
+}
 
 
 
@@ -662,7 +563,7 @@ function displayHomePage() {
   userView.classList.add("hidden");
   searchView.classList.add('hidden');
   navbarDisplayUserSection()
-};
+}
 
 function displaySearchResults() {
   hideHomePage();
@@ -681,7 +582,7 @@ function displayRecipePage() {
   recipeView.classList.remove('hidden');
   navbarDisplayUserSection();
   targetClickedRecipe();
-};
+}
 
 function displayRecipesToCook() {
   hideHomePage();
@@ -696,7 +597,7 @@ function displayRecipesToCook() {
   addNewItemContainer.classList.add('hidden');
   searchView.classList.add('hidden');
   populateRecipesToCook();
-};
+}
 
 function displayFavoriteRecipes() {
   // hideHomePage();
@@ -710,7 +611,7 @@ function displayFavoriteRecipes() {
   filterContentList.classList.remove('hidden');
   favoritesView.classList.remove('hidden');
   populateFavorites();
-};
+}
 
 function displayPantry() {
   favoritesView.classList.add("hidden");
@@ -720,7 +621,7 @@ function displayPantry() {
   searchView.classList.add('hidden');
   addNewItemContainer.classList.remove('hidden');
   pantryView.classList.remove("hidden");
-};
+}
 
 function hideHomePage() {
   searchInput.value = "";
@@ -765,9 +666,9 @@ function clickHandler(event) {
     displayRecipePage();
   } else if (event.target.classList.contains('icon')) {
     currentUser ? iconHandler(event) : alert('Please sign in to save this recipe for later');
-  };
+  }
   event.target !== searchInput ? searchInput.classList.remove('search-input--clicked') : null;
-};
+}
 
 function displayUserSectionHandler(event) {
   if (event.target.innerText.trim() === "Recipes To Cook") {
@@ -780,7 +681,7 @@ function displayUserSectionHandler(event) {
   } else if (event.target.innerText.trim() === "Log Out") {
     displayUserPage('logout');
   }
-};
+}
 
 function sideNavClickHandler() {
   if (event.target.innerText.trim() === "Breakfast") {

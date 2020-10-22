@@ -47,7 +47,7 @@
     </div>
     <div>
       <div class="nav-search-bar">
-          <input class="search-input" type="text" placeholder="Search Recipes">
+        <input class="search-input" type="text" placeholder="Search Recipes">
       </div>
       <div class="dropdown accounts-icon">
         <img id='header-profile-icon' class='accounts-icon icon' src='../assets/users-solid.svg'>
@@ -108,8 +108,10 @@
         <div class="recipe-view-icons">
           <svg id='recipe-bookmark' class="recipe-view-bookmark-icon recipe-bookmark-icon--inactive sidebar-icon icon"></svg>
           <span id='recipe-id' class='hidden'></span>
-          <svg id='recipe-basket'class="sidebar-icon icon"></svg>
-          <svg id='recipe-cookie'class="recipe-solid-cookie-icon--active sidebar-icon icon"><p id='recipe-count'></p></svg>
+          <svg id='recipe-basket' class="sidebar-icon icon"></svg>
+          <svg id='recipe-cookie' class="recipe-solid-cookie-icon--active sidebar-icon icon">
+            <p id='recipe-count'></p>
+          </svg>
         </div>
         <section class="recipe-ingredients">
           <div class="ingredient ingredient-name">
@@ -134,75 +136,16 @@
         <h2 class="recipe-title"></h2>
         <p class="recipe-details"></p>
         <p class="recipe-instructions recipe-instructions-title">Instructions:<br>
-          <div class="recipe-instructions-list">
-          </div>
+        <div class="recipe-instructions-list">
+        </div>
       </section>
     </section>
 
 
     <!-- USER VIEW PAGE -->
     <section class="user-view fade-in">
-      <!-- User Navigation Bar  -->
-      <!-- <section class="user-navigation">
-        <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
-          Recipes To Cook
-        </a>
-        <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
-          Favorite Recipes
-        </a>
-        <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
-          My Pantry
-        </a>
-        <div class="search-bar">
-          <input class="search-input" type="text" placeholder="Search Recipes">
-          <div>
-            <input type="checkbox" name="search-by-ingredient" value="search-by-ingredient"> Search Recipes by Ingredient
-          </div>
-        </div>
-      </section> -->
-      <!-- MAIN USER BODY SECTION  -->
+      
       <section class="main-user-body hidden">
-
-        <!-- SUGGESTIONS Section -->
-        <!-- <section class="suggestions-container hidden">
-          <div class="suggestions-main-title">
-            <h2>Suggestions</h2>
-            <p>Based On Your:</p>
-          </div>
-          <div class="suggested suggested-recipes-to-cook-container">
-            <div class="sugessted-recipes-to-cook-title">
-              Recipes To Cook
-            </div>
-            <div class="suggested-recipes-to-cook">
-              <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
-                Random Recipe
-              </a>
-              <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
-                Random Recipe
-              </a>
-              <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
-                Random Recipe
-              </a>
-            </div>
-          </div>
-          <div class="suggested suggested-favorites-container">
-            <div class="sugessted-favorites-title">
-              Favorite Recipes
-            </div>
-            <div class="suggested-favorites">
-              <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
-                Random Recipe
-              </a>
-              <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
-                Random Recipe
-              </a>
-              <a href="" target="_blank" rel="external" hreflang="en" type="text/html">
-                Random Recipe
-              </a>
-            </div>
-          </div>
-        </section>
- -->
         <!-- USER VIEW '____' Section -->
         <section class="user-view-section to-cook-view fade-in">
 
@@ -250,7 +193,7 @@
         <!-- User 'Filter By' Section -->
         <section class="user-filter-content hidden">
           <div class="nav-search-bar">
-              <input class="saved-recipes-search search-input" type="text" placeholder="Search Your Saved Recipes">
+            <input class="saved-recipes-search search-input" type="text" placeholder="Search Your Saved Recipes">
           </div>
           <label for="filter-items">Filter By</label>
           <select id="items">
@@ -260,11 +203,9 @@
           </select>
         </section>
       </section>
-      <!-- </section> -->
     </section>
     <section class="search-view fade-in hidden">
     </section>
-    <!-- </section> -->
   </main>
   <script type="text/javascript" src="../data/users.js"></script>
   <script type="text/javascript" src="../data/recipes.js"></script>

@@ -558,7 +558,8 @@ const recipeData = [
     ],
     "name": "Elvis Pancakes",
     "tags": [
-      "side dish"
+      "side dish",
+      "breakfast"
     ]
   },
   {
@@ -1598,7 +1599,8 @@ const recipeData = [
     ],
     "name": "Cinnamon Raisin Overnight French Toast w/ Apple Filling",
     "tags": [
-      "side dish"
+      "side dish",
+      "breakfast"
     ]
   },
   {
