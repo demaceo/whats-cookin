@@ -1,4 +1,4 @@
-https://demaceo.github.io/whats-cookin/
+[GitHub Deployed Page](https://demaceo.github.io/whats-cookin/)
 
 ---
 # What's Cookin' - Recipe sites don't have to be boring
@@ -144,7 +144,7 @@ CSS tricks:
 
 [GitHub Profile](https://github.com/brabbuss)
 
-FE Engineering student at Turing School entering Mod 2 (of 5) who has found no end to the joy that is creating as you speak the language of JS.
+FrontEnd Engineering Mod 2 programming gang$ster at Turing School who has found no end to the joy that is speaking the language of JavaScript.
 
 <img src="https://avatars2.githubusercontent.com/u/62954974?s=400&u=b246587c21877b7fe4a4972e89ec98677d5c29d6&v=4" alt="Coding Centaur"
  width="150" height="auto" style="float: left" />\
@@ -152,4 +152,4 @@ FE Engineering student at Turing School entering Mod 2 (of 5) who has found no e
 
 [GitHub Profile](https://github.com/demaceo)
 
-FE Engineering student at Turing School entering Mod 2.
+FrontEnd Engineering Mod 2 mob BO$$ at Turing School, `+=` *^what he said*.
