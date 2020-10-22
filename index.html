@@ -168,19 +168,23 @@
         <section class="user-view-section user-search-view hidden">
 
         </section>
+        <section class="user-view-section filter-recipe-view hidden">
+
+        </section>
         <!-- User 'Filter By' Section -->
         <section class="user-filter-content hidden">
           <div class="nav-search-bar">
             <input class="saved-recipes-search search-input" type="text" placeholder="Search Your Saved Recipes">
           </div>
-          <label class="user-filter-items" for="filter-items">Filter By</label>
-          <select id="items">
-            <option class="filter-option" value="item-1">Breakfast</option>
-            <option class="filter-option" value="item-2">Lunch</option>
-            <option class="filter-option" value="item-1">Dinner</option>
-            <option class="filter-option" value="item-2">Appetizers</option>
-            <option class="filter-option" value="item-1">Salad</option>
-            <option class="filter-option" value="item-2">Entrees</option>
+          <label class="user-filter" for="filter-items">Filter By</label>
+          <select class="user-filter-items" id="items">
+            <option class="filter-option" value="None"></option>
+            <option class="filter-option" value="Breakfast">Breakfast</option>
+            <option class="filter-option" value="Lunch">Lunch</option>
+            <option class="filter-option" value="Dinner">Dinner</option>
+            <option class="filter-option" value="Appetizers">Appetizers</option>
+            <option class="filter-option" value="Salad">Salad</option>
+            <option class="filter-option" value="Entrees">Entrees</option>
           </select>
         </section>
       </section>

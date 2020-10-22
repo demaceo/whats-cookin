@@ -24,6 +24,7 @@ const searchView = document.querySelector('.search-view');
 const userSearchBar = document.querySelector('.saved-recipes-search');
 const browseCategories = document.querySelector('.browse-categories');
 const filterOption = document.querySelector('.user-filter-items');
+const filterRecipeView = document.querySelector('.filter-recipe-view');
 
 let currentUser;
 let clickedRecipe;
@@ -39,7 +40,7 @@ searchInput.addEventListener('click', extendSearchBar);
 searchInput.addEventListener('keypress', searchInputHandler);
 userSearchBar.addEventListener('keydown', searchUserRecipesHandler);
 browseCategories.addEventListener('click', displayCategoryPage);
-filterOption.addEventListener('click', filterRecipes);
+filterOption.addEventListener('click', filterToCookRecipes);
 // -----------------FUNCTIONS-----------------:
 
 function getRandomIndex(array) {
@@ -56,38 +57,98 @@ function translateIngredientNumberToName(ingredientNumber) {
 }
 
 // *---*---**---*---* FILTER RECIPES FUNCTIONS *---*---**---*----*:
-function filterRecipes(){
-  console.log(event.target);
-  if (event.target.closest('.filter-option') === "Date Added") {
-    console.log("date")
-  } else if (event.target.closest('.filter-option') === "Category") {
-    console.log("category");
+function removeUserDuplicates(array) {
+  let uniqueArray = [];
+  let duplicatesArray = [];
+  uniqueArray.unshift(array[0])
+  array.forEach(object => {
+    uniqueArray[0].id !== object.id ? uniqueArray.unshift(object) : duplicatesArray.unshift(object);
+  })
+  populateFilterRecipes(uniqueArray);
+}
+
+
+function matchRecipeToCookTags(mealTag) {
+  let categoryResults = [];
+  currentUser.recipesToCook.forEach(recipe => {
+    recipe.tags.filter(tag => {
+      if (mealTag.includes(tag)) {
+        categoryResults.push(recipe)
+      }
+    })
+  });
+  removeUserDuplicates(categoryResults);
+}
+
+
+function filterToCookRecipes() {
+  if (event.target.value.trim() === "Breakfast") {
+    const breakfastTags = ["morning meal", "brunch", "breakfast"];
+    matchRecipeToCookTags(breakfastTags);
+  } else if (event.target.value.trim() === "Lunch") {
+    const lunchTags = ["lunch", "brunch"];
+    matchRecipeToCookTags(lunchTags);
+  } else if (event.target.value.trim() === "Dinner") {
+    const dinnerTags = ["dinner"];
+    matchRecipeToCookTags(dinnerTags);
+  } else if (event.target.value.trim() === "Appetizer") {
+    const appetizerTags = ['appetizer', 'side dish', 'antipasti', 'starter', 'snack', 'antipasto', 'hor d\'oeuvre', 'condiment', 'dip', 'spread', 'sauce'];
+    matchRecipeToCookTags(appetizerTags);
+  } else if (event.target.value.trim() === "Salad") {
+    const saladTags = ["salad"];
+    matchRecipeToCookTags(saladTags);
+  } else if (event.target.value.trim() === "Entrees") {
+    const entreeTags = ["main course", "main dish"];
+    matchRecipeToCookTags(entreeTags);
   }
+}
+
+function populateFilterRecipes(filterTagResults) {
+  toCookView.classList.add('hidden');
+  console.log(filterTagResults);
+  filterRecipeView.classList.remove('hidden');
+  filterRecipeView.innerHTML = " ";
+  filterTagResults.forEach(result => {
+    userSearchView.insertAdjacentHTML('afterbegin', `
+    <div class="staff-pick-block staff-pick">
+      <div class='staff-pick-image-wrapper'>
+        <img class="staff-pick-img recipe-image" src=${result.image} id=${result.id}>
+      </div>
+      <div class='staff-pick-title-wrapper'>
+        <svg class='star-icon--inactive icon' id=${result.id} src=${result.src}></svg>
+        <h3 class="staff-pick-title">${result.name}</h3>
+      </div>
+    </div>
+    `)
+  })
 }
 
 // *---*---**---*---* SEARCH USER SAVED RECIPES FUNCTIONS *---*---**---*----*:
 function searchUserRecipesHandler(e) {
   if (userSearchBar.value !== undefined && e.key === 'Enter') {
     if (navbarUserSection.innerText === ".toCook") {
-      let foundRecipes = currentUser.searchRecipesToCook(event.target.value);
-      let foundIngredients = currentUser.searchToCookByIngredient(event.target.value);
-      console.log("foundIngredients", foundIngredients);
       toCookView.classList.add('hidden');
-      populateUserSearchResults(foundRecipes, foundIngredients);
+      populateUserSearchResults(currentUser.searchRecipesToCook(event.target.value));
+      removeUserSearchDuplicates(currentUser.searchToCookByIngredient(event.target.value));
     } else if (navbarUserSection.innerText === ".favorites") {
-      let foundFavorites = currentUser.searchFavorites(event.target.value);
-      let foundIngredients = currentUser.searchFavoritesByIngredient(event.target.value);
       favoritesView.classList.add('hidden');
-      populateUserSearchResults(foundFavorites, foundIngredients)
+      populateUserSearchResults(currentUser.searchFavorites(event.target.value));
+      removeUserSearchDuplicates(currentUser.searchFavoritesByIngredient(event.target.value));
     }
   }
 }
 
-function populateUserSearchResults(searchResultsOne, searchResultsTwo) {
-  let searchResults = [];
-  searchResults.unshift(searchResultsOne);
-  searchResults.unshift(searchResultsTwo);
-  console.log("searchResults", searchResults);
+function removeUserSearchDuplicates(array) {
+  let uniqueArray = [];
+  let duplicatesArray = [];
+  uniqueArray.unshift(array[0])
+  array.forEach(object => {
+    uniqueArray[0].id !== object.id ? uniqueArray.unshift(object) : duplicatesArray.unshift(object);
+  })
+  populateUserSearchResults(uniqueArray);
+}
+
+function populateUserSearchResults(searchResults) {
   userSearchView.classList.remove('hidden');
   userSearchView.innerHTML = "";
   searchResults.forEach(result => {
