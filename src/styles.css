@@ -34,7 +34,7 @@ body {
   margin: 0px;
 }
 
-.hero-container > h1 {
+.hero-container>h1 {
   position: absolute;
   margin-left: 2vh;
   font-size: 2.3em;
@@ -183,7 +183,6 @@ body {
   margin: 2vh 0;
   align-self: center;
 } */
-
 .search-input {
   background-image: url(../assets/search-solid.svg);
   background-repeat: no-repeat;
@@ -210,7 +209,6 @@ body {
   margin-top: 0.5vw;
   font-size: 1.1rem;
 } */
-
 .accounts-icon {
   margin-top: 5px;
   align-self: center;
@@ -415,9 +413,10 @@ body {
   /* height: 23vh; */
 }
 
-#others-score{
+#others-score {
   font-size: .7em;
 }
+
 .others-title {
   margin: 0;
   text-align: center;
@@ -427,12 +426,12 @@ body {
   border-radius: 3px;
 }
 
-.others-sidebar-card-info-block > p {
+.others-sidebar-card-info-block>p {
   text-align: center;
   font-weight: lighter;
 }
 
-.others-sidebar-card-image-wrapper > p {
+.others-sidebar-card-image-wrapper>p {
   max-width: fit-content;
 }
 
@@ -444,7 +443,6 @@ body {
 }
 
 /* ---------- STAFF PICKS Section ----------- */
-
 .staff-picks {
   display: flex;
   flex-wrap: wrap;
@@ -492,6 +490,8 @@ body {
 .staff-pick-title-wrapper {
   max-width: fit-content;
   height: -webkit-fill-available;
+  display: flex;
+  flex-direction: row;
 }
 
 .staff-pick-title {
@@ -598,7 +598,6 @@ body {
 
 .recipe-dollar-icon:hover {
   transform: scale(1.1);
-
 }
 
 .recipe-basket-icon--inactive {
@@ -693,7 +692,6 @@ body {
   margin-top: 5vh;
   padding: 1em;
 } */
-
 .ingredients-amount {
   align-content: center;
   align-items: center;
@@ -841,15 +839,11 @@ body {
   /* max-width: 20; */
 }
 
-.this-recipe-container {
+.this-recipe-container {}
 
-}
-.this-recipe{
+.this-recipe {}
 
-}
-.this-recipe-image{
-
-}
+.this-recipe-image {}
 
 .user-view-section>* {
   /* flex: 1 1 80px; */
@@ -890,6 +884,7 @@ body {
   align-items: center;
   min-width: 170px;
   max-width: 170px;
+  max-height: 200px;
 }
 
 .pantry-icon {
@@ -951,7 +946,6 @@ body {
   border-radius: 10px;
 }
 
-
 /* --------SEARCH VIEW Section -------- */
 .search-view {
   display: flex;
@@ -973,13 +967,18 @@ body {
 }
 
 .star-icon {
-  width: 20px;
+  width: 30px;
+  background-height: 2em;
   padding-right: 10px;
   background-size: 2.25vh;
   background-image: url(../assets/star-empty.svg);
   background-repeat: no-repeat;
   transition: all .2s ease-in-out;
   cursor: pointer;
+}
+
+.saved-recipes-search {
+  margin-right: 20px;
 }
 
 .star-icon:hover {

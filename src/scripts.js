@@ -19,33 +19,27 @@ const searchInput = document.querySelector('.search-input');
 const userAccountsIcon = document.querySelector('.accounts-icon');
 const userProfileIcon = document.querySelector('.dropdown-header-icon');
 const profileList = document.querySelector(".profile-list");
-const addNewItemContainer = document.querySelector('.add-item-container');
 const filterContentList = document.querySelector('.user-filter-content');
 const searchView = document.querySelector('.search-view');
 const userSearchBar = document.querySelector('.saved-recipes-search');
 const browseCategories = document.querySelector('.browse-categories');
+const filterOption = document.querySelector('.user-filter-items');
 
 let currentUser;
 let clickedRecipe;
 // -----------------EVENT LISTENERS-----------------:
+window.onload = loadRandomStaffPicks();
+window.onload = loadRandomOthersCookin();
 window.addEventListener("load", sortUserAccounts);
 navbarTitle.addEventListener('click', displayHomePage);
 userAccounts.addEventListener("click", determineUser);
-// window.addEventListener("click", iconClickHandler);
 profileList.addEventListener("click", displayUserSectionHandler);
-// whatsCookinNavBar.addEventListener('click', displayHomePage);
-// recipeImage.addEventListener('click', displayRecipePage);
-// recipeImage.addEventListener('click', targetClickedRecipe);
 main.addEventListener("click", clickHandler);
 searchInput.addEventListener('click', extendSearchBar);
 searchInput.addEventListener('keypress', searchInputHandler);
 userSearchBar.addEventListener('keydown', searchUserRecipesHandler);
 browseCategories.addEventListener('click', displayCategoryPage);
-// starIcon.addEventListener('click', toggleFavoriteRecipe);
-// filterItems.addEventListener("click", filterRecipes);
-// pantryIcon.addEventListener('click', updateIngredientAmount);
-// addItemButton.addEventListener('click', addItemToPantry);
-filterContentList.addEventListener('click', filterContent);
+filterOption.addEventListener('click', filterRecipes);
 // -----------------FUNCTIONS-----------------:
 
 function getRandomIndex(array) {
@@ -62,25 +56,38 @@ function translateIngredientNumberToName(ingredientNumber) {
 }
 
 // *---*---**---*---* FILTER RECIPES FUNCTIONS *---*---**---*----*:
-
-
+function filterRecipes(){
+  console.log(event.target);
+  if (event.target.closest('.filter-option') === "Date Added") {
+    console.log("date")
+  } else if (event.target.closest('.filter-option') === "Category") {
+    console.log("category");
+  }
+}
 
 // *---*---**---*---* SEARCH USER SAVED RECIPES FUNCTIONS *---*---**---*----*:
 function searchUserRecipesHandler(e) {
   if (userSearchBar.value !== undefined && e.key === 'Enter') {
     if (navbarUserSection.innerText === ".toCook") {
-      let foundRecipesToCook = currentUser.searchRecipesToCook(event.target.value);
+      let foundRecipes = currentUser.searchRecipesToCook(event.target.value);
+      let foundIngredients = currentUser.searchToCookByIngredient(event.target.value);
+      console.log("foundIngredients", foundIngredients);
       toCookView.classList.add('hidden');
-      populateUserSearchResults(foundRecipesToCook);
+      populateUserSearchResults(foundRecipes, foundIngredients);
     } else if (navbarUserSection.innerText === ".favorites") {
       let foundFavorites = currentUser.searchFavorites(event.target.value);
+      let foundIngredients = currentUser.searchFavoritesByIngredient(event.target.value);
       favoritesView.classList.add('hidden');
-      populateUserSearchResults(foundFavorites);
+      populateUserSearchResults(foundFavorites, foundIngredients)
     }
   }
 }
 
-function populateUserSearchResults(searchResults) {
+function populateUserSearchResults(searchResultsOne, searchResultsTwo) {
+  let searchResults = [];
+  searchResults.unshift(searchResultsOne);
+  searchResults.unshift(searchResultsTwo);
+  console.log("searchResults", searchResults);
   userSearchView.classList.remove('hidden');
   userSearchView.innerHTML = "";
   searchResults.forEach(result => {
@@ -90,7 +97,7 @@ function populateUserSearchResults(searchResults) {
         <img class="staff-pick-img recipe-image" src='${result.image}' id='${result.id}'>
       </div>
       <div class='staff-pick-title-wrapper'>
-        <svg class='star-icon--active icon' id=${result.id} src=${result.src}></svg>
+        <svg class='star-icon--inactive icon' id=${result.id} src=${result.src}></svg>
         <h3 class="staff-pick-title">${result.name}</h3>
       </div>
     </div>
@@ -158,7 +165,6 @@ function addRemoveToCook(event, addRecipe) {
   let recipeObject = recipeData.find(recipe => recipe.id.toString() === event.target.nextElementSibling.innerText)
   console.log(event.target.nextElementSibling);
   addRecipe === true ? currentUser.addToRecipesToCook(recipeObject) : currentUser.removeFromToCook(recipeObject);
-  // currentUser.saveToStorage();
 }
 
 function iconHandler(event) {
@@ -178,30 +184,16 @@ function iconHandler(event) {
     addRemoveFavorite(event, false);
   }
 }
-//      if we want cookies clickable for COOKED, use these animations
-
-//   else if (event.target.className.includes('recipe-solid-cookie-icon--active')) {
-//   event.target.classList.add('recipe-solid-cookie-icon--active');
-//   event.target.classList.remove('recipe-solid-cookie-icon--active');
-// } else if (event.target.className.includes('recipe-solid-cookie-icon--active')) {
-//   console.log(event);
-//   event.target.classList.remove('recipe-solid-cookie-icon--active');
-//   event.target.classList.add('recipe-solid-cookie-icon--active');
-// }
 
 
 // *---*---**---*---* HOME SECTION functions *---*---**---*----*:
-
-window.onload = loadRandomStaffPicks();
-window.onload = loadRandomOthersCookin();
 
 function loadRandomStaffPicks() {
   document.querySelector('.staff-picks').innerHTML = "";
   recipeData.forEach((recipe, i) => {
     let randomRecipe = recipeData[getRandomIndex(recipeData)];
     if (i < 6) {
-      document.querySelector('.staff-picks').insertAdjacentHTML('afterbegin',
-        `
+      document.querySelector('.staff-picks').insertAdjacentHTML('afterbegin', `
       <div class="staff-pick-block staff-pick-${i+1}">
         <div class='staff-pick-image-wrapper'>
           <img class="staff-pick-img ${i+1}-img recipe-image" src='${randomRecipe.image}' id='${randomRecipe.id}'>
@@ -210,8 +202,7 @@ function loadRandomStaffPicks() {
           <h3 class="staff-pick-title ${i+1}-title">${randomRecipe.name}</h3>
         </div>
       </div>
-      `
-      )
+      `)
     }
   })
 }
@@ -222,7 +213,6 @@ function loadRandomOthersCookin() {
     let randomRecipe;
     let randomIndex = getRandomIndex(usersData);
     let randomUser = usersData[randomIndex];
-
     recipeData.forEach((recipe, i) => {
       let randomIndex = getRandomIndex(recipeData)
       randomRecipe = recipeData[randomIndex]
@@ -231,7 +221,7 @@ function loadRandomOthersCookin() {
       document.querySelector('.others-sidebar-card-container').insertAdjacentHTML('afterbegin', `
       <article class='others-sidebar-card'>
         <div class="others-sidebar-card-info-block">
-          <img class="users-icon sidebar-icon" src='../assets/user-solid.svg'>
+          <img class="users-icon sidebar-icon" src='./assets/user-solid.svg'>
           <p>${randomUser.name.split(' ')[0]} ${randomUser.name.split(' ')[1].charAt(0)}.</p>
           <div class="others-sidebar-card-info-icons">
             <svg class="recipe-bookmark-icon--inactive sidebar-icon icon"></svg>
@@ -284,7 +274,7 @@ function sortUserAccounts() {
   });
   sortedUsersData.forEach(user => {
     userAccounts.insertAdjacentHTML('afterbegin', `
-    <a href="#"><img class="dropdown-icons" src="../assets/user-solid.svg" alt="">
+    <a href="#"><img class="dropdown-icons" src="./assets/user-solid.svg" alt="">
       ${user.name}</a>
     `)
   })
@@ -497,11 +487,6 @@ function populateFavorites() {
     `)
   })
 }
-
-function filterContent() {
-
-}
-
 // *============*============*RECIPES TO COOK SECTION FUNCTIONS*============*============*:
 function populateRecipesToCook() {
   toCookView.innerHTML = '';
@@ -533,15 +518,13 @@ function populatePantry() {
     pantryView.insertAdjacentHTML('afterbegin', `
   <section class='pantry-item-block' id="${item.ingredient}">
     <div class="delete-item-container">
-      <img class="delete pantry-icon" src="../assets/times-solid.svg">
+      <img class="delete pantry-icon" src="./assets/times-solid.svg">
     </div>
     <div class="pantry-item">
       <p>${ingredientName}</p>
       </div>
       <div class="item-quantity">
-        <img class="minus pantry-icon" src="../assets/minus.svg">
         <input class="item-amount-input" type="text" placeholder="${item.amount}">
-        <img class="plus pantry-icon" src="../assets/plus.svg">
       </div>
   </section>
     `)
@@ -594,20 +577,17 @@ function displayRecipesToCook() {
   pantryView.classList.add("hidden");
   favoritesView.classList.add("hidden");
   recipeView.classList.add('hidden');
-  addNewItemContainer.classList.add('hidden');
   searchView.classList.add('hidden');
   populateRecipesToCook();
 }
 
 function displayFavoriteRecipes() {
-  // hideHomePage();
   userSearchView.classList.add('hidden');
   pantryView.classList.add("hidden");
   toCookView.classList.add("hidden");
   categoryView.classList.add('hidden');
   recipeView.classList.add('hidden');
   searchView.classList.add('hidden');
-  addNewItemContainer.classList.add('hidden');
   filterContentList.classList.remove('hidden');
   favoritesView.classList.remove('hidden');
   populateFavorites();
@@ -619,7 +599,6 @@ function displayPantry() {
   recipeView.classList.add('hidden');
   filterContentList.classList.add('hidden');
   searchView.classList.add('hidden');
-  addNewItemContainer.classList.remove('hidden');
   pantryView.classList.remove("hidden");
 }
 
@@ -656,7 +635,6 @@ function displayCategoryPage() {
   pantryView.classList.add("hidden");
   favoritesView.classList.add("hidden");
   recipeView.classList.add('hidden');
-  addNewItemContainer.classList.add('hidden');
   searchView.classList.add('hidden');
   sideNavClickHandler();
 }

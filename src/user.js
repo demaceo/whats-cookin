@@ -24,12 +24,6 @@ class User {
     }
   }
 
-//   favoriteRecipe() {
-//     this.star = !this.star
-//     this.star ? this.src = "assets/star-solid.svg" : this.src = "assets/star-regular.svg"
-//   }
-// }
-
   addFavoriteRecipe(recipe) {
     if (!this.favoriteRecipes.includes(recipe)) {
       this.favoriteRecipes.unshift(recipe)
@@ -85,6 +79,20 @@ class User {
       }
     });
     return searchResult;
+  }
+
+  searchToCookByIngredient(searchEntry) {
+    let searchResults = [];
+    const ingredientObject = ingredientsData.find(ingredient => ingredient.name === searchEntry)
+    console.log(ingredientObject);
+    this.recipesToCook.forEach(recipe => {
+      recipe.ingredients.forEach(ingredient => {
+        if (ingredient.id === ingredientObject.id) {
+          return searchResults.push(recipe)
+        }
+      })
+    })
+    return searchResults
   }
 }
 

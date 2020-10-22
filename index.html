@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./src/styles.css">
   <meta charset="UTF-8">
   <title>Whats Cookin</title>
 </head>
@@ -10,7 +10,7 @@
 <body>
   <div class='hero-container fade-in'>
     <h1>What's Cookin'</h1>
-    <img class='hero' src='../assets/board.jpg'>
+    <img class='hero' src='./assets/board.jpg'>
   </div>
 
   <header class='navbar'>
@@ -27,13 +27,19 @@
           <a class="category-option" href="#">Entrees</a>
         </div>
         <div class="social-icons">
-          <img class="social-icon" src="../assets/instagram.svg" alt="">
-          <img class="social-icon" src="../assets/facebook.svg" alt="">
-          <img class="social-icon" src="../assets/twitter.svg" alt="">
+          <a href='https://www.instagram.com/whatscookinturing/'>
+            <img class="social-icon" src="./assets/instagram.svg" alt="">
+          </a>
+          <a>
+            <img class="social-icon" src="./assets/facebook.svg" alt="">
+          </a>
+          <a>
+            <img class="social-icon" src="./assets/twitter.svg" alt="">
+          </a>
         </div>
       </div>
       <span onclick="openNav()">
-        <img id='header-hamburger-menu' class='header-icon icon' src='../assets/bars-solid.svg'>
+        <img id='header-hamburger-menu' class='header-icon icon' src='./assets/bars-solid.svg'>
       </span>
       <div class='navbar-title-container'>
         <h1 class='navbar-whats-cookin'>What's Cookin'</h1>
@@ -50,21 +56,21 @@
         <input class="search-input" type="text" placeholder="Search Recipes">
       </div>
       <div class="dropdown accounts-icon">
-        <img id='header-profile-icon' class='accounts-icon icon' src='../assets/users-solid.svg'>
+        <img id='header-profile-icon' class='accounts-icon icon' src='./assets/users-solid.svg'>
         <div class="user-accounts dropdown-content">
         </div>
       </div>
       <div class="dropdown dropdown-header-icon hidden">
-        <img id='header-profile-icon' class='dropdown header-icon icon' src='../assets/user-circle-regular.svg'>
+        <img id='header-profile-icon' class='dropdown header-icon icon' src='./assets/user-circle-regular.svg'>
         <div class="profile-list dropdown-content">
-          <a href="#" id='profile-dropdown-recipes-to-cook'><img class="dropdown-icons" src="../assets/utensils.svg" alt="">
+          <a href="#" id='profile-dropdown-recipes-to-cook'><img class="dropdown-icons" src="./assets/utensils.svg" alt="">
             Recipes To Cook</a>
-          <a href="#" id='profile-dropdown-favorite-recipes'><img class="dropdown-icons" src="../assets/star-solid.svg" alt="">
+          <a href="#" id='profile-dropdown-favorite-recipes'><img class="dropdown-icons" src="./assets/star-solid.svg" alt="">
             Favorited Recipes</a>
-          <a href="#" id='profile-dropdown-pantry'><img class="dropdown-icons" src="../assets/bread.svg" alt="">
+          <a href="#" id='profile-dropdown-pantry'><img class="dropdown-icons" src="./assets/bread.svg" alt="">
             My Pantry</a>
           <br>
-          <a href="#" id='profile-dropdown-log-out'><img class="dropdown-icons" src="../assets/middle-finger.svg" alt="">
+          <a href="#" id='profile-dropdown-log-out'><img class="dropdown-icons" src="./assets/middle-finger.svg" alt="">
             Log Out</a>
         </div>
       </div>
@@ -76,7 +82,7 @@
       <section class="home-main-content">
         <section class="featured-recipe">
           <div class='featured-recipe-image-wrapper'>
-            <img class="featured-recipe-img recipe-image" src="../assets/salmon.jpg" alt="" id='111111'>
+            <img class="featured-recipe-img recipe-image" src="./assets/salmon.jpg" alt="" id='111111'>
           </div>
           <div class="featured-recipe-info">
             <div class="featured-recipe-title">
@@ -104,7 +110,7 @@
     <!-- VIEW RECIPE PAGE -->
     <section class="recipe-view hidden fade-in">
       <section class="recipe-left-column">
-        <img class="recipe-img" src="../assets/salmon.jpg" alt="">
+        <img class="recipe-img" src="./assets/salmon.jpg" alt="">
         <div class="recipe-view-icons">
           <svg id='recipe-bookmark' class="recipe-view-bookmark-icon recipe-bookmark-icon--inactive sidebar-icon icon"></svg>
           <span id='recipe-id' class='hidden'></span>
@@ -144,7 +150,7 @@
 
     <!-- USER VIEW PAGE -->
     <section class="user-view fade-in">
-      
+
       <section class="main-user-body hidden">
         <!-- USER VIEW '____' Section -->
         <section class="user-view-section to-cook-view fade-in">
@@ -162,44 +168,19 @@
         <section class="user-view-section user-search-view hidden">
 
         </section>
-        <!-- User 'Add Item' Form Section -->
-        <section class="add-item-container hidden">
-          <form class="add-item-form">
-            <h2>New Item</h2>
-            <div class="form-input">
-              Item Name: <input class="add-item-name" type="text" value="" />
-            </div>
-            <div class="form-input">
-              Amount: <input class="add-item-amount" max="99" min="1" step="1" type="number" value="0" />
-            </div>
-            <div class="form-input add-item-category">
-              Category:
-              <select class="add-item-category">
-                <option class="selected-category" selected="selected" value="other">Other</option>
-                <option class="selected-category" value="meat">Meat</option>
-                <option class="selected-category" value="fish">Fish</option>
-                <option class="selected-category" value="vegetable">Vegetable</option>
-                <option class="selected-category" value="munchie">Munchie</option>
-                <option class="selected-category" value="fruit">Fruit</option>
-                <option class="selected-category" value="bread">Bread</option>
-                <option class="selected-category" value="soup">Soup</option>
-                <option class="selected-category" value="sauce">Sauce</option>
-                <option class="selected-category" value="seasoning" value"seasoning">Seasoning</option>
-              </select>
-            </div>
-            <input class="add-item-button" type="submit" value="Add Item" />
-          </form>
-        </section>
         <!-- User 'Filter By' Section -->
         <section class="user-filter-content hidden">
           <div class="nav-search-bar">
             <input class="saved-recipes-search search-input" type="text" placeholder="Search Your Saved Recipes">
           </div>
-          <label for="filter-items">Filter By</label>
+          <label class="user-filter-items" for="filter-items">Filter By</label>
           <select id="items">
-            <option class="filter-option" value="item-1">Name</option>
-            <option class="filter-option" value="item-2">Category</option>
-            <option class="filter-option" value="item-3">Date Added</option>
+            <option class="filter-option" value="item-1">Breakfast</option>
+            <option class="filter-option" value="item-2">Lunch</option>
+            <option class="filter-option" value="item-1">Dinner</option>
+            <option class="filter-option" value="item-2">Appetizers</option>
+            <option class="filter-option" value="item-1">Salad</option>
+            <option class="filter-option" value="item-2">Entrees</option>
           </select>
         </section>
       </section>
@@ -207,13 +188,13 @@
     <section class="search-view fade-in hidden">
     </section>
   </main>
-  <script type="text/javascript" src="../data/users.js"></script>
-  <script type="text/javascript" src="../data/recipes.js"></script>
-  <script type="text/javascript" src="../data/ingredients.js"></script>
-  <script type="text/javascript" src="recipe.js"></script>
-  <script type="text/javascript" src="pantry.js"></script>
-  <script type="text/javascript" src="user.js"></script>
-  <script type="text/javascript" src="scripts.js"></script>
+  <script type="text/javascript" src="./data/users.js"></script>
+  <script type="text/javascript" src="./data/recipes.js"></script>
+  <script type="text/javascript" src="./data/ingredients.js"></script>
+  <script type="text/javascript" src="./src/recipe.js"></script>
+  <script type="text/javascript" src="./src/pantry.js"></script>
+  <script type="text/javascript" src="./src/user.js"></script>
+  <script type="text/javascript" src="./src/scripts.js"></script>
 </body>
 
 </html>
