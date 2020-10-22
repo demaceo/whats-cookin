@@ -10,7 +10,7 @@ class User {
     this.recipesToCook = [];
     this.completedRecipes = [];
     this.pantry = new Pantry(user);
-  };
+  }
 
   removeFromFavorites(recipe) {
     if (this.favoriteRecipes.includes(recipe)) {
@@ -36,13 +36,13 @@ class User {
       let toCookFavoriteMatch = this.recipesToCook.find(recipeToCook => recipeToCook.name === recipe.name);
       this.recipesToCook.splice(this.recipesToCook.indexOf(toCookFavoriteMatch), 1);
     }
-  };
+  }
 
   addToRecipesToCook(recipe) {
     if (!this.recipesToCook.includes(recipe)) {
       this.recipesToCook.unshift(recipe)
     }
-  };
+  }
 
   addItemToPantry(ingredient, quantity) {
     let item = {
@@ -50,7 +50,7 @@ class User {
       "amount": quantity
     };
     this.pantry.contents.unshift(item);
-  };
+  }
 
   searchFavoritesByIngredient(searchEntry) {
     let searchResults = [];
@@ -63,7 +63,7 @@ class User {
       })
     })
     return searchResults
-  };
+  }
 
   searchFavorites(searchEntry) {
     let searchResult = [];
@@ -74,11 +74,7 @@ class User {
       }
     });
     return searchResult;
-  };
-  // need to include `|| favorite.recipe.ingredient === recipe`
-  // but be able to take that id of ingredient and place it to a name.
-  //should we use .includes or a === for the IF statement
-  //change parameter name to "searchEntry"
+  }
 
   searchRecipesToCook(searchEntry) {
     let searchResult = [];
@@ -92,26 +88,4 @@ class User {
   }
 }
 
-  // saveToStorage() {
-  //   // when favoriting/unfavoriting, add/remove to cook later, add/remove from pantry
-  //   localStorage.setItem(`${this.id}`, JSON.stringify(`${currentUser}`));
-  // }
-
-  // pullFromStorage() {
-    // on login
-    // check to see if this.id matches any parsed objects in storage array
-    // if yes, then currentUser = that local storage object
-    // if no, then currentUser = userSelection
-  // }
-
-//   deleteFromStorage() {
-//     let localStorageUsers = JSON.parse(localStorage.getItem(`${this.id}`));
-//     localStorageUsers.forEach(user => {
-//       if (user.id === this.id) {
-//         localStorageUsers.splice(i, 1)
-//       }
-//     });
-//     localStorage.setItem(`${this.id}`, JSON.stringify(localStorageUsers))
-//   }
-// }
 // module.exports = User;
