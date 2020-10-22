@@ -231,7 +231,7 @@ function loadRandomOthersCookin() {
       document.querySelector('.others-sidebar-card-container').insertAdjacentHTML('afterbegin', `
       <article class='others-sidebar-card'>
         <div class="others-sidebar-card-info-block">
-          <img class="users-icon sidebar-icon" src='../assets/user-solid.svg'>
+          <img class="users-icon sidebar-icon" src='./assets/user-solid.svg'>
           <p>${randomUser.name.split(' ')[0]} ${randomUser.name.split(' ')[1].charAt(0)}.</p>
           <div class="others-sidebar-card-info-icons">
             <svg class="recipe-bookmark-icon--inactive sidebar-icon icon"></svg>
@@ -284,7 +284,7 @@ function sortUserAccounts() {
   });
   sortedUsersData.forEach(user => {
     userAccounts.insertAdjacentHTML('afterbegin', `
-    <a href="#"><img class="dropdown-icons" src="../assets/user-solid.svg" alt="">
+    <a href="#"><img class="dropdown-icons" src="./assets/user-solid.svg" alt="">
       ${user.name}</a>
     `)
   })
@@ -533,15 +533,15 @@ function populatePantry() {
     pantryView.insertAdjacentHTML('afterbegin', `
   <section class='pantry-item-block' id="${item.ingredient}">
     <div class="delete-item-container">
-      <img class="delete pantry-icon" src="../assets/times-solid.svg">
+      <img class="delete pantry-icon" src="./assets/times-solid.svg">
     </div>
     <div class="pantry-item">
       <p>${ingredientName}</p>
       </div>
       <div class="item-quantity">
-        <img class="minus pantry-icon" src="../assets/minus.svg">
+        <img class="minus pantry-icon" src="./assets/minus.svg">
         <input class="item-amount-input" type="text" placeholder="${item.amount}">
-        <img class="plus pantry-icon" src="../assets/plus.svg">
+        <img class="plus pantry-icon" src="./assets/plus.svg">
       </div>
   </section>
     `)
