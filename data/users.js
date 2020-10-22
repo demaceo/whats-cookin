@@ -154,7 +154,7 @@ let usersData = [
     ]
   },
   {
-    "name": "Colin Forsecs",
+    "name": "Bob Mahdt'u",
     "id": 1,
     "pantry": [
       {
@@ -304,7 +304,7 @@ let usersData = [
     ]
   },
   {
-    "name": "Mike Oxlong",
+    "name": "Will Mawdtu",
     "id": 2,
     "pantry": [
       {
@@ -1490,7 +1490,7 @@ let usersData = [
     ]
   },
   {
-    "name": "Pat Myaz",
+    "name": "Pat Mayadz",
     "id": 7,
     "pantry": [
       {
@@ -1644,7 +1644,7 @@ let usersData = [
     ]
   },
   {
-    "name": "Will B. Hardigan",
+    "name": "Will Hardigan",
     "id": 8,
     "pantry": [
       {
@@ -2358,7 +2358,7 @@ let usersData = [
     ]
   },
   {
-    "name": "Lou Briccant",
+    "name": "Lou Bricc",
     "id": 11,
     "pantry": [
       {
@@ -2606,7 +2606,7 @@ let usersData = [
     ]
   },
   {
-    "name": "Mel Keetehts",
+    "name": "Al Kohal",
     "id": 15,
     "pantry": [
       {
@@ -2880,7 +2880,7 @@ let usersData = [
     ]
   },
   {
-    "name": "Cole Ostamie",
+    "name": "Cole Samie",
     "id": 18,
     "pantry": [
       {
@@ -3510,7 +3510,32 @@ let usersData = [
   {
     "name": "Alayna Davis",
     "id": 22,
-    "pantry": []
+    "pantry": [
+      {
+        "ingredient": 18371,
+        "amount": 9
+      },
+      {
+        "ingredient": 2027,
+        "amount": 3
+      },
+      {
+        "ingredient": 1001,
+        "amount": 19
+      },
+      {
+        "ingredient": 11821,
+        "amount": 6
+      },
+      {
+        "ingredient": 2049,
+        "amount": 2
+      },
+      {
+        "ingredient": 10123,
+        "amount": 4
+      }
+    ]
   },
   {
     "name": "Justin Thyme",
@@ -4245,7 +4270,7 @@ let usersData = [
     ]
   },
   {
-    "name": "Hugh Jass",
+    "name": "Hugh Jassman",
     "id": 27,
     "pantry": [
       {
