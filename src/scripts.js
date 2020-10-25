@@ -517,7 +517,10 @@ function populateRecipeView() {
 }
 
 function isItBookmarked(recipeToCheck) {
-  let matchedRecipe = currentUser.recipesToCook.find(recipe => recipe.id === recipeToCheck.id)
+  let matchedRecipe;
+  if (currentUser) {
+    matchedRecipe = currentUser.recipesToCook.find(recipe => recipe.id === recipeToCheck.id);
+  }
   if (matchedRecipe) {
     document.querySelector('#recipe-bookmark').classList.replace('recipe-view-bookmark-icon', 'recipe-bookmark-icon--active')
   } else {
