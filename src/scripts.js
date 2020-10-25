@@ -522,8 +522,10 @@ function isItBookmarked(recipeToCheck) {
     matchedRecipe = currentUser.recipesToCook.find(recipe => recipe.id === recipeToCheck.id);
   }
   if (matchedRecipe) {
+    document.querySelector('#recipe-bookmark').classList.replace('recipe-bookmark-icon--inactive', 'recipe-bookmark-icon--active')
     document.querySelector('#recipe-bookmark').classList.replace('recipe-view-bookmark-icon', 'recipe-bookmark-icon--active')
   } else {
+    document.querySelector('#recipe-bookmark').classList.replace('recipe-bookmark-icon--active', 'recipe-bookmark-icon--inactive')
     document.querySelector('#recipe-bookmark').classList.replace('recipe-bookmark-icon--active', 'recipe-view-bookmark-icon')
   }
 }
