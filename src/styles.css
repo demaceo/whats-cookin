@@ -440,6 +440,7 @@ body {
 }
 
 .staff-pick-title-wrapper {
+  display: flex;
   max-width: fit-content;
   height: -webkit-fill-available;
 }
@@ -804,8 +805,8 @@ body {
   flex-direction: row;
   width: 8vw;
   padding: 10px 0;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  /* align-items: center; */
 }
 
 .item-amount-input {
@@ -845,6 +846,10 @@ body {
   margin: 0 1vw;
 }
 
+.search-result h2 {
+  font-size: 1.2em;
+}
+
 .search-result-container {
   padding: .2em .2em;
   display: flex;
@@ -853,7 +858,7 @@ body {
 }
 
 .searched-recipe-image {
-  height: 32vw;
+  height: 28vw;
 }
 
 .star-icon {
@@ -891,8 +896,9 @@ body {
 
 .search-result {
   display: flex;
-  justify-content: center;
-  display: contents;
+  justify-content: start;
+  padding-bottom: 10px;
+  /* display: contents; */
 }
 
 .search-recipe-image {
