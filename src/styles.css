@@ -778,11 +778,13 @@ body {
   flex-direction: column;
   padding: 10px;
   border-radius: 20px;
-  border: #a6c0fe solid;
+  /* border: #a6c0fe solid; */
+  bordeR: grey solid;
   align-items: center;
   min-width: 170px;
   max-width: 170px;
   max-height: 200px;
+  margin: .3em;
 }
 
 .pantry-icon {
@@ -811,6 +813,7 @@ body {
 
 .item-amount-input {
   width: 2.5vw;
+  border-color: antiquewhite;
   height: 4vh;
   text-align: center;
 }

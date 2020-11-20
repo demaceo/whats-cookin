@@ -152,7 +152,7 @@ function removeUserSearchDuplicates(array) {
 
 function populateUserSearchResults(searchResults) {
   userSearchView.classList.remove('hidden');
-  userSearchView.innerHTML = "";
+  userSearchView.innerHTML = '';
   searchResults.forEach(result => {
     userSearchView.insertAdjacentHTML('afterbegin', `
     <div class="staff-pick-block staff-pick">
@@ -677,6 +677,7 @@ function displayPantry() {
   toCookView.classList.add("hidden");
   recipeView.classList.add('hidden');
   filterContentList.classList.add('hidden');
+  userSearchView.classList.add('hidden');
   searchView.classList.add('hidden');
   pantryView.classList.remove("hidden");
 }
