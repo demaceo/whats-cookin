@@ -38,7 +38,6 @@ There's more info under here about the functionality being described!
 ---
 
 #### General Site Features
-The game is a simple game of traditional slapjack. Players alternate turns playing cards face-up into a central pile until a card that can be 'slapped' appears. A jack or wild can be slapped, winning the hand. When a hand is won, all the cards of the central pile go to the winning players hand, and then their total cards are shuffled. The goal is to collect all the cards to win the round. Other winning slaps include two cards in a row with the same value (includeing king, queen, ace) or two cards with the same value - one on top, one at the third spot below it (a 'sandwich'). When a player is out of cards, they may slap back in on a valid hand, but can no longer deal until they gain a card.
 
 <details>
   <summary>**Under the Hood**</summary>
