@@ -868,7 +868,7 @@ body {
 
 .star-icon {
   width: 30px;
-  background-height: 2em;
+  height: 2em;
   padding-right: 10px;
   background-size: 2.25vh;
   background-image: url(../assets/star-empty.svg);
@@ -925,9 +925,9 @@ span {
 }
 
 .sidenav {
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  justify-content: space-around; */
+  justify-content: space-around;
   height: 100%;
   width: 0;
   position: fixed;
