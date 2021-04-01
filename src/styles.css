@@ -442,7 +442,8 @@ body {
 .staff-pick-title-wrapper {
   display: flex;
   max-width: fit-content;
-  /* height: -webkit-fill-available; */
+  justify-content: space-evenly;
+  flex-direction: row;
 }
 
 .staff-pick-title {
@@ -867,10 +868,9 @@ body {
 }
 
 .star-icon {
-  width: 30px;
-  height: 2em;
+  width: fit-content;
   padding-right: 10px;
-  background-size: 2.25vh;
+  background-size: 3.75vh;
   background-image: url(../assets/star-empty.svg);
   background-repeat: no-repeat;
   transition: all .2s ease-in-out;
@@ -882,18 +882,17 @@ body {
 }
 
 .star-icon:hover {
-  background-size: 2.45vh;
+  background-size: 4.30vh;
   transition: all .2s ease-in-out;
 }
 
 .star-icon--active {
-  width: 20px;
+  width: fit-content;
   padding-right: 10px;
-  background-size: 2.25vh;
+  background-size: 4.25vh;
   background-image: url(../assets/star-filled-color.svg);
   background-repeat: no-repeat;
   transition: all .2s ease-in-out;
-  background-size: 2.7vh;
   animation-name: pulse;
   animation-duration: .2s;
   animation-iteration-count: 1;
