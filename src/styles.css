@@ -442,7 +442,7 @@ body {
 .staff-pick-title-wrapper {
   display: flex;
   max-width: fit-content;
-  height: -webkit-fill-available;
+  /* height: -webkit-fill-available; */
 }
 
 .staff-pick-title {
@@ -592,7 +592,7 @@ body {
   display: flex;
   align-items: center;
   position: absolute;
-  width: 9em;
+  width: 15em;
 }
 
 #recipe-bookmark {
@@ -911,8 +911,9 @@ body {
 
 .search-result-icon {
   margin: 1em;
-  background-size: 2em;
+  /* background-size: 2em; */
   height: 4em;
+  width: 3vw;
 }
 
 /* --------SIDE NAVIGATION MENU -------- */
@@ -922,6 +923,9 @@ span {
 }
 
 .sidenav {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-around; */
   height: 100%;
   width: 0;
   position: fixed;
@@ -931,7 +935,7 @@ span {
   background-color: #1A1918;
   overflow-x: hidden;
   padding-top: 60px;
-  transition: width .35s;
+  transition: width .20s;
 }
 
 .sidenav h2 {
@@ -968,6 +972,7 @@ span {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: baseline;
   padding: 20px;
   background-color: antiquewhite;
   margin-top: 4em;
