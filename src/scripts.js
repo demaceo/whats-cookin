@@ -203,7 +203,9 @@ function matchCategoryTags(category, mealTag) {
 function populateCategoryPage(recipeResults) {
   categoryView.innerHTML = '';
   recipeResults.forEach(result => {
-    categoryView.insertAdjacentHTML('afterbegin', `
+    categoryView.insertAdjacentHTML(
+      "afterbegin",
+      `
     <div class="staff-pick-block staff-pick" id=${result.id}>
       <div class='staff-pick-image-wrapper'>
         <img class="staff-pick-img recipe-image" src=${result.image} id=${result.id}>
@@ -211,10 +213,12 @@ function populateCategoryPage(recipeResults) {
       <div class='staff-pick-title-wrapper'>
         <svg class="search-result-icon recipe-bookmark-icon--inactive sidebar-icon icon" id=${result.id}></svg>
         <span class='hidden'>${result.id}</span>
+              <h3 class="staff-pick-title">${result.name}</h3>
+
       </div>
-      <h3 class="staff-pick-title">${result.name}</h3>
     </div>
-    `)
+    `
+    );
   })
 }
 
@@ -596,9 +600,6 @@ function populatePantry() {
     }
     pantryView.insertAdjacentHTML('afterbegin', `
   <section class='pantry-item-block' id="${item.ingredient}">
-    <div class="delete-item-container">
-      <img class="delete pantry-icon" src="./assets/times-solid.svg">
-    </div>
     <div class="pantry-item">
       <p>${ingredientName}</p>
       </div>
