@@ -593,6 +593,8 @@ body {
   align-items: center;
   position: absolute;
   width: 15em;
+  background-color: white;
+  border: solid 5px bisque;
 }
 
 #recipe-bookmark {
