@@ -442,7 +442,8 @@ body {
 .staff-pick-title-wrapper {
   display: flex;
   max-width: fit-content;
-  height: -webkit-fill-available;
+  justify-content: space-evenly;
+  flex-direction: row;
 }
 
 .staff-pick-title {
@@ -592,7 +593,9 @@ body {
   display: flex;
   align-items: center;
   position: absolute;
-  width: 9em;
+  width: 15em;
+  background-color: white;
+  border: solid 5px bisque;
 }
 
 #recipe-bookmark {
@@ -865,10 +868,9 @@ body {
 }
 
 .star-icon {
-  width: 30px;
-  background-height: 2em;
+  width: fit-content;
   padding-right: 10px;
-  background-size: 2.25vh;
+  background-size: 3.75vh;
   background-image: url(../assets/star-empty.svg);
   background-repeat: no-repeat;
   transition: all .2s ease-in-out;
@@ -880,18 +882,17 @@ body {
 }
 
 .star-icon:hover {
-  background-size: 2.45vh;
+  background-size: 4.30vh;
   transition: all .2s ease-in-out;
 }
 
 .star-icon--active {
-  width: 20px;
+  width: fit-content;
   padding-right: 10px;
-  background-size: 2.25vh;
+  background-size: 4.25vh;
   background-image: url(../assets/star-filled-color.svg);
   background-repeat: no-repeat;
   transition: all .2s ease-in-out;
-  background-size: 2.7vh;
   animation-name: pulse;
   animation-duration: .2s;
   animation-iteration-count: 1;
@@ -911,8 +912,9 @@ body {
 
 .search-result-icon {
   margin: 1em;
-  background-size: 2em;
+  /* background-size: 2em; */
   height: 4em;
+  width: 3vw;
 }
 
 /* --------SIDE NAVIGATION MENU -------- */
@@ -922,6 +924,9 @@ span {
 }
 
 .sidenav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   height: 100%;
   width: 0;
   position: fixed;
@@ -931,7 +936,7 @@ span {
   background-color: #1A1918;
   overflow-x: hidden;
   padding-top: 60px;
-  transition: width .35s;
+  transition: width .20s;
 }
 
 .sidenav h2 {
@@ -968,6 +973,7 @@ span {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: baseline;
   padding: 20px;
   background-color: antiquewhite;
   margin-top: 4em;
