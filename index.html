@@ -1,204 +1,241 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xml:lang="en">
+  <head>
+    <link rel="stylesheet" href="./src/styles.css" />
+    <meta charset="UTF-8" />
+    <title>Whats Cookin</title>
+  </head>
 
-<head>
-  <link rel="stylesheet" href="./src/styles.css">
-  <meta charset="UTF-8">
-  <title>Whats Cookin</title>
-</head>
-
-<body>
-  <div class='hero-container fade-in'>
-    <h1>What's Cookin'</h1>
-    <img class='hero' src='./assets/board.jpg'>
-  </div>
-
-  <header class='navbar'>
-    <div>
-      <div class="sidenav" id="sideNav">
-        <a href="#" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="browse-categories">
-          <h2><u>Browse by Category:</u></h2>
-          <a class="category-option">Breakfast</a>
-          <a class="category-option">Lunch</a>
-          <a class="category-option" href="#">Dinner</a>
-          <a class="category-option" href="#">Appetizers</a>
-          <a class="category-option" href="#">Salads</a>
-          <a class="category-option" href="#">Entrees</a>
-        </div>
-        <div class="social-icons">
-          <a href='https://www.instagram.com/whatscookinturing/'>
-            <img class="social-icon" src="./assets/instagram.svg" alt="">
-          </a>
-          <a>
-            <img class="social-icon" src="./assets/facebook.svg" alt="">
-          </a>
-          <a>
-            <img class="social-icon" src="./assets/twitter.svg" alt="">
-          </a>
-        </div>
-      </div>
-      <span onclick="openNav()">
-        <img id='header-hamburger-menu' class='header-icon icon' src='./assets/bars-solid.svg'>
-      </span>
-      <div class='navbar-title-container'>
-        <h1 class='navbar-whats-cookin'>What's Cookin'</h1>
-        <div class='navbar-user-name-wrapper'>
-          <h1 class='navbar-user-name'></h1>
-        </div>
-        <div class='navbar-user-section-wrapper'>
-          <h1 class='navbar-user-section'>.pantry</h1>
-        </div>
-      </div>
+  <body>
+    <div class="hero-container fade-in">
+      <h1>What's Cookin'</h1>
+      <img class="hero" src="./assets/board.jpg" alt="Cutting board with food" />
     </div>
-    <div>
-      <div class="nav-search-bar">
-        <input class="search-input" type="text" placeholder="Search Recipes">
-      </div>
-      <div class="dropdown accounts-icon">
-        <img id='header-profile-icon' class='accounts-icon icon' src='./assets/users-solid.svg'>
-        <div class="user-accounts dropdown-content">
-        </div>
-      </div>
-      <div class="dropdown dropdown-header-icon hidden">
-        <img id='header-profile-icon' class='dropdown header-icon icon' src='./assets/user-circle-regular.svg'>
-        <div class="profile-list dropdown-content">
-          <a href="#" id='profile-dropdown-recipes-to-cook'><img class="dropdown-icons" src="./assets/utensils.svg" alt="">
-            Recipes To Cook</a>
-          <a href="#" id='profile-dropdown-favorite-recipes'><img class="dropdown-icons" src="./assets/star-solid.svg" alt="">
-            Favorited Recipes</a>
-          <a href="#" id='profile-dropdown-pantry'><img class="dropdown-icons" src="./assets/bread.svg" alt="">
-            My Pantry</a>
-          <br>
-          <a href="#" id='profile-dropdown-log-out'><img class="dropdown-icons" src="./assets/sign-out.svg" alt="">
-            Log Out</a>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- HOME VIEW SECTION -->
-  <main>
-    <section class="home-view fade-in">
-      <section class="home-main-content">
-        <section class="featured-recipe">
-          <div class='featured-recipe-image-wrapper'>
-            <img class="featured-recipe-img recipe-image" src="./assets/salmon.jpg" alt="" id='111111'>
+
+    <header class="navbar">
+      <div>
+        <div class="sidenav" id="sideNav">
+          <button type="button" class="closebtn" onclick="closeNav()">&times;</button>
+          <div class="browse-categories">
+            <h2><u>Browse by Category:</u></h2>
+            <a class="category-option">Breakfast</a>
+            <a class="category-option">Lunch</a>
+            <a class="category-option" href="#">Dinner</a>
+            <a class="category-option" href="#">Appetizers</a>
+            <a class="category-option" href="#">Salads</a>
+            <a class="category-option" href="#">Entrees</a>
           </div>
-          <div class="featured-recipe-info">
-            <div class="featured-recipe-title">
-              Salmon + Pineapple + Forks
+          <div class="social-icons">
+            <a href="https://www.instagram.com/whatscookinturing/">
+              <img class="social-icon" src="./assets/instagram.svg" alt="" />
+            </a>
+            <a>
+              <img class="social-icon" src="./assets/facebook.svg" alt="" />
+            </a>
+            <a>
+              <img class="social-icon" src="./assets/twitter.svg" alt="" />
+            </a>
+          </div>
+        </div>
+        <button
+          type="button"
+          onclick="openNav()"
+          aria-label="Open navigation menu"
+          class="header-hamburger-button"
+        >
+          <img
+            id="header-hamburger-menu"
+            class="header-icon icon"
+            src="./assets/bars-solid.svg"
+            alt="Open navigation menu"
+          />
+        </button>
+        <div class="navbar-title-container">
+          <h1 class="navbar-whats-cookin">What's Cookin'</h1>
+          <div class="navbar-user-name-wrapper">
+            <h1 class="navbar-user-name"><span class="sr-only">User Name</span></h1>
+          </div>
+          <div class="navbar-user-section-wrapper">
+            <h1 class="navbar-user-section">.pantry</h1>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="nav-search-bar">
+          <input
+            class="search-input"
+            type="text"
+            placeholder="Search Recipes"
+          />
+        </div>
+        <div class="dropdown accounts-icon">
+          <img
+            id="header-profile-icon"
+            class="accounts-icon icon"
+            src="./assets/users-solid.svg"
+            alt="User accounts"
+          />
+          <div class="user-accounts dropdown-content"></div>
+        </div>
+        <div class="dropdown dropdown-header-icon hidden">
+          <img
+            id="header-profile-icon"
+            class="dropdown header-icon icon"
+            src="./assets/user-circle-regular.svg"
+            alt="User profile"
+          />
+          <div class="profile-list dropdown-content">
+            <a href="#" id="profile-dropdown-recipes-to-cook"
+              ><img class="dropdown-icons" src="./assets/utensils.svg" alt="" />
+              Recipes To Cook</a
+            >
+            <a href="#" id="profile-dropdown-favorite-recipes"
+              ><img
+                class="dropdown-icons"
+                src="./assets/star-solid.svg"
+                alt=""
+              />
+              Favorited Recipes</a
+            >
+            <a href="#" id="profile-dropdown-pantry"
+              ><img class="dropdown-icons" src="./assets/bread.svg" alt="" /> My
+              Pantry</a
+            >
+            <br />
+            <a href="#" id="profile-dropdown-log-out"
+              ><img class="dropdown-icons" src="./assets/sign-out.svg" alt="" />
+              Log Out</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- HOME VIEW SECTION -->
+    <main>
+      <section class="home-view fade-in">
+        <section class="home-main-content">
+          <section class="featured-recipe">
+            <div class="featured-recipe-image-wrapper">
+              <img
+                class="featured-recipe-img recipe-image"
+                src="./assets/salmon.jpg"
+                alt=""
+                id="111111"
+              />
             </div>
-            <p class="featured-recipe-description">
-              Looking for different ideas when it comes to the holidays?
-              Fish can make a wonderful main dish even when the temperature drops! Learn how to make
-              Baked Pineapple Salmon and wow your guests at the next dinner party!
-            </p>
-          </div>
+            <div class="featured-recipe-info">
+              <div class="featured-recipe-title">
+                Salmon + Pineapple + Forks
+              </div>
+              <p class="featured-recipe-description">
+                Looking for different ideas when it comes to the holidays? Fish
+                can make a wonderful main dish even when the temperature drops!
+                Learn how to make Baked Pineapple Salmon and wow your guests at
+                the next dinner party!
+              </p>
+            </div>
+          </section>
+          <h1 class="staff-picks-title">Staff Favorites</h1>
+          <section class="staff-picks"></section>
         </section>
-        <h1 class='staff-picks-title'>Staff Favorites</h1>
-        <section class="staff-picks">
+
+        <section class="others-sidebar">
+          <h2 id="others-sidebar-title">What Others Are Cookin'</h2>
+          <div class="others-sidebar-card-container"></div>
+        </section>
+      </section>
+
+      <!-- VIEW RECIPE PAGE -->
+      <section class="recipe-view hidden fade-in">
+        <section class="recipe-left-column">
+          <img class="recipe-img" src="./assets/salmon.jpg" alt="" />
+          <div class="recipe-view-icons">
+            <svg
+              id="recipe-bookmark"
+              class="recipe-view-bookmark-icon recipe-bookmark-icon--inactive sidebar-icon icon"
+            ></svg>
+            <span id="recipe-id" class="hidden"></span>
+            <svg id="recipe-basket" class="sidebar-icon icon"></svg>
+            <svg
+              id="recipe-cookie"
+              class="recipe-solid-cookie-icon--active sidebar-icon icon"
+            >
+              <p id="recipe-count"></p>
+            </svg>
+          </div>
+          <section class="recipe-ingredients">
+            <div class="ingredient ingredient-name">
+              <h2 class="recipe-ingredients-table-title">Ingredients</h2>
+              <h2 class="ingredients-h2"><span class="sr-only">List of ingredients</span></h2>
+            </div>
+            <div class="ingredient ingredient-amount">
+              <h2 class="recipe-ingredients-table-title">Amount</h2>
+              <h2 class="amount-h2"><span class="sr-only">Amount</span></h2>
+            </div>
+            <div class="ingredient ingredient-cost">
+              <h2 class="recipe-ingredients-table-title">Cost</h2>
+              <h2 class="cost-h2"><span class="sr-only">Cost</span></h2>
+            </div>
+            <div class="ingredient ingredient-needed">
+              <h2 class="recipe-ingredients-table-title">Missing</h2>
+              <h2 class="needed-h2"><span class="sr-only">Missing Ingredients</span></h2>
+            </div>
+          </section>
+        </section>
+        <section class="recipe-right-column">
+          <h2 class="recipe-title"><span class="sr-only">Recipe Title</span></h2>
+          <p class="recipe-details"></p>
+          <p class="recipe-instructions recipe-instructions-title">
+            Instructions:<br />
+          </p>
+          <div class="recipe-instructions-list"></div>
         </section>
       </section>
 
-      <section class="others-sidebar">
-        <h2 id='others-sidebar-title'>What Others Are Cookin'</h2>
-        <div class='others-sidebar-card-container'>
-        </div>
-      </section>
-    </section>
-
-    <!-- VIEW RECIPE PAGE -->
-    <section class="recipe-view hidden fade-in">
-      <section class="recipe-left-column">
-        <img class="recipe-img" src="./assets/salmon.jpg" alt="">
-        <div class="recipe-view-icons">
-          <svg id='recipe-bookmark' class="recipe-view-bookmark-icon recipe-bookmark-icon--inactive sidebar-icon icon"></svg>
-          <span id='recipe-id' class='hidden'></span>
-          <svg id='recipe-basket' class="sidebar-icon icon"></svg>
-          <svg id='recipe-cookie' class="recipe-solid-cookie-icon--active sidebar-icon icon">
-            <p id='recipe-count'></p>
-          </svg>
-        </div>
-        <section class="recipe-ingredients">
-          <div class="ingredient ingredient-name">
-            <h2 class="recipe-ingredients-table-title">Ingredients</h2>
-            <h2 class="ingredients-h2"></h2>
-          </div>
-          <div class="ingredient ingredient-amount">
-            <h2 class='recipe-ingredients-table-title'>Amount</h2>
-            <h2 class='amount-h2'></h2>
-          </div>
-          <div class="ingredient ingredient-cost">
-            <h2 class='recipe-ingredients-table-title'>Cost</h2>
-            <h2 class='cost-h2'></h2>
-          </div>
-          <div class="ingredient ingredient-needed">
-            <h2 class='recipe-ingredients-table-title'>Missing</h2>
-            <h2 class='needed-h2'></h2>
-          </div>
+      <!-- USER VIEW PAGE -->
+      <section class="user-view fade-in">
+        <section class="main-user-body hidden">
+          <!-- USER VIEW '____' Section -->
+          <section class="user-view-section to-cook-view fade-in"></section>
+          <section class="user-view-section favorites-view hidden"></section>
+          <section class="user-view-section pantry-view hidden"></section>
+          <section class="user-view-section category-view hidden"></section>
+          <section class="user-view-section user-search-view hidden"></section>
+          <section
+            class="user-view-section filter-recipe-view hidden"
+          ></section>
+          <!-- User 'Filter By' Section -->
+          <section class="user-filter-content hidden">
+            <div class="nav-search-bar">
+              <input
+                class="saved-recipes-search search-input"
+                type="text"
+                placeholder="Search Your Saved Recipes"
+              />
+            </div>
+            <label class="user-filter" for="filter-items">Filter By</label>
+            <select class="user-filter-items" id="items">
+              <option class="filter-option" value="None"></option>
+              <option class="filter-option" value="Breakfast">Breakfast</option>
+              <option class="filter-option" value="Lunch">Lunch</option>
+              <option class="filter-option" value="Dinner">Dinner</option>
+              <option class="filter-option" value="Appetizers">
+                Appetizers
+              </option>
+              <option class="filter-option" value="Salad">Salad</option>
+              <option class="filter-option" value="Entrees">Entrees</option>
+            </select>
+          </section>
         </section>
       </section>
-      <section class="recipe-right-column">
-        <h2 class="recipe-title"></h2>
-        <p class="recipe-details"></p>
-        <p class="recipe-instructions recipe-instructions-title">Instructions:<br>
-        <div class="recipe-instructions-list">
-        </div>
-      </section>
-    </section>
-
-
-    <!-- USER VIEW PAGE -->
-    <section class="user-view fade-in">
-
-      <section class="main-user-body hidden">
-        <!-- USER VIEW '____' Section -->
-        <section class="user-view-section to-cook-view fade-in">
-
-        </section>
-        <section class="user-view-section favorites-view hidden">
-
-        </section>
-        <section class="user-view-section pantry-view hidden">
-
-        </section>
-        <section class="user-view-section category-view hidden">
-
-        </section>
-        <section class="user-view-section user-search-view hidden">
-
-        </section>
-        <section class="user-view-section filter-recipe-view hidden">
-
-        </section>
-        <!-- User 'Filter By' Section -->
-        <section class="user-filter-content hidden">
-          <div class="nav-search-bar">
-            <input class="saved-recipes-search search-input" type="text" placeholder="Search Your Saved Recipes">
-          </div>
-          <label class="user-filter" for="filter-items">Filter By</label>
-          <select class="user-filter-items" id="items">
-            <option class="filter-option" value="None"></option>
-            <option class="filter-option" value="Breakfast">Breakfast</option>
-            <option class="filter-option" value="Lunch">Lunch</option>
-            <option class="filter-option" value="Dinner">Dinner</option>
-            <option class="filter-option" value="Appetizers">Appetizers</option>
-            <option class="filter-option" value="Salad">Salad</option>
-            <option class="filter-option" value="Entrees">Entrees</option>
-          </select>
-        </section>
-      </section>
-    </section>
-    <section class="search-view fade-in hidden">
-    </section>
-  </main>
-  <script type="text/javascript" src="./data/users.js"></script>
-  <script type="text/javascript" src="./data/recipes.js"></script>
-  <script type="text/javascript" src="./data/ingredients.js"></script>
-  <script type="text/javascript" src="./src/recipe.js"></script>
-  <script type="text/javascript" src="./src/pantry.js"></script>
-  <script type="text/javascript" src="./src/user.js"></script>
-  <script type="text/javascript" src="./src/scripts.js"></script>
-</body>
-
+      <section class="search-view fade-in hidden"></section>
+    </main>
+    <script type="text/javascript" src="./data/users.js"></script>
+    <script type="text/javascript" src="./data/recipes.js"></script>
+    <script type="text/javascript" src="./data/ingredients.js"></script>
+    <script type="text/javascript" src="./src/recipe.js"></script>
+    <script type="text/javascript" src="./src/pantry.js"></script>
+    <script type="text/javascript" src="./src/user.js"></script>
+    <script type="text/javascript" src="./src/scripts.js"></script>
+  </body>
 </html>
