@@ -1,6 +1,14 @@
-// const Pantry = require("./pantry");
-// const ingredients = require('../data/ingredients');
-// const ingredientsData = ingredients.ingredientsData;
+// Browser/Node.js compatibility
+let Pantry, ingredientsData;
+if (typeof module !== 'undefined' && module.exports) {
+  // Node.js environment (tests)
+  Pantry = require("./pantry");
+  const ingredients = require('../data/ingredients');
+  ingredientsData = ingredients.ingredientsData;
+} else {
+  // Browser environment - Pantry class and ingredientsData will be available as global variables
+  // They will be set by the scripts loaded before this one
+}
 
 class User {
   constructor(user) {
@@ -51,7 +59,7 @@ class User {
     let lowerCaseIngredient = searchEntry.toLowerCase();
     this.favoriteRecipes.forEach(recipe => {
       recipe.ingredients.filter(ingredient => {
-        let ingredientName = translateIngredientNumberToName(ingredient.id)
+        let ingredientName = this.translateIngredientNumberToName(ingredient.id)
         if(ingredientName.includes(lowerCaseIngredient)){
           return searchResults.push(recipe)
         }
@@ -87,7 +95,7 @@ class User {
     let lowerCaseIngredient = searchEntry.toLowerCase();
     this.recipesToCook.forEach(recipe => {
       recipe.ingredients.filter(ingredient => {
-        let ingredientName = translateIngredientNumberToName(ingredient.id)
+        let ingredientName = this.translateIngredientNumberToName(ingredient.id)
         if(ingredientName.includes(lowerCaseIngredient)){
           return searchResults.push(recipe)
         }
@@ -95,6 +103,17 @@ class User {
     });
     return searchResults
   }
+
+  translateIngredientNumberToName(ingredientNumber) {
+    const ingredientName = ingredientsData.find(ingredient => ingredient.id === ingredientNumber);
+    if (ingredientName === undefined) {
+      return ingredientNumber;
+    } else {
+      return ingredientName.name;
+    }
+  }
 }
 
-// module.exports = User;
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = User;
+}

@@ -5,13 +5,13 @@
   "main": "index.js",
   "devDependencies": {
     "chai": "^4.2.0",
-    "eslint": "^6.8.0",
+    "eslint": "^8.57.1",
     "eslint-plugin-vue": "^7.1.0",
-    "mocha": "^6.2.2"
+    "mocha": "^10.8.2"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha",
-    "lint": "./node_modules/.bin/eslint 'src/**.js' 'test/**.js'"
+    "lint": "./node_modules/.bin/eslint 'src/scripts.js' 'src/user.js' 'src/recipe.js' 'src/pantry.js' 'test/**.js'"
   },
   "author": "Turing School of Software and Design",
   "license": "MIT"

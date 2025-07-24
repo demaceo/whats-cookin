@@ -29,8 +29,8 @@ const filterRecipeView = document.querySelector('.filter-recipe-view');
 let currentUser;
 let clickedRecipe;
 // -----------------EVENT LISTENERS-----------------:
-window.addEventListener("load", loadRandomStaffPicks);
-window.addEventListener("load", loadRandomOthersCookin);
+window.onload = loadRandomStaffPicks();
+window.onload = loadRandomOthersCookin();
 window.addEventListener("load", sortUserAccounts);
 navbarTitle.addEventListener('click', displayHomePage);
 userAccounts.addEventListener("click", determineUser);
@@ -40,7 +40,7 @@ searchInput.addEventListener('click', extendSearchBar);
 searchInput.addEventListener('keypress', searchInputHandler);
 userSearchBar.addEventListener('keydown', searchUserRecipesHandler);
 browseCategories.addEventListener('click', displayCategoryPage);
-filterOption.addEventListener('change', filterToCookRecipes);
+filterOption.addEventListener('click', filterToCookRecipes);
 // -----------------FUNCTIONS-----------------:
 
 function getRandomIndex(array) {
@@ -82,24 +82,23 @@ function matchRecipeToCookTags(mealTag) {
 }
 
 
-function filterToCookRecipes(event) {
-  const value = event.target.value.trim();
-  if (value === "Breakfast") {
+function filterToCookRecipes() {
+  if (event.target.value.trim() === "Breakfast") {
     const breakfastTags = ["morning meal", "brunch", "breakfast"];
     matchRecipeToCookTags(breakfastTags);
-  } else if (value === "Lunch") {
+  } else if (event.target.value.trim() === "Lunch") {
     const lunchTags = ["lunch", "brunch"];
     matchRecipeToCookTags(lunchTags);
-  } else if (value === "Dinner") {
+  } else if (event.target.value.trim() === "Dinner") {
     const dinnerTags = ["dinner"];
     matchRecipeToCookTags(dinnerTags);
-  } else if (value === "Appetizer") {
+  } else if (event.target.value.trim() === "Appetizer") {
     const appetizerTags = ['appetizer', 'side dish', 'antipasti', 'starter', 'snack', 'antipasto', 'hor d\'oeuvre', 'condiment', 'dip', 'spread', 'sauce'];
     matchRecipeToCookTags(appetizerTags);
-  } else if (value === "Salad") {
+  } else if (event.target.value.trim() === "Salad") {
     const saladTags = ["salad"];
     matchRecipeToCookTags(saladTags);
-  } else if (value === "Entrees") {
+  } else if (event.target.value.trim() === "Entrees") {
     const entreeTags = ["main course", "main dish"];
     matchRecipeToCookTags(entreeTags);
   }
@@ -131,12 +130,12 @@ function searchUserRecipesHandler(e) {
   if (userSearchBar.value !== undefined && e.key === 'Enter') {
     if (navbarUserSection.innerText === ".toCook") {
       toCookView.classList.add('hidden');
-      populateUserSearchResults(currentUser.searchRecipesToCook(e.target.value));
-      removeUserSearchDuplicates(currentUser.searchToCookByIngredient(e.target.value));
+      populateUserSearchResults(currentUser.searchRecipesToCook(event.target.value));
+      removeUserSearchDuplicates(currentUser.searchToCookByIngredient(event.target.value));
     } else if (navbarUserSection.innerText === ".favorites") {
       favoritesView.classList.add('hidden');
-      populateUserSearchResults(currentUser.searchFavorites(e.target.value));
-      removeUserSearchDuplicates(currentUser.searchFavoritesByIngredient(e.target.value));
+      populateUserSearchResults(currentUser.searchFavorites(event.target.value));
+      removeUserSearchDuplicates(currentUser.searchFavoritesByIngredient(event.target.value));
     }
   }
 }
@@ -349,12 +348,10 @@ function sortUserAccounts() {
 }
 
 // *********      WHICH USER IS BEING CHOSEN    **********
-function determineUser(event) {
-  let userObject = usersData.find(user => user.name === event.target.innerText.trim());
-  if (userObject) {
-    displayUserIcon(userObject);
-    currentUser = new User(userObject);
-  }
+function determineUser() {
+  let userObject = usersData.find(user => user.name === event.target.innerText.trim() ? user : null);
+  userObject !== null ? displayUserIcon(userObject) : null;
+  currentUser = new User(userObject);
 }
 
 // *********      CHANGE USER NAME NAVBAR    **********

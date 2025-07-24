@@ -1,5 +1,13 @@
-// const ingredients = require('../data/ingredients');
-// const ingredientsData = ingredients.ingredientsData;
+// Browser/Node.js compatibility
+let ingredientsData;
+if (typeof module !== 'undefined' && module.exports) {
+  // Node.js environment (tests)
+  const ingredients = require('../data/ingredients');
+  ingredientsData = ingredients.ingredientsData;
+} else {
+  // Browser environment - ingredientsData will be available as global variable
+  // It will be set by the ingredients.js script loaded before this one
+}
 
 class Recipe {
   constructor(recipe) {
@@ -26,11 +34,12 @@ class Recipe {
   getInstructions() {
     let instructionList = [];
     this.instructions.forEach(instruction => {
-      instructionList.unshift(`Step ${instruction.number}: ${instruction.instruction}`)
+      instructionList.push(`Step ${instruction.number}: ${instruction.instruction}`)
     });
     return instructionList;
   }
 }
 
-
-// module.exports = Recipe;
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = Recipe;
+}

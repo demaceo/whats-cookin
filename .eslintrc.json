@@ -1,0 +1,55 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "script"
+  },
+  "globals": {
+    "recipeData": "readonly",
+    "usersData": "readonly",
+    "ingredientsData": "readonly",
+    "User": "readonly",
+    "Recipe": "readonly",
+    "Pantry": "readonly",
+    "openNav": "readonly",
+    "closeNav": "readonly"
+  },
+  "rules": {
+    "no-unused-vars": ["error", { "args": "none" }],
+    "no-undef": ["error", { "typeof": true }]
+  },
+  "overrides": [
+    {
+      "files": ["test/**/*.js"],
+      "env": {
+        "node": true,
+        "mocha": true
+      },
+      "globals": {
+        "require": "readonly",
+        "module": "readonly",
+        "describe": "readonly",
+        "it": "readonly",
+        "expect": "readonly"
+      }
+    },
+    {
+      "files": ["src/**/*.js"],
+      "env": {
+        "browser": true,
+        "node": true
+      },
+      "globals": {
+        "require": "readonly",
+        "module": "readonly",
+        "exports": "readonly"
+      }
+    }
+  ]
+}

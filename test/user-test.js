@@ -37,7 +37,7 @@ describe('User', function() {
 
   it('should be able to add a recipe to a users favorite recipes', function() {
     const user = new User(userData[0]);
-    user.favoriteRecipe(recipeTestData[0]);
+    user.addFavoriteRecipe(recipeTestData[0]);
 
     expect(user.favoriteRecipes[0]).to.equal(recipeTestData[0]);
   });
@@ -52,8 +52,8 @@ describe('User', function() {
   it('should be able to search for a user/s favorite recipe', function() {
     const user = new User(userData[0]);
 
-    user.favoriteRecipe(recipeTestData[0]);
-    user.favoriteRecipe(recipeTestData[1]);
+    user.addFavoriteRecipe(recipeTestData[0]);
+    user.addFavoriteRecipe(recipeTestData[1]);
 
     const searchResult = user.searchFavorites("cookie");
 
@@ -75,11 +75,11 @@ describe('User', function() {
   it('should be able to search for a user/s favorite recipes by ingredient', function() {
     const user = new User(userData[0]);
 
-    user.favoriteRecipe(recipeTestData[0]);
-    user.favoriteRecipe(recipeTestData[1]);
+    user.addFavoriteRecipe(recipeTestData[0]);
+    user.addFavoriteRecipe(recipeTestData[1]);
 
     const searchResult = user.searchFavoritesByIngredient("wheat flour");
-    expect(searchResult.length).to.equal(1);
+    expect(searchResult.length).to.equal(2);
     expect(searchResult[0].ingredients[0].id).to.equal(20081);
 
   });

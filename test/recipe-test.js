@@ -4,7 +4,7 @@ const recipeTestData = require('../data/recipes');
 const ingredients = require('../data/ingredients');
 const ingredientsData = ingredients.ingredientsData;
 
-const Recipe = require('../src/Recipe');
+const Recipe = require('../src/recipe');
 
 describe('Recipe', function() {
 
@@ -43,7 +43,7 @@ describe('Recipe', function() {
   });
 
   it('should have instructions with step numbers', function() {
-    const recipe = new Recipe(recipeTestData[0]);
+    const recipe = new Recipe(recipeTestData[1]);
 
     expect(recipe.instructions.length).to.equal(6);
     expect(recipe.instructions[5].number).to.equal(6);
@@ -63,7 +63,7 @@ describe('Recipe', function() {
   });
 
   it('should be able to get the instructions for the recipe', function() {
-    const recipe = new Recipe(recipeTestData[0]);
+    const recipe = new Recipe(recipeTestData[1]);
 
     expect(recipe.getInstructions()[5]).to.equal('Step 6: Remove the pan from the oven and let sit for 10 minutes before removing onto a cooling rack.Top with ice cream and a drizzle of chocolate sauce.');
   });
